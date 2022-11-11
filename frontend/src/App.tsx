@@ -1,13 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { MainPage } from './pages/MainPage/MainPage';
-
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { MainPage } from './pages/MainPage/MainPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
+import { AddingPostPage } from './pages/AddingPostPage/AddingPostPage';
+import { FeedPage } from './pages/FeedPage/FeedPage';
+import { MessagesPage } from './pages/MessagesPage/MessagesPage';
+import { MyFeedPage } from './pages/MyFeedPage/MyFeedPage';
+import { PostPage } from './pages/PostPage/PostPage';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
+import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
+import { SearchPage } from './pages/SearchPage/SearchPage';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +24,38 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/adding-post",
+    element: <AddingPostPage />,
+  },
+  {
+    path: "/feed",
+    element: <FeedPage />,
+  },
+  {
+    path: "/messages",
+    element: <MessagesPage />,
+  },
+  {
+    path: "/my-feed",
+    element: <MyFeedPage />,
+  },
+  {
+    path: "/post",
+    element: <PostPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage />,
+  },
+  {
+    path: "/search",
+    element: <SearchPage />,
   },
 ]);
 
