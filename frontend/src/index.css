@@ -264,3 +264,130 @@ img {
   max-width: 100%;
   height: auto
 }
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden
+}
+
+.container {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px
+}
+
+.button {
+  padding: 0;
+  background: 0 0;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  text-align: center;
+  word-break: break-word;
+  word-wrap: wrap;
+  overflow-wrap: break-word;
+  -webkit-transition: color .3s, background-color .3s, border .3s, opacity .3s;
+  transition: color .3s, background-color .3s, border .3s, opacity .3s;
+  outline: 0
+}
+
+.buttonTransparent {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 21px
+}
+
+.buttonTransparent:focus,
+.buttonTransparent:hover {
+  border-color: #fff
+}
+
+.buttonTransparent:active {
+  border-color: #fff;
+  opacity: .3
+}
+
+.formInput {
+  padding: 16px 26px 15px;
+  font-size: 21px;
+  color: #2e384d;
+  background-color: #fff;
+  border: 2px solid #dee5fc;
+  border-radius: 10px;
+  -webkit-transition: border .3s, background-color .3s;
+  transition: border .3s, background-color .3s;
+  outline: 0
+}
+
+.formInput::-webkit-input-placeholder {
+  font-size: 21px;
+  color: rgba(46, 56, 77, .3);
+  -webkit-transition: color .3s;
+  transition: color .3s
+}
+
+.formInput::-moz-placeholder {
+  font-size: 21px;
+  color: rgba(46, 56, 77, .3);
+  -webkit-transition: color .3s;
+  transition: color .3s
+}
+
+.formInput::-ms-input-placeholder {
+  font-size: 21px;
+  color: rgba(46, 56, 77, .3);
+  -webkit-transition: color .3s;
+  transition: color .3s
+}
+
+.formInput::placeholder {
+  font-size: 21px;
+  color: rgba(46, 56, 77, .3);
+  -webkit-transition: color .3s;
+  transition: color .3s
+}
+
+.formInput:hover {
+  border-color: #d0d9f5
+}
+
+.formInput:hover::-webkit-input-placeholder {
+  color: rgba(46, 56, 77, .4)
+}
+
+.formInput:hover::-moz-placeholder {
+  color: rgba(46, 56, 77, .4)
+}
+
+.formInput:hover::-ms-input-placeholder {
+  color: rgba(46, 56, 77, .4)
+}
+
+.formInput:hover::placeholder {
+  color: rgba(46, 56, 77, .4)
+}
+
+.formInput:focus {
+  border-color: #2e384d
+}
+
+.formInput:hover+.formInputIcon {
+  fill: rgba(46, 56, 77, .2)
+}
+
+.formInput:focus+.formInputIcon {
+  fill: #2e384d
+}

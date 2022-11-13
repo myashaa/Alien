@@ -1,2 +1,426 @@
-@import "/src/colors.css"
+@import "/src/colors.css";
 
+.header {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 14px;
+  background-color: #3e5dde
+}
+
+.headerWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start
+}
+
+.headerLogoWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-top: 6px
+}
+
+.headerLogoLink {
+  display: block
+}
+
+.headerLogoLink:focus,
+.headerLogoLink:hover {
+  opacity: .7
+}
+
+.headerLogoLink:active {
+  opacity: .3
+}
+
+.headerLogo {
+  display: block
+}
+
+.headerTopic {
+  width: 55px;
+  margin-top: 7px;
+  margin-bottom: 0;
+  margin-left: 9px;
+  font-size: 10px;
+  line-height: 9px;
+  font-weight: 300;
+  color: #fff
+}
+
+.headerSearchForm {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 360px;
+  margin-bottom: 14px;
+  margin-left: 8px
+}
+
+.headerSearch {
+  position: relative
+}
+
+.headerSearchInput {
+  width: 100%;
+  padding: 10px 55px 10px 20px;
+  font-size: 16px;
+  border-color: #fff;
+  border-radius: 21px
+}
+
+.headerSearchInput::-webkit-search-cancel-button,
+.headerSearchInput::-webkit-search-decoration,
+.headerSearchInput::-webkit-search-results-button,
+.headerSearchInput::-webkit-search-results-decoration {
+  display: none
+}
+
+.headerSearchInput:hover {
+  border-color: #fff
+}
+
+.headerSearchInput:focus {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent
+}
+
+.headerSearchInput:focus+.headerSearchButton .headerSearchIcon {
+  fill: #fff
+}
+
+.headerSearchButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 55px
+}
+
+.headerSearchIcon {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  fill: #2e384d;
+  -webkit-transition: fill .3s;
+  transition: fill .3s
+}
+
+.headerNavWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-left: auto;
+  padding-left: 20px
+}
+
+.headerNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-left: auto
+}
+
+.headerMyNav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  width: 153px;
+  margin-top: 6px;
+  margin-right: 10px;
+  margin-left: 27px
+}
+
+.headerMyPage {
+  margin-bottom: 15px;
+  margin-right: 26px
+}
+
+.headerMyPageFeed .headerPageLink {
+  background-image: url(../img/feed.svg);
+  background-size: 32px 26px
+}
+
+.headerMyPagePopular .headerPageLink {
+  background-image: url(../img/popular.svg);
+  background-size: 32px 32px
+}
+
+.headerMyPageMessages .headerPageLink {
+  background-image: url(../img/messages.svg);
+  background-size: 32px 30px
+}
+
+.headerMyPage:nth-child(3n) {
+  margin-right: 0
+}
+
+.headerPageLink {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: .3
+}
+
+.headerPageLink:focus,
+.hheaderPageLink:hover {
+  opacity: .5
+}
+
+.headerPageLinkActive,
+.headerPageLinkActive:focus,
+.headerPageLinkActive:hover,
+.headerPageLink:active {
+  opacity: 1
+}
+
+.headerUserNav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  max-width: 390px;
+  margin-left: -7px
+}
+
+.headerUserNav li {
+  margin-bottom: 14px;
+  margin-left: 7px
+}
+
+.headerProfile {
+  width: 222px
+}
+
+.headerProfile:focus .headerTooltipWrapper,
+.headerProfile:hover .headerTooltipWrapper {
+  display: block
+}
+
+.headerProfileLink {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 500;
+  color: #fff
+}
+
+.headerProfileLink:focus .headerLinkArrow,
+.headerProfileLink:hover .headerLinkArrow {
+  opacity: 1
+}
+
+.headerProfileLink:hover+.headerTooltipWrapper {
+  display: block
+}
+
+.headerProfileLink:active {
+  opacity: .3
+}
+
+.headerAvatarWrapper {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin-right: 16px;
+  background-color: #e2e8f7;
+  background-image: url(../img/icon-input-user.svg);
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center
+}
+
+.headerProfileAvatar {
+  display: block;
+  border-radius: 50%
+}
+
+.headerProfileName {
+  position: relative;
+  margin-top: 2px
+}
+
+.headerProfileName span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  width: 149px;
+  padding-right: 10px
+}
+
+.headerLinkArrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
+  width: 6px;
+  height: 10px;
+  opacity: .3;
+  fill: #fff;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s
+}
+
+.headerTooltipWrapper {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  padding-top: 16px
+}
+
+.headerTooltipWrapper:focus,
+.headerTooltipWrapper:hover {
+  display: block
+}
+
+.headerProfileTooltip {
+  width: 260px;
+  padding: 34px 34px 24px;
+  background-color: #fff;
+  border: 1px solid #dee5fc;
+  border-radius: 20px
+}
+
+.headerProfileTooltip:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 21px;
+  height: 9px;
+  background-image: url(../img/pointer.png);
+  background-size: 21px 9px
+}
+
+.headerProfileNav {
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.headerProfileNavItem {
+  margin-bottom: 11px
+}
+
+.headerProfileNavLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #8798ad
+}
+
+.headerProfileNavLink:focus,
+.headerProfileNavLink:hover {
+  color: #2e384d
+}
+
+.headerProfileNavLink:active {
+  opacity: .2
+}
+
+.headerProfileNavText {
+  position: relative
+}
+
+.headerProfileIndicator {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: -30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  padding: 5px 4px 4px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  font-style: normal;
+  color: #fff;
+  background-color: #304ecc;
+  border-radius: 50%
+}
+
+.headerPostButton {
+  padding: 10px 30px 9px 47px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .7px;
+  color: #fff;
+  background-image: url(../img/plus.svg);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  background-position: 16px center;
+  text-transform: uppercase
+}
