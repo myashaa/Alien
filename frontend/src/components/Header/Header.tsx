@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styles from "./Header.module.css";
 import baseStyles from "../../index.module.css";
 
-import logo from "../../img/logo.svg";
-import iconSearch from "../../img/icon-search.svg";
-import userPhoto from "../../img/userpic-medium.jpg";
-import { Link, NavLink } from "react-router-dom";
+import Logo from "../../img/logo.svg";
+import IconSearch from "../../img/icon-search.svg"; 
+import HeaderLinkArrow from "../../img/icon-link-arrow.svg";
+import UserPhoto from "../../img/userpic-medium.jpg";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
   const [isUser, setUser] = useState(false);
@@ -15,7 +16,7 @@ export function Header() {
       <div className={`${ styles.headerWrapper } ${ baseStyles.container }`}>
         <div className={styles.headerLogoWrapper}>
           <a className={styles.headerLogoLink} href="/">
-            <img className={styles.headerLogo} src={ logo } alt="Логотип readme" width="128" height="24" />
+            <Logo className={styles.headerLogo} width="128" height="24" />
           </a>
           <p className={styles.headerTopic}>
               micro blogging
@@ -26,10 +27,7 @@ export function Header() {
             <label className={baseStyles.visuallyHidden}>Поиск</label>
             <input className={`${ styles.headerSearchInput } ${ baseStyles.formInput }`} type="search" />
             <button className={`${styles.headerSearchButton} ${baseStyles.button}`} type="submit">
-              {/* <img className={styles.headerSearchIcon} src={ iconSearch } alt="Аватар профиля" width="18" height="18" /> */}
-              <svg className={styles.headerSearchIcon} width="18" height="18">
-                <use xlinkHref="#icon-search"></use>
-              </svg>
+              <IconSearch className={styles.headerSearchIcon} width="18" height="18" />
               <span className={baseStyles.visuallyHidden}>Начать поиск</span>
             </button>
           </div>
@@ -56,29 +54,27 @@ export function Header() {
             {isUser ?
             (<ul className={styles.headerUserNav}>
               <li className={styles.headerProfile}>
-                <a className={styles.headerProfileLink} href="#">
+                <a className={styles.headerProfileLink} href="/profile">
                   <div className={styles.headerAvatarWrapper}>
-                    <img className={styles.headerProfileAvatar} src={ userPhoto } alt="Аватар профиля" />
+                    <img className={styles.headerProfileAvatar} src={ UserPhoto } alt="Аватар профиля" />
                   </div>
                   <div className={styles.headerProfileName}>
                     <span>Антон Глуханько</span>
-                    {/* <svg className={styles.headerLinkArrow} width="10" height="6"> */}
-                      {/* <use xlink:href="#icon-arrow-right-ad"></use> */}
-                    {/* </svg> */}
+                    <HeaderLinkArrow className={styles.headerLinkArrow} width="10" height="6" />
                   </div>
                 </a>
                 <div className={styles.headerTooltipWrapper}>
                   <div className={styles.headerProfileTooltip}>
                     <ul className={styles.headerProfileNav}>
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="#">
+                        <a className={styles.headerProfileNavLink} href="/profile">
                           <span className={styles.headerProfileNavText}>
                             Мой профиль
                           </span>
                         </a>
                       </li>
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="#">
+                        <a className={styles.headerProfileNavLink} href="/messages">
                           <span className={styles.headerProfileNavText}>
                             Сообщения
                             <i className={styles.headerProfileIndicator}>2</i>
