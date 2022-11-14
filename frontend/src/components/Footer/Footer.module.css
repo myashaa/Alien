@@ -6,16 +6,10 @@
   background-color: #f4f6fc;
 }
 
-.footerMain {
-  background-color: #3e5dde;
-}
-
 .footerWrapper {
   padding-top: 60px;
   padding-bottom: 62px;
   background-color: #2e384d;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 }
 
 .footerContainer {
