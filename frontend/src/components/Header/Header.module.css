@@ -4,7 +4,7 @@
   -ms-flex-negative: 0;
   flex-shrink: 0;
   padding-top: 14px;
-  background-color: #3e5dde
+  background-color: #3e5dde;
 }
 
 .headerWrapper {
@@ -13,7 +13,7 @@
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: flex-start
+  align-items: flex-start;
 }
 
 .headerLogoWrapper {
@@ -25,24 +25,24 @@
   align-items: flex-start;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-top: 6px
+  margin-top: 6px;
 }
 
 .headerLogoLink {
-  display: block
+  display: block;
 }
 
 .headerLogoLink:focus,
 .headerLogoLink:hover {
-  opacity: .7
+  opacity: .7;
 }
 
 .headerLogoLink:active {
-  opacity: .3
+  opacity: .3;
 }
 
 .headerLogo {
-  display: block
+  display: block;
 }
 
 .headerTopic {
@@ -53,7 +53,7 @@
   font-size: 10px;
   line-height: 9px;
   font-weight: 300;
-  color: #fff
+  color: #fff;
 }
 
 .headerSearchForm {
@@ -61,11 +61,11 @@
   flex-shrink: 0;
   width: 360px;
   margin-bottom: 14px;
-  margin-left: 8px
+  margin-left: 8px;
 }
 
 .headerSearch {
-  position: relative
+  position: relative;
 }
 
 .headerSearchInput {
@@ -73,28 +73,28 @@
   padding: 10px 55px 10px 20px;
   font-size: 16px;
   border-color: #fff;
-  border-radius: 21px
+  border-radius: 21px;
 }
 
 .headerSearchInput::-webkit-search-cancel-button,
 .headerSearchInput::-webkit-search-decoration,
 .headerSearchInput::-webkit-search-results-button,
 .headerSearchInput::-webkit-search-results-decoration {
-  display: none
+  display: none;
 }
 
 .headerSearchInput:hover {
-  border-color: #fff
+  border-color: #fff;
 }
 
 .headerSearchInput:focus {
   color: #fff;
   border-color: #fff;
-  background-color: transparent
+  background-color: transparent;
 }
 
 .headerSearchInput:focus+.headerSearchButton .headerSearchIcon {
-  fill: #fff
+  fill: #fff;
 }
 
 .headerSearchButton {
@@ -102,7 +102,7 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 55px
+  width: 55px;
 }
 
 .headerSearchIcon {
@@ -113,7 +113,7 @@
   transform: translateX(-50%);
   fill: #2e384d;
   -webkit-transition: fill .3s;
-  transition: fill .3s
+  transition: fill .3s;
 }
 
 .headerNavWrapper {
@@ -129,7 +129,7 @@
   -ms-flex-positive: 1;
   flex-grow: 1;
   margin-left: auto;
-  padding-left: 20px
+  padding-left: 20px;
 }
 
 .headerNav {
@@ -147,7 +147,7 @@
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  margin-left: auto
+  margin-left: auto;
 }
 
 .headerMyNav {
@@ -165,31 +165,31 @@
   width: 153px;
   margin-top: 6px;
   margin-right: 10px;
-  margin-left: 27px
+  margin-left: 27px;
 }
 
 .headerMyPage {
   margin-bottom: 15px;
-  margin-right: 26px
+  margin-right: 26px;
 }
 
 .headerMyPageFeed .headerPageLink {
-  background-image: url(../img/feed.svg);
-  background-size: 32px 26px
+  background-image: url("../../img/feed.svg");
+  background-size: 32px 26px;
 }
 
 .headerMyPagePopular .headerPageLink {
-  background-image: url(../img/popular.svg);
-  background-size: 32px 32px
+  background-image: url("../../img/popular.svg");
+  background-size: 32px 32px;
 }
 
 .headerMyPageMessages .headerPageLink {
-  background-image: url(../img/messages.svg);
-  background-size: 32px 30px
+  background-image: url("../../img/messages.svg");
+  background-size: 32px 30px;
 }
 
 .headerMyPage:nth-child(3n) {
-  margin-right: 0
+  margin-right: 0;
 }
 
 .headerPageLink {
@@ -198,19 +198,19 @@
   height: 32px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  opacity: .3
+  opacity: .3;
 }
 
 .headerPageLink:focus,
 .hheaderPageLink:hover {
-  opacity: .5
+  opacity: .5;
 }
 
 .headerPageLinkActive,
 .headerPageLinkActive:focus,
 .headerPageLinkActive:hover,
 .headerPageLink:active {
-  opacity: 1
+  opacity: 1;
 }
 
 .headerUserNav {
@@ -229,21 +229,21 @@
   -ms-flex-pack: end;
   justify-content: flex-end;
   max-width: 390px;
-  margin-left: -7px
+  margin-left: -7px;
 }
 
 .headerUserNav li {
   margin-bottom: 14px;
-  margin-left: 7px
+  margin-left: 7px;
 }
 
 .headerProfile {
-  width: 222px
+  width: 222px;
 }
 
 .headerProfile:focus .headerTooltipWrapper,
 .headerProfile:hover .headerTooltipWrapper {
-  display: block
+  display: block;
 }
 
 .headerProfileLink {
@@ -255,20 +255,20 @@
   -ms-flex-align: center;
   align-items: center;
   font-weight: 500;
-  color: #fff
+  color: #fff;
 }
 
 .headerProfileLink:focus .headerLinkArrow,
 .headerProfileLink:hover .headerLinkArrow {
-  opacity: 1
+  opacity: 1;
 }
 
 .headerProfileLink:hover+.headerTooltipWrapper {
-  display: block
+  display: block;
 }
 
 .headerProfileLink:active {
-  opacity: .3
+  opacity: .3;
 }
 
 .headerAvatarWrapper {
@@ -277,21 +277,21 @@
   min-width: 40px;
   margin-right: 16px;
   background-color: #e2e8f7;
-  background-image: url(../img/icon-input-user.svg);
+  background-image: url("../../img/icon-input-user.svg");
   border-radius: 50%;
   background-size: 18px 18px;
   background-repeat: no-repeat;
-  background-position: center
+  background-position: center;
 }
 
 .headerProfileAvatar {
   display: block;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .headerProfileName {
   position: relative;
-  margin-top: 2px
+  margin-top: 2px;
 }
 
 .headerProfileName span {
@@ -301,7 +301,7 @@
   word-wrap: normal;
   text-overflow: ellipsis;
   width: 149px;
-  padding-right: 10px
+  padding-right: 10px;
 }
 
 .headerLinkArrow {
@@ -315,19 +315,19 @@
   opacity: .3;
   fill: #fff;
   -webkit-transition: opacity .3s;
-  transition: opacity .3s
+  transition: opacity .3s;
 }
 
 .headerTooltipWrapper {
   position: absolute;
   z-index: 10;
   display: none;
-  padding-top: 16px
+  padding-top: 16px;
 }
 
 .headerTooltipWrapper:focus,
 .headerTooltipWrapper:hover {
-  display: block
+  display: block;
 }
 
 .headerProfileTooltip {
@@ -335,7 +335,7 @@
   padding: 34px 34px 24px;
   background-color: #fff;
   border: 1px solid #dee5fc;
-  border-radius: 20px
+  border-radius: 20px;
 }
 
 .headerProfileTooltip:before {
@@ -347,18 +347,18 @@
   transform: translateX(-50%);
   width: 21px;
   height: 9px;
-  background-image: url(../img/pointer.png);
-  background-size: 21px 9px
+  background-image: url("../../img/pointer.png");
+  background-size: 21px 9px;
 }
 
 .headerProfileNav {
   margin: 0;
   padding: 0;
-  list-style: none
+  list-style: none;
 }
 
 .headerProfileNavItem {
-  margin-bottom: 11px
+  margin-bottom: 11px;
 }
 
 .headerProfileNavLink {
@@ -368,20 +368,20 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #8798ad
+  color: #8798ad;
 }
 
 .headerProfileNavLink:focus,
 .headerProfileNavLink:hover {
-  color: #2e384d
+  color: #2e384d;
 }
 
 .headerProfileNavLink:active {
-  opacity: .2
+  opacity: .2;
 }
 
 .headerProfileNavText {
-  position: relative
+  position: relative;
 }
 
 .headerProfileIndicator {
@@ -409,7 +409,7 @@
   font-style: normal;
   color: #fff;
   background-color: #304ecc;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .headerPostButton {
@@ -418,9 +418,9 @@
   font-weight: 500;
   letter-spacing: .7px;
   color: #fff;
-  background-image: url(../img/plus.svg);
+  background-image: url("../../img/plus.svg");
   background-repeat: no-repeat;
   background-size: 10px 10px;
   background-position: 16px center;
-  text-transform: uppercase
+  text-transform: uppercase;
 }

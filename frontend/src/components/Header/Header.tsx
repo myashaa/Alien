@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./Header.module.css";
+import baseStyles from "../../index.module.css";
+
+import logo from "../../img/logo.svg";
+import userPhoto from "../../img/userpic-medium.jpg";
 
 export function Header() {
   return (
     <header className={styles.header}>
-      {/* + container */}
-      <div className={styles.headerWrapper}>
+      <div className={`${ styles.headerWrapper } ${ baseStyles.container }`}>
         <div className={styles.headerLogoWrapper}>
           <a className={styles.headerLogoLink} href="main.html">
-            <img className={styles.headerLogo} src="img/logo.svg" alt="Логотип readme" width="128" height="24" />
+            <img className={styles.headerLogo} src={ logo } alt="Логотип readme" width="128" height="24" />
           </a>
           <p className={styles.headerTopic}>
               micro blogging
@@ -16,16 +19,13 @@ export function Header() {
         </div>
         <form className={styles.headerSearchForm} action="#" method="get">
           <div className={styles.headerSearch}>
-            {/* visuallyHidden */}
-            <label className={styles.visuallyHidden}>Поиск</label>
-            {/* + formInput */}
-            <input className={styles.headerSearchInput} type="search" />
-            {/* + button */}
-            <button className={styles.headerSearchButton}type="submit">
-              <svg className={styles.headerSearchIcon} width="18" height="18">
+            <label className={baseStyles.visuallyHidden}>Поиск</label>
+            <input className={`${ styles.headerSearchInput } ${ baseStyles.formInput }`} type="search" />
+            <button className={`${ styles.headerSearchButton } ${ baseStyles.button }`} type="submit">
+              {/* <svg className={styles.headerSearchIcon} width="18" height="18"> */}
                 {/* <use xlink:href="#icon-search"></use> */}
-              </svg>
-              <span className={styles.visuallyHidden}>Начать поиск</span>
+              {/* </svg> */}
+              <span className={baseStyles.visuallyHidden}>Начать поиск</span>
             </button>
           </div>
         </form>
@@ -34,17 +34,17 @@ export function Header() {
             <ul className={styles.headerMyNav}>
               <li className={`${styles.headerMyPage} ${styles.headerMyPagePopular}`}>
                 <a className={`${styles.headerPageLink} ${styles.headerPageLinkActive}`} title="Популярный контент">
-                  <span className={styles.visuallyHidden}>Популярный контент</span>
+                  <span className={baseStyles.visuallyHidden}>Популярный контент</span>
                 </a>
               </li>
               <li className={`${styles.headerMyPage} ${styles.headerMyPageFeed}`}>
                 <a className={styles.headerPageLink} href="feed.html" title="Моя лента">
-                  <span className={styles.visuallyHidden}>Моя лента</span>
+                  <span className={baseStyles.visuallyHidden}>Моя лента</span>
                 </a>
               </li>
               <li className={`${styles.headerMyPage} ${styles.headerMyPageMessages}`}>
                 <a className={styles.headerPageLink} href="messages.html" title="Личные сообщения">
-                  <span className={styles.visuallyHidden}>Личные сообщения</span>
+                  <span className={baseStyles.visuallyHidden}>Личные сообщения</span>
                 </a>
               </li>
             </ul>
@@ -52,13 +52,13 @@ export function Header() {
               <li className={styles.headerProfile}>
                 <a className={styles.headerProfileLink} href="#">
                   <div className={styles.headerAvatarWrapper}>
-                    <img className={styles.headerProfileAvatar} src="img/userpic-medium.jpg" alt="Аватар профиля" />
+                    <img className={styles.headerProfileAvatar} src={ userPhoto } alt="Аватар профиля" />
                   </div>
                   <div className={styles.headerProfileName}>
                     <span>Антон Глуханько</span>
-                    <svg className={styles.headerLinkArrow} width="10" height="6">
+                    {/* <svg className={styles.headerLinkArrow} width="10" height="6"> */}
                       {/* <use xlink:href="#icon-arrow-right-ad"></use> */}
-                    </svg>
+                    {/* </svg> */}
                   </div>
                 </a>
                 <div className={styles.headerTooltipWrapper}>
@@ -91,8 +91,7 @@ export function Header() {
                 </div>
               </li>
               <li>
-                {/* + button + button--transparent */}
-                <a className={styles.headerPostButton} href="adding-post.html">Пост</a>
+                <a className={`${ styles.headerPostButton } ${ baseStyles.button } ${ baseStyles.buttonTransparent }`} href="adding-post.html">Пост</a>
               </li>
             </ul>
           </nav>
