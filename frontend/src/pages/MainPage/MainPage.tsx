@@ -3,7 +3,7 @@ import styles from "./MainPage.module.css";
 import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
-import { LoginationForm } from '../../components/LoginationForm/LoginationForm';
+import { LoginationFormWithRegistrationButton } from '../../components/LoginationFormWithRegistrationButton/LoginationFormWithRegistrationButton';
 
 export const MainPage = () => {
   return (
@@ -25,7 +25,7 @@ export const MainPage = () => {
             </li>
           </ul>
         </section>
-        <LoginationForm />
+        <LoginationFormWithRegistrationButton />
       </div>
       <Footer />
     </div>

@@ -6,7 +6,7 @@ import HtmlAcademy from "../../img/icon-htmlacademy.svg";
 
 export function Footer() {
   return (
-    <footer className={`${ styles.footer } ${ styles.footerMain }`}>
+    <footer className={ styles.footer }>
       <div className={styles.footerWrapper}>
         <div className={`${ styles.footerContainer } ${ baseStyles.container }`}>
           <div className={styles.footerMyInfo}>

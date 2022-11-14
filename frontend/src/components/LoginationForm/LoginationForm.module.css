@@ -1,26 +1,20 @@
 @import "/src/colors.css";
 
-.authorization {
-  width: 400px;
-  padding: 47px 40px 45px 40px;
-  background-color: #fff;
-  border-radius: 30px;
+.loginInputWrapper {
+  width: 760px;
+  margin-bottom: 22px;
 }
 
-.authorizationInputWrapper {
-  margin-bottom: 9px;
+.loginLabel {
+  margin-bottom: 10px;
 }
 
-.authorizationInput {
+.loginInput {
   width: 100%;
-  padding: 16px 50px 15px 21px;
 }
 
-.authorizationSubmit {
-  width: 100%;
-  padding: 21px 20px 19px;
-  font-size: 17px;
-  letter-spacing: 1px;
-  font-weight: 500;
-  margin-top: 15px;
+.loginSubmit {
+  margin-top: 18px;
+  padding: 21px 75px 19px 76px;
+  letter-spacing: .7px;
 }
