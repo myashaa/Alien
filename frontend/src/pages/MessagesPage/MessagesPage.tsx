@@ -1,5 +1,8 @@
 import React from "react";
+import { Header } from '../../components/Header/Header';
 
 export const MessagesPage = () => {
-  return <div>СООБЩЕНИЯ</div>
+  return (
+    <Header />
+  );
 }

@@ -1,5 +1,8 @@
 import React from "react";
+import { Header } from '../../components/Header/Header';
 
 export const ProfilePage = () => {
-  return <div>ПРОФИЛЬ</div>
+  return (
+    <Header />
+  );
 }

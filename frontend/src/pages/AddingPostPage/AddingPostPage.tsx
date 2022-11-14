@@ -1,5 +1,8 @@
 import React from "react";
+import { Header } from '../../components/Header/Header';
 
 export const AddingPostPage = () => {
-  return <div>ДОБАВЛЕНИЕ ПОСТА</div>
+  return (
+    <Header />
+  );
 }

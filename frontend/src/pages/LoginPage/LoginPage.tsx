@@ -1,5 +1,8 @@
 import React from "react";
+import { Header } from '../../components/Header/Header';
 
 export const LoginPage = () => {
-  return <div>ЛОГИН</div>
+  return (
+    <Header />
+  );
 }
