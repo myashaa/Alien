@@ -1,0 +1,67 @@
+@import "/src/colors.css";
+
+.pageMain {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.intro {
+  max-width: 606px;
+}
+
+.introSlogan {
+  display: block;
+  margin-top: 9px;
+  margin-bottom: 93px;
+  margin-left: 36px;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1.8px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.introAdvantagesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-left: -60px;
+}
+
+.introAdvantage {
+  width: 240px;
+  margin-bottom: 70px;
+  margin-left: 60px;
+  padding-top: 80px;
+  background-repeat: no-repeat;
+}
+
+.introAdvantageEase {
+  background-image: url("../../img/everything.svg");
+  background-size: 86px 36px;
+  background-position: 1px 13px;
+}
+
+.introAdvantageNoExcess {
+  background-image: url("../../img/no-games.svg");
+  background-size: 70px 58px;
+  background-position: 0 0;
+}
+
+.introAdvantageText {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 1.35;
+  color: #fff;
+}
