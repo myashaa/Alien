@@ -1,1 +1,13 @@
-@import "/src/colors.css"
+@import "/src/colors.css";
+
+.pageRegistration {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 60px 0;
+}

@@ -1,9 +1,13 @@
 @import "/src/colors.css";
 
 .pageLogin {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 60px 0;
 }
