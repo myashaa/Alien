@@ -41,6 +41,13 @@
   opacity: .3;
 }
 
+.headerLogoLinkActive:active,
+.headerLogoLinkActive:focus,
+.headerLogoLinkActive:hover {
+  opacity: 1;
+  cursor: default;
+}
+
 .headerLogo {
   display: block;
 }
