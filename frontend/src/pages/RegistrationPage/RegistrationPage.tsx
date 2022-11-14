@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./RegistrationPage.module.css";
 import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
@@ -7,9 +8,21 @@ import { RegistrationForm } from '../../components/RegistrationForm/Registration
 
 export const RegistrationPage = () => {
   return (
-    <div className={ baseStyles.page}>
+    // <div className={ baseStyles.page}>
+    //   <Header />
+    //   <RegistrationForm />
+    //   <Footer />
+    // </div>
+    <div className={`${baseStyles.page} ${styles.pageRegistration}`}>
       <Header />
-      <RegistrationForm />
+      <div className={styles.mainWrapper}>
+        <div className={baseStyles.container}>
+          <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleRegistration}`}>
+            Регистрация
+          </h1>
+        </div>
+        <RegistrationForm />
+      </div>
       <Footer />
     </div>
   );

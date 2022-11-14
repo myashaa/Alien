@@ -10,7 +10,7 @@ export const LoginPage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageLogin}`}>
       <Header />
-      <div>
+      <div className={styles.mainWrapper}>
         <div className={baseStyles.container}>
           <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
             Вход
