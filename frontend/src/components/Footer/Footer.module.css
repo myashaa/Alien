@@ -1,1 +1,117 @@
-@import "/src/colors.css"
+@import "/src/colors.css";
+
+.footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  background-color: #f4f6fc;
+}
+
+.footerMain {
+  background-color: #3e5dde;
+}
+
+.footerWrapper {
+  padding-top: 60px;
+  padding-bottom: 62px;
+  background-color: #2e384d;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: flex-end;
+}
+
+.footerMyInfo {
+  max-width: 392px;
+  padding-left: 50px;
+}
+
+.footerMyPages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footerMyPage {
+  margin-bottom: 22px;
+  text-align: right;
+}
+
+.footerMyPage .footerPageLink {
+  padding-right: 45px;
+}
+
+.footerMyPageFeed .footerPageLink {
+  background-image: url("../../img/feed.svg");
+  background-size: 16px 13px;
+}
+
+.footerMyPagePopular .footerPageLink {
+  background-image: url("../../img/popular.svg");
+  background-size: 16px 16px;
+}
+
+.footerMyPageMessages .footerPageLink {
+  background-image: url("../../img/messages.svg");
+  background-size: 16px 15px;
+}
+
+.footerPageLink {
+  display: inline-block;
+  font-size: 17px;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center right 7px;
+}
+
+.footerPageLink:focus,
+.footerPageLink:hover {
+  opacity: .6;
+}
+
+.footerPageLink:active {
+  opacity: .3;
+}
+
+.footerCopyright {
+  margin-top: auto;
+  padding-right: 1px;
+  padding-bottom: 4px;
+}
+
+.footerCopyrightLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.footerCopyrightLink span {
+  padding-bottom: 2px;
+}
+
+.footerCopyrightLink:focus,
+.footerCopyrightLink:hover {
+  opacity: .6;
+}
+
+.footerCopyrightLink:active {
+  opacity: .1;
+}
+
+.footerCopyrightLogo {
+  min-width: 27px;
+  margin-left: 16px;
+  fill: #fff;
+}
