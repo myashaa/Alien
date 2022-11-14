@@ -1960,21 +1960,21 @@ img {
   color: #fff
 } */
 
-.authorization {
+/* .authorization {
   width: 400px;
   padding: 47px 40px 45px 40px;
   background-color: #fff;
   border-radius: 30px
-}
+} */
 
-.authorization__input-wrapper {
+/* .authorization__input-wrapper {
   margin-bottom: 9px
 }
 
 .authorization__input {
   width: 100%;
   padding: 16px 50px 15px 21px
-}
+} */
 
 .authorization__recovery {
   display: block;
@@ -1996,32 +1996,32 @@ img {
   opacity: .1
 }
 
-.authorization__submit {
+/* .authorization__submit {
   width: 100%;
   padding: 21px 20px 19px;
   font-size: 17px;
   letter-spacing: 1px;
   font-weight: 500
-}
+} */
 
-.login__label {
+/* .login__label {
   margin-bottom: 10px
-}
+} */
 
-.login__input-wrapper {
+/* .login__input-wrapper {
   width: 760px;
   margin-bottom: 22px
-}
+} */
 
-.login__input {
+/* .login__input {
   width: 100%
-}
+} */
 
-.login__submit {
+/* .login__submit {
   margin-top: 18px;
   padding: 21px 75px 19px 76px;
   letter-spacing: .7px
-}
+} */
 
 .post:not(.post--details) {
   border: 1px solid #dee5fc;
