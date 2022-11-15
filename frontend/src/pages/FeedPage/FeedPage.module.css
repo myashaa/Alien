@@ -12,7 +12,7 @@
   padding: 60px 0;
 }
 
-.popularFiltersWrapper {
+.feedFiltersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,7 +25,7 @@
   margin-bottom: 20px;
 }
 
-.popularSorting {
+.feedSorting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,7 +41,7 @@
   padding-top: 17px;
 }
 
-.popularSortingCaption {
+.feedSortingCaption {
   margin-bottom: 15px;
   margin-right: 26px;
   font-size: 17px;
@@ -50,7 +50,7 @@
   text-transform: uppercase;
 }
 
-.popularSortingList {
+.feedSortingList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,7 +79,7 @@
   margin-right: 0;
 }
 
-.sortingItemPopular {
+.sortingItemFeed {
   margin-right: 30px;
 }
 
@@ -121,7 +121,7 @@
   display: none;
 }
 
-.popularPosts {
+.feedPosts {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
