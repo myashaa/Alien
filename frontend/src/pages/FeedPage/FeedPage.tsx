@@ -19,11 +19,11 @@ export const FeedPage = () => {
           </h1>
         </div>
         <div className={baseStyles.container}>
-          <div className={styles.popularFiltersWrapper}>
-            <div className={styles.popularSorting}>
-              <b className={styles.popularSortingCaption}>Сортировка:</b>
-              <ul className={styles.popularSortingList}>
-                <li className={`${ styles.sortingItem } ${ styles.sortingItemPopular }`}>
+          <div className={styles.feedFiltersWrapper}>
+            <div className={styles.feedSorting}>
+              <b className={styles.feedSortingCaption}>Сортировка:</b>
+              <ul className={styles.feedSortingList}>
+                <li className={`${ styles.sortingItem } ${ styles.sortingItemFeed }`}>
                   <a className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`} href="#">
                     <span>Популярность</span>
                     <IconSort className={styles.sortingIcon} width="10" height="12" />
@@ -48,7 +48,7 @@ export const FeedPage = () => {
             </div>
           </div>
         </div>
-        <div className={`${ styles.popularPosts } ${ baseStyles.container }`}>
+        <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
           <Post />
           <Post />
           <Post />
