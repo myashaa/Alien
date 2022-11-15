@@ -3837,7 +3837,7 @@ img {
   list-style: none
 }
 
-.popular__filters-wrapper {
+/* .popular__filters-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3848,9 +3848,9 @@ img {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 20px
-}
+} */
 
-.popular__posts {
+/* .popular__posts {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3860,7 +3860,7 @@ img {
   -ms-flex-align: start;
   align-items: flex-start;
   margin-bottom: 18px
-}
+} */
 
 /* .popular__post {
   width: 360px;
@@ -3872,7 +3872,7 @@ img {
   margin-right: 0
 } */
 
-.popular__sorting {
+/* .popular__sorting {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3886,13 +3886,13 @@ img {
   max-width: 510px;
   margin-right: 60px;
   padding-top: 17px
-}
+} */
 
-.popular__sorting-caption {
+/* .popular__sorting-caption {
   margin-bottom: 15px
-}
+} */
 
-.popular__sorting-list {
+/* .popular__sorting-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3901,7 +3901,7 @@ img {
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap
-}
+} */
 
 .popular__filters {
   display: -webkit-box;
@@ -3962,21 +3962,21 @@ img {
   letter-spacing: .8px
 }
 
-.sorting__caption {
+/* .sorting__caption {
   margin-right: 26px;
   font-size: 17px;
   font-weight: 500;
   letter-spacing: .8px;
   text-transform: uppercase
-}
+} */
 
-.sorting__list {
+/* .sorting__list {
   margin: 0;
   padding: 0;
   list-style: none
-}
+} */
 
-.sorting__item {
+/* .sorting__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3993,9 +3993,9 @@ img {
 
 .sorting__item--popular {
   margin-right: 30px
-}
+} */
 
-.sorting__link {
+/* .sorting__link {
   position: relative;
   padding-right: 17px;
   font-size: 17px;
@@ -4022,16 +4022,16 @@ img {
 .sorting__link:not(.sorting__link--active):focus,
 .sorting__link:not(.sorting__link--active):hover {
   opacity: .6
-}
+} */
 
-.sorting__icon {
+/* .sorting__icon {
   position: absolute;
   top: 47%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 0;
   display: none
-}
+} */
 
 .post-details {
   position: relative;

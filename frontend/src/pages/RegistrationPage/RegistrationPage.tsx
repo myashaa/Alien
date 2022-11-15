@@ -8,11 +8,6 @@ import { RegistrationForm } from '../../components/RegistrationForm/Registration
 
 export const RegistrationPage = () => {
   return (
-    // <div className={ baseStyles.page}>
-    //   <Header />
-    //   <RegistrationForm />
-    //   <Footer />
-    // </div>
     <div className={`${baseStyles.page} ${styles.pageRegistration}`}>
       <Header />
       <div className={styles.mainWrapper}>
