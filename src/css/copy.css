@@ -4774,7 +4774,7 @@ img {
   max-width: 759px
 }
 
-.adding-post__close {
+/* .adding-post__close {
   margin-left: 40px;
   padding: 21px 0 19px;
   font-size: 17px;
@@ -4792,7 +4792,7 @@ img {
 
 .adding-post__close:active {
   color: rgba(46, 56, 77, .3)
-}
+} */
 
 .adding-post__file-data {
   min-width: 360px

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./AddingPostPage.module.css";
 import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
@@ -7,9 +8,16 @@ import { AddingPostForm } from '../../components/AddingPostForm/AddingPostForm';
 
 export const AddingPostPage = () => {
   return (
-    <div className={ baseStyles.page}>
+    <div className={`${baseStyles.page} ${styles.pageAddingPost}`}>
       <Header />
-      <AddingPostForm />
+      <div className={styles.mainWrapper}>
+        <div className={baseStyles.container}>
+          <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleRegistration}`}>
+            Добавить публикацию
+          </h1>
+        </div>
+        <AddingPostForm />
+      </div>
       <Footer />
     </div>
   );

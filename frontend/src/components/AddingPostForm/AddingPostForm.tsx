@@ -88,8 +88,9 @@ export function AddingPostForm() {
           </div>
         </div>
         <button className={`${styles.addingPostSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`} type="submit">
-          Отправить
+          Опубликовать
         </button>
+        <a className={styles.addingPostClose} href="#">Закрыть</a>
       </form>
     </section>
   );

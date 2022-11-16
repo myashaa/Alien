@@ -39,3 +39,23 @@
   padding: 21px 20px 19px;
   letter-spacing: .7px;
 }
+
+.addingPostClose {
+  margin-left: 40px;
+  padding: 21px 0 19px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+  color: rgba(46, 56, 77, .5);
+  text-align: center
+}
+
+.addingPostClose:focus,
+.addingPostClose:hover {
+  color: #2e384d
+}
+
+.addingPostClose:active {
+  color: rgba(46, 56, 77, .3)
+}
