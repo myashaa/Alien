@@ -1,0 +1,113 @@
+@import "/src/colors.css";
+
+.messagesContactsTab {
+  width: 320px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  padding: 17px 40px 17px 20px;
+  background-color: #ebeff8;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.messagesContactsTab:not(.messagesContactsTabActive):focus,
+.messagesContactsTab:not(.messagesContactsTabActive):hover {
+  background-color: #e2e8f7;
+}
+
+.messagesContactsTabActive {
+  color: #fff;
+  background-color: #3e5dde;
+}
+
+.messagesContactsTabActive .messagesPreviewText {
+  color: #fff;
+  opacity: .6;
+}
+
+.messagesContactsTabActive .messagesPreviewTime {
+  color: #fff;
+  opacity: .6;
+}
+
+.messagesAvatarWrapper {
+  position: relative;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  margin-right: 21px;
+  background-color: #e2e8f7;
+  background-image: url("../../img/icon-input-user.svg");
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.messagesAvatar {
+  border-radius: 50%;
+}
+
+.messagesInfo {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding-top: 9px;
+}
+
+.messagesContactName {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.messagesPreview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  max-width: 178px;
+}
+
+.messagesPreviewText {
+  margin-right: 5px;
+  color: #8798ad;
+  -webkit-transition: color .3s, opacity .3s;
+  transition: color .3s, opacity .3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.messagesPreviewTime {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  max-width: 60px;
+  text-align: right;
+  color: #8798ad;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  opacity: .6;
+  -webkit-transition: color .3s, opacity .3s;
+  transition: color .3s, opacity .3s;
+}

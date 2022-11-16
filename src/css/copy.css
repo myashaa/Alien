@@ -3227,7 +3227,7 @@ img {
   opacity: 1
 }
 
-.messages__contacts-tab {
+/* .messages__contacts-tab {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3260,9 +3260,9 @@ img {
 .messages__contacts-tab--active .messages__preview-time {
   color: #fff;
   opacity: .6
-}
+} */
 
-.messages__avatar-wrapper {
+/* .messages__avatar-wrapper {
   position: relative;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -3276,7 +3276,7 @@ img {
   background-size: 18px 18px;
   background-repeat: no-repeat;
   background-position: center
-}
+} */
 
 /* .messages__author-link:focus,
 .messages__author-link:hover {
@@ -3291,7 +3291,7 @@ img {
   border-radius: 50%
 } */
 
-.messages__contact-name {
+/* .messages__contact-name {
   display: block;
   margin-bottom: 3px;
   font-size: 18px;
@@ -3299,16 +3299,16 @@ img {
   word-break: break-word;
   word-wrap: break-word;
   overflow-wrap: break-word
-}
+} */
 
-.messages__info {
+/* .messages__info {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
   padding-top: 9px
-}
+} */
 
-.messages__preview {
+/* .messages__preview {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3319,9 +3319,9 @@ img {
   -ms-flex-align: start;
   align-items: flex-start;
   max-width: 178px
-}
+} */
 
-.messages__preview-text {
+/* .messages__preview-text {
   margin-right: 5px;
   color: #8798ad;
   -webkit-transition: color .3s, opacity .3s;
@@ -3329,9 +3329,9 @@ img {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis
-}
+} */
 
-.messages__preview-time {
+/* .messages__preview-time {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   max-width: 60px;
@@ -3343,7 +3343,7 @@ img {
   opacity: .6;
   -webkit-transition: color .3s, opacity .3s;
   transition: color .3s, opacity .3s
-}
+} */
 
 .messages__indicator {
   position: absolute;
@@ -3368,10 +3368,10 @@ img {
   border-radius: 50%
 }
 
-.messages__preview-text {
+/* .messages__preview-text {
   margin-top: 0;
   margin-bottom: 0
-}
+} */
 
 .messages__contacts-list {
   margin: 0;
