@@ -4,7 +4,7 @@ import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
-import { RegistrationForm } from '../../components/RegistrationForm/RegistrationForm';
+import { EditingProfileForm } from '../../components/EditingProfileForm/EditingProfileForm';
 
 export const EditingProfilePage = () => {
   return (
@@ -16,7 +16,7 @@ export const EditingProfilePage = () => {
             Редактировать профиль
           </h1>
         </div>
-        <RegistrationForm />
+        <EditingProfileForm />
       </div>
       <Footer />
     </div>
