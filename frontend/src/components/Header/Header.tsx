@@ -9,7 +9,7 @@ import UserPhoto from "../../img/userpic-medium.jpg";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
-  const [isUser, setUser] = useState(false);
+  const [isUser, setUser] = useState(true);
   
   return (
     <header className={styles.header}>
