@@ -3381,7 +3381,7 @@ img {
   overflow-y: auto
 }
 
-.messages__chat {
+/* .messages__chat {
   max-width: 1001px;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
@@ -3401,15 +3401,15 @@ img {
   width: 860px;
   padding-bottom: 15px;
   padding-left: 22px
-}
+} */
 
-.messages__list {
+/* .messages__list {
   margin: 0;
   padding: 0;
   list-style: none;
   max-height: 680px;
   overflow-y: auto
-}
+} */
 
 /* .messages__item {
   width: 92.8%;
@@ -3419,10 +3419,10 @@ img {
   border-radius: 20px
 } */
 
-.messages__item--my {
+/* .messages__item--my {
   margin-left: auto;
   background-color: #f2fae4
-}
+} */
 
 /* .messages__item-info {
   padding-top: 3px
@@ -3505,7 +3505,7 @@ img {
   border-bottom-right-radius: 30px
 }
 
-.comments__form {
+/* .comments__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3520,13 +3520,13 @@ img {
   border-top: 1px solid #dee5fc;
   background-color: #f2f4f9;
   border-bottom-left-radius: 30px
-}
+} */
 
-.comments__picture {
+/* .comments__picture {
   border-radius: 50%
-}
+} */
 
-.comments__my-avatar {
+/* .comments__my-avatar {
   width: 40px;
   min-width: 40px;
   height: 40px;
@@ -3537,9 +3537,9 @@ img {
   background-size: 18px 18px;
   background-repeat: no-repeat;
   background-position: center
-}
+} */
 
-.comments__textarea {
+/* .comments__textarea {
   width: 545px;
   height: 81px;
   min-height: 81px;
@@ -3548,16 +3548,16 @@ img {
   margin-bottom: 20px;
   padding: 10px 13px;
   font-size: 16px
-}
+} */
 
-.comments__submit {
+/* .comments__submit {
   padding-top: 12px;
   padding-bottom: 9px;
   padding-right: 46px;
   padding-left: 47px;
   letter-spacing: .8px;
   border-radius: 20px
-}
+} */
 
 .post-details .comments__list-wrapper {
   padding-bottom: 48px;

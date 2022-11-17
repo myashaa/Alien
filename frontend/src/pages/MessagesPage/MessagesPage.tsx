@@ -3,15 +3,15 @@ import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
-import { Message } from '../../components/Message/Message';
 import { Dialog } from '../../components/Dialog/Dialog';
+import { Chat } from '../../components/Chat/Chat';
 
 export const MessagesPage = () => {
   return (
     <div className={ baseStyles.page}>
       <Header />
-      <Message />
       <Dialog />
+      <Chat />
       <Footer />
     </div>
   );
