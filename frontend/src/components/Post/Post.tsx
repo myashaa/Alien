@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Post.module.css";
 import baseStyles from "../../index.module.css";
 
-import Photo from "../../img/rock-medium.jpg";
+import Photo from "../../img/gagarin.jpg";
 import UserPhoto from "../../img/userpic-larisa-small.jpg";
 import IconHeart from "../../img/icon-heart.svg"; 
 import IconHeartActive from "../../img/icon-heart-active.svg"; 
@@ -12,18 +12,16 @@ export function Post() {
   return (
     <article className={ styles.post }>
       <header className={styles.postHeader}>
-        <h2><a href="#">Наконец, обработал фотки!</a></h2>
+        <h2><a href="#">Наконец, полет в открытый космос!</a></h2>
       </header>
       <div className={styles.postMain}>
         <div className={styles.postPhotoImageWrapper}>
           <img src={Photo} alt="Фото от пользователя" width="360" height="240" />
         </div>
         <p>
-          Озеро Байкал – огромное древнее озеро в горах Сибири к северу от монгольской границы. Байкал
-          считается самым глубоким озером в мире. Он окружен сетью пешеходных маршрутов, называемых
-          Большой байкальской тропой. Деревня Листвянка, расположенная на западном берегу озера, –
-          популярная отправная точка для летних экскурсий. Зимой здесь можно кататься на коньках и
-          собачьих упряжках.
+          60 лет назад произошло событие огромной исторической значимости. Полетел в космос первый человек — советский лётчик Юрий Гагарин.
+          Этот триумфальный полёт и сегодня воспринимается как невероятный прорыв, необычайное достижение всего человечества. Событие имело
+          колоссальный общественный резонанс! Гагарин стал всенародным героем, любимцем всех женщин СССР сразу или, как сейчас бы сказали, настоящей «звездой».
         </p>
         <div className={styles.postTextMoreLinkWrapper}>
             <a className={styles.postTextMoreLink} href="#">Читать далее</a>

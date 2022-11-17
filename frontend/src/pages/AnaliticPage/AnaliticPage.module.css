@@ -394,3 +394,21 @@
 .sortingLinkActive .sortingIcon {
   display: block;
 }
+
+.analiticPosts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  min-height: 50vh;
+  background-image: url("../../img/no-feed-bg.svg");
+  border-radius: 50%;
+  background-size: 102px 115px;
+  background-repeat: no-repeat;
+  background-position: center 150px;
+} 

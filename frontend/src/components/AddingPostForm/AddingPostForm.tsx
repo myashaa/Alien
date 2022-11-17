@@ -67,9 +67,6 @@ export function AddingPostForm() {
               <li className={baseStyles.formInvalidItem}>
                 Заголовок. Это поле должно быть заполнено.
               </li>
-              {/* <li className={baseStyles.formInvalidItem}>
-                Цитата. Она не должна превышать 70 знаков.
-              </li> */}
             </ul>
           </div>
         </div>

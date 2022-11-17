@@ -11,6 +11,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import UserPhoto from "../../img/userpic-medium.jpg";
 import { Profile } from '../../components/Profile/Profile';
+import { Post } from '../../components/Post/Post';
 
 export const AnaliticPage = () => {
 
@@ -244,6 +245,10 @@ export const AnaliticPage = () => {
         ) : (null)}
         {postPanelVisible ? (
             <>
+              <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+                <Post />
+                <Post />
+              </div>  
             </> 
         ) : (null)} 
 
