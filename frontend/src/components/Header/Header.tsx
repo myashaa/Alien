@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Header.module.css";
 import baseStyles from "../../index.module.css";
 
-import Logo from "../../img/logo.svg";
+import LogoAlien from "../../img/logo-alien.svg";
 import IconSearch from "../../img/icon-search.svg"; 
 import HeaderLinkArrow from "../../img/icon-link-arrow.svg";
 import UserPhoto from "../../img/userpic-medium.jpg";
@@ -16,11 +16,8 @@ export function Header() {
       <div className={`${ styles.headerWrapper } ${ baseStyles.container }`}>
         <div className={styles.headerLogoWrapper}>
           <a className={styles.headerLogoLink} href="/">
-            <Logo className={styles.headerLogo} width="128" height="24" />
+            <LogoAlien className={styles.headerLogo} width="130" height="40" />
           </a>
-          <p className={styles.headerTopic}>
-              micro blogging
-          </p>
         </div>
         <form className={styles.headerSearchForm} action="#" method="get">
           <div className={styles.headerSearch}>
@@ -67,7 +64,7 @@ export function Header() {
                   <div className={styles.headerProfileTooltip}>
                     <ul className={styles.headerProfileNav}>
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="/profile">
+                        <a className={styles.headerProfileNavLink} href="/analitic">
                           <span className={styles.headerProfileNavText}>
                             Мой профиль
                           </span>

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Footer.module.css";
 import baseStyles from "../../index.module.css";
 
-import HtmlAcademy from "../../img/icon-htmlacademy.svg";
+import LogoAlien from "../../img/logo-alien.svg";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
       <div className={styles.footerWrapper}>
         <div className={`${ styles.footerContainer } ${ baseStyles.container }`}>
           <div className={styles.footerMyInfo}>
-            <ul className={styles.footerMyPages}>
+            {/* <ul className={styles.footerMyPages}>
               <li className={`${ styles.footerMyPage } ${ styles.footerMyPageFeed }`}>
                 <a className={styles.footerPageLink} href="/my-feed">
                   Моя лента
@@ -26,11 +26,11 @@ export function Footer() {
                   Личные сообщения
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className={styles.footerCopyright}>
               <a className={styles.footerCopyrightLink} href="#">
-                <span>Разработано HTML Academy</span>
-                <HtmlAcademy className={styles.footerCopyrightLogo} width="27" height="34" />
+                {/* <span>Разработано HTML Academy</span> */}
+                <LogoAlien className={styles.footerCopyrightLogo} width="130" height="50" />
               </a>
             </div>
           </div>

@@ -12,7 +12,7 @@ export const MainPage = () => {
         <section className={styles.intro}>
           <h2 className={baseStyles.visuallyHidden}>Наши преимущества</h2>
           <b className={styles.introSlogan}>Блог, каким<br/> он должен быть</b>
-          <ul className={styles.introAdvantagesList}>
+          {/* <ul className={styles.introAdvantagesList}>
             <li className={`${styles.introAdvantage} ${styles.introAdvantageEase}`}>
               <p className={styles.introAdvantageText}>
                 Есть все необходимое для&nbsp;простоты публикации
@@ -23,6 +23,12 @@ export const MainPage = () => {
                 Нет ничего лишнего, отвлекающего от сути
               </p>
             </li>
+          </ul> */}
+          <ul className={styles.introAdvantagesList}>
+            <li className={styles.introAdvantage}>Сфотографировали НЛО?</li>
+            <li className={styles.introAdvantage}>Придумали рецепт идеального лимонада?</li>
+            <li className={styles.introAdvantage}>Разгадали загадку вселенной? </li>
+            <li className={styles.introAdvantage}>Мы ждём вас в Alien!</li>
           </ul>
         </section>
         <LoginationFormWithRegistrationButton />

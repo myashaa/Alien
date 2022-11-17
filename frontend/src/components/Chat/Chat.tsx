@@ -38,7 +38,7 @@ export function Chat() {
               <p className={baseStyles.formErrorDesc}>Это поле обязательно к заполнению</p>
             </div>
           </div>
-          <button className={`${styles.commentsSubmit} ${baseStyles.button} ${baseStyles.buttonGreen}`} type="submit">Отправить</button>
+          <button className={`${styles.commentsSubmit} ${baseStyles.button} ${baseStyles.buttonYellow}`} type="submit">Отправить</button>
         </form>
       </div>
     </div>

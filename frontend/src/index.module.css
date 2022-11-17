@@ -308,34 +308,34 @@ img {
   font-size: 17px;
   font-weight: 500;
   color: #fff;
-  background-color: #3e5dde;
+  background-color: #052e70;
   text-transform: uppercase;
   border-radius: 10px;
 }
 
 .buttonMain:focus,
 .buttonMain:hover {
-  background-color: #2a4ad0;
+  background-color: #022662;
 }
 
 .buttonMain:active {
   color: rgba(255, 255, 255, .3);
 }
 
-.buttonGreen {
+.buttonYellow {
   font-size: 17px;
   font-weight: 500;
   color: #fff;
   text-transform: uppercase;
-  background-color: #63de00;
+  background-color: #ffd000;
 }
 
-.buttonGreen:focus,
-.buttonGreen:hover {
-  background-color: #5aca00;
+.buttonYellow:focus,
+.buttonYellow:hover {
+  background-color: #ffc500;
 }
 
-.buttonGreen:active {
+.buttonYellow:active {
   color: rgba(255, 255, 255, .3);
 }
 
@@ -630,7 +630,7 @@ img {
   padding-top: 18px;
   padding-right: 20px;
   padding-left: 21px;
-  background-color: #ff8b2e;
+  background-color: #ffbb00;
   border-radius: 10px;
   -webkit-box-shadow: 0 15px 40px 0 rgba(255, 85, 0, .15);
   box-shadow: 0 15px 40px 0 rgba(255, 85, 0, .15);
@@ -669,7 +669,7 @@ img {
   left: 1px;
   width: 30px;
   height: 30px;
-  background-color: #f5722a;
+  background-color: #e9ab00;
   border-radius: 50%;
   background-image: url("./img/check.svg");
   background-size: 11px 12px;
@@ -982,7 +982,7 @@ img {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
 }
 
 .pageMainWrapperIntro {
