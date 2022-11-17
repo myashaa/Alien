@@ -10,6 +10,7 @@ import 'chart.js/auto'; // ADD THIS
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import UserPhoto from "../../img/userpic-medium.jpg";
+import { Profile } from '../../components/Profile/Profile';
 
 export const AnaliticPage = () => {
 
@@ -130,11 +131,7 @@ export const AnaliticPage = () => {
       <div className={`${baseStyles.page} ${baseStyles.pageMain}`}>
         <Header />
 
-        <div className={`${styles.profileUserInfo} ${baseStyles.profile}`}>
-            <div className={`${styles.profileAvatar} ${styles.userAvatar}`}>
-              <img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
-            </div>
-        </div>
+        <Profile></Profile>
 
         <div className={`${ styles.profileTabs } ${ baseStyles.filters }`}>
           <b className={`${ styles.profileTabsCaption } ${ baseStyles.filtersCaption }`}>Аналитика:</b>
