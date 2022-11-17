@@ -1,13 +1,13 @@
 @import "/src/colors.css";
 
 .messagesContactsTab {
-  width: 320px;
+  width: 270px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: flex-start;
+  align-items: center;
   padding: 17px 40px 17px 20px;
   background-color: #ebeff8;
   -webkit-transition: background-color .3s;
@@ -40,10 +40,10 @@
   position: relative;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
-  margin-right: 21px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin-right: 11px;
   background-color: #e2e8f7;
   background-image: url("../../img/icon-input-user.svg");
   border-radius: 50%;

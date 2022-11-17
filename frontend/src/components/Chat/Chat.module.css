@@ -29,6 +29,9 @@
   list-style: none;
   max-height: 680px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
 }
 
 .messagesItem {

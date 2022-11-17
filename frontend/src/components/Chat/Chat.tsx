@@ -18,6 +18,9 @@ export function Chat() {
           <li className={styles.messagesItem}>
             <Message />
           </li>
+          <li className={`${styles.messagesItem} ${styles.messagesItemMy}`}>
+            <Message />
+          </li>
         </ul>
       </div>
       <div className={styles.comments}>

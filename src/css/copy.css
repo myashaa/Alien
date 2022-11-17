@@ -3198,7 +3198,7 @@ img {
   border-top-right-radius: 30px
 }
 
-.messages__contacts {
+/* .messages__contacts {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   margin-left: auto;
@@ -3208,7 +3208,7 @@ img {
 
 .messages__contacts-item {
   margin-bottom: 7px
-}
+} */
 
 .messages__contacts-item--new .messages__preview-text {
   color: #2e384d
@@ -3373,13 +3373,13 @@ img {
   margin-bottom: 0
 } */
 
-.messages__contacts-list {
+/* .messages__contacts-list {
   margin: 0;
   padding: 0;
   list-style: none;
   max-height: 862px;
   overflow-y: auto
-}
+} */
 
 /* .messages__chat {
   max-width: 1001px;

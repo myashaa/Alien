@@ -15,7 +15,7 @@ export const MyFeedPage = () => {
       <div className={styles.mainWrapper}>
         <div className={baseStyles.container}>
           <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
-            Лента
+            Моя лента
           </h1>
         </div>
         <div className={baseStyles.container}>
