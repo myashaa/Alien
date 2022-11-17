@@ -14,7 +14,7 @@ export function Dialog() {
         </span>
         <div className={styles.messagesPreview}>
           <p className={styles.messagesPreviewText}>
-            Озеро Байкал – огромное
+            Джефф - типичный неудачник
           </p>
           <time className={styles.messagesPreviewTime}>
             14:40

@@ -57,7 +57,7 @@ export function RegistrationForm() {
                     Заголовок сообщения
                   </h3>
                   <p className={baseStyles.formErrorDesc}>
-                    екст сообщения об ошибке, подробно объясняющий, что не так.
+                    Текст сообщения об ошибке, подробно объясняющий, что не так.
                   </p>
                 </div>
               </div>
@@ -86,11 +86,14 @@ export function RegistrationForm() {
             </b>
             <ul className={baseStyles.formInvalidList}>
               <li className={baseStyles.formInvalidItem}>
-                Заголовок. Это поле должно быть заполнено.
+                Электронная почта. Это поле должно быть заполнено.
               </li>
               <li className={baseStyles.formInvalidItem}>
-                Цитата. Она не должна превышать 70 знаков.
-              </li>
+                Логин. Это поле должно быть заполнено.
+              </li> 
+              <li className={baseStyles.formInvalidItem}>
+                Пароль. Это поле должно быть заполнено.
+              </li> 
             </ul>
           </div>
         </div>

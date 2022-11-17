@@ -11,6 +11,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import UserPhoto from "../../img/userpic-medium.jpg";
 import { Profile } from '../../components/Profile/Profile';
+import { Post } from '../../components/Post/Post';
 
 export const AnaliticPage = () => {
 
@@ -128,12 +129,43 @@ export const AnaliticPage = () => {
   };
     
   return (
-      <div className={`${baseStyles.page} ${baseStyles.pageMain}`}>
+      <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
         <Header />
-
         <Profile></Profile>
+      
+        <div className={styles.mainWrapper}>
+          <div className={baseStyles.container}>
+            <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
+              Аналитика
+            </h1>
+          </div>
+          <div className={baseStyles.container}>
+            <div className={styles.feedFiltersWrapper}>
+              <div className={styles.feedSorting}>
+                <b className={styles.feedSortingCaption}>Сортировка:</b>
+                <ul className={styles.feedSortingList}>
+                  <li className={ styles.sortingItem } onClick={handleToggleActionPanel}>
+                    <a className={actionPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
+                      <span>Активность</span>
+                    </a>
+                  </li>
+                  <li className={ styles.sortingItem } onClick={handleTogglePeoplePanel}>
+                    <a className={peoplePanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
+                      <span>Люди</span>
+                    </a>
+                  </li>
+                  <li className={ styles.sortingItem } onClick={handleTogglePostPanel}>
+                    <a className={postPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
+                      <span>Посты</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div className={`${ styles.profileTabs } ${ baseStyles.filters }`}>
+        {/* <div className={`${ styles.profileTabs } ${ baseStyles.filters }`}>
           <b className={`${ styles.profileTabsCaption } ${ baseStyles.filtersCaption }`}>Аналитика:</b>
           <ul className={`${ styles.profileTabsList } ${ baseStyles.filtersList }`}>
             <li onClick={handleToggleActionPanel} className={`${ styles.profileTabsItem } ${ baseStyles.filtersItem }`}>
@@ -149,7 +181,7 @@ export const AnaliticPage = () => {
               (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton }`} >Посты</button>)}
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {actionPanelVisible ? (
             <>
@@ -213,6 +245,10 @@ export const AnaliticPage = () => {
         ) : (null)}
         {postPanelVisible ? (
             <>
+              <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+                <Post />
+                <Post />
+              </div>  
             </> 
         ) : (null)} 
 

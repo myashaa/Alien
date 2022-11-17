@@ -4,7 +4,7 @@
   -ms-flex-negative: 0;
   flex-shrink: 0;
   padding-top: 14px;
-  background-color: #3e5dde;
+  background-color: #272851;
 }
 
 .headerWrapper {
@@ -25,7 +25,6 @@
   align-items: flex-start;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  margin-top: 6px;
 }
 
 .headerLogoLink {
@@ -50,17 +49,6 @@
 
 .headerLogo {
   display: block;
-}
-
-.headerTopic {
-  width: 55px;
-  margin-top: 7px;
-  margin-bottom: 0;
-  margin-left: 9px;
-  font-size: 10px;
-  line-height: 9px;
-  font-weight: 300;
-  color: #fff;
 }
 
 .headerSearchForm {
