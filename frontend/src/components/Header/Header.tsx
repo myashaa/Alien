@@ -64,7 +64,7 @@ export function Header() {
                   <div className={styles.headerProfileTooltip}>
                     <ul className={styles.headerProfileNav}>
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="/analitic">
+                        <a className={styles.headerProfileNavLink} href="/profile">
                           <span className={styles.headerProfileNavText}>
                             Мой профиль
                           </span>

@@ -20,9 +20,10 @@
   font-size: 60px;
   line-height: 1;
   letter-spacing: -1.8px;
-  font-weight: 300;
+  font-weight: 500;
   color: #fff;
 }
+
 
 .introAdvantagesList {
   margin: 0;
@@ -40,7 +41,8 @@
 }
 
 .introAdvantage {
-  color: #ffffff;
+  color: #fff;
+  font-weight: 400;
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -58,9 +60,9 @@
 }
 
 .introAdvantageText {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 18px;
+  font-size: 40px;
+  font-weight: 700;
   line-height: 1.35;
-  color: #fff;
+  color: #f9ce07;
+  margin-left: 10px;
 }
