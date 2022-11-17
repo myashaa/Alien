@@ -16,6 +16,7 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { SearchPage } from './pages/SearchPage/SearchPage';
 import { AnaliticPage } from './pages/AnaliticPage/AnaliticPage';
+import { EditingProfilePage } from './pages/EditingProfilePage/EditingProfilePage';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/analitic",
     element: <AnaliticPage />,
+  },
+  {
+    path: "/editing-profile",
+    element: <EditingProfilePage />,
   },
 ]);
 

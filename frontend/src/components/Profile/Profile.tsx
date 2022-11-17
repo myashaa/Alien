@@ -36,7 +36,7 @@ export const Profile = () => {
           </div>
 
           <div className={`${styles.profileUserButtons} ${styles.userRatingText}`}>
-            <a className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonMain}`} href="#">Редактировать</a>
+            <a className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonMain}`} href="/editing-profile">Редактировать</a>
             <button className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} type="button">Выйти</button>
           </div>
         </div>
