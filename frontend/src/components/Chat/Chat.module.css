@@ -1,0 +1,97 @@
+@import "/src/colors.css";
+
+.messagesChat {
+  width: 1001px;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-right: auto;
+  padding-top: 39px;
+  background-color: #fff;
+  border-left: 1px solid #dee5fc;
+  border-bottom: 1px solid #dee5fc;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  -webkit-box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+  box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+}
+
+.messagesChatWrapper {
+  /* width: 860px; */
+  /* padding-bottom: 15px; */
+  /* padding-left: 22px; */
+  padding: 0 20px 15px;
+}
+
+.messagesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 680px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+}
+
+.messagesItem {
+  width: fit-content;
+}
+
+.messagesItemMy {
+  margin-left: auto;
+}
+
+.commentsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-top: 42px;
+  padding-bottom: 22px;
+  padding-left: 45px;
+  border-top: 1px solid #dee5fc;
+  background-color: #f2f4f9;
+  border-bottom-left-radius: 30px;
+}
+
+.commentsMyAvatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  margin-right: 13px;
+  background-color: #e2e8f7;
+  background-image: url("../../img/icon-input-user.svg");
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.commentsPicture {
+  border-radius: 50%;
+}
+
+.commentsTextarea {
+  width: 545px;
+  height: 81px;
+  min-height: 81px;
+  max-height: 100px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  padding: 10px 13px;
+  font-size: 16px;
+}
+
+.commentsSubmit {
+  padding-top: 12px;
+  padding-bottom: 9px;
+  padding-right: 46px;
+  padding-left: 47px;
+  letter-spacing: .8px;
+  border-radius: 20px;
+}
