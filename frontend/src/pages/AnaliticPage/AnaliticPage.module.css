@@ -80,14 +80,17 @@
 }
 
 .graficBox{
-  margin: 100px;
+  margin: 50px;
   padding-left: 30px;
   margin-top: 0;
 }
 
 .graficHeader{
-  margin-top: 30px;
-  margin-left: 30px;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: .8px;
+  margin: 50px auto 30px;
+  padding: 0 80px;
 }
 
 .h1Style{
@@ -111,9 +114,10 @@
   background-color: #fff;
   -webkit-box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
   box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
-  width: 1200px;
+  width: 1160px;
   margin-right: 40px;
   margin-bottom: 41px;
+  padding: 0 20px;
 }
 
 .post:nth-child(3n) {
@@ -172,13 +176,13 @@
   margin-left: -1px;
 }
 
-.profileTabsWrapper {
+/* .profileTabsWrapper {
   background-color: #f4f6fc;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px
-}
+} */
 
-.profileTabs {
+/* .profileTabs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,9 +193,9 @@
   padding-top: 34px;
   padding-bottom: 21px;
   font-size: 37px;
-}
+} */
 
-.profileTabsList {
+/* .profileTabsList {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -203,20 +207,20 @@
   align-items: flex-start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap
-}
+} */
 
-.profileTabsCaption {
+/* .profileTabsCaption {
   margin-right: 28px;
   margin-bottom: 14px;
   margin-left: -1px
-}
+} */
 
-.profileTabsItem {
+/* .profileTabsItem {
   margin-right: 6px;
   margin-bottom: 15px
-}
+} */
 
-.profileTabsLink {
+/* .profileTabsLink {
   padding-top: 17px;
   padding-bottom: 15px;
   letter-spacing: .8px;
@@ -230,9 +234,9 @@
   -webkit-box-shadow: 0 10px 20px 0 rgba(46, 91, 255, .07);
   box-shadow: 0 10px 20px 0 rgba(46, 91, 255, .07);
   font-size: 30px;
-}
+} */
 
-.profileTabsLink:not(.filtersButtonActive):hover {
+/* .profileTabsLink:not(.filtersButtonActive):hover {
   color: rgba(46, 56, 77, .9);
   background-color: #cdd4e8
 }
@@ -240,9 +244,9 @@
 .profileTabsLink:not(.filtersButtonActive):focus {
   background-color: #fff;
   color: #000;
-}
+} */
 
-.filters {
+/* .filters {
   margin: 0;
   padding: 0;
   list-style: none
@@ -289,9 +293,104 @@
 .filtersButtonActive{
   background-color: #fff;
   color: #000;
+} */
+
+
+/*Пришла Мяша*/
+.pageAnalitic {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
 }
 
+.mainWrapper {
+  padding: 60px 0 10px;
+}
 
+.feedFiltersWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
+.feedSorting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  max-width: 860px;
+  margin-right: 60px;
+  padding-top: 17px;
+}
 
+.feedSortingCaption {
+  margin-bottom: 15px;
+  margin-right: 26px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+}
 
+.feedSortingList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sortingItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-right: 8px;
+  margin-bottom: 15px;
+}
+
+.sortingItem:last-child {
+  margin-right: 0;
+}
+
+.sortingLink {
+  position: relative;
+  padding-right: 17px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .75px;
+  color: #2e384d;
+  opacity: .4;
+  text-transform: uppercase;
+}
+
+.sortingLinkActive {
+  opacity: 1;
+}
+
+.sortingLinkActive .sortingIcon {
+  display: block;
+}
