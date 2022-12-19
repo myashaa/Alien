@@ -99,6 +99,30 @@
     overflow-wrap: break-word;
 }
 
+.userRatingText {
+    padding-right: 5px;
+}
+
+.userRatingText {
+    font-size: 14px;
+    color: #8798ad;
+}
+
+.userAdditional {
+    color: #8798ad;
+}
+
+.userButton {
+    margin-bottom: 10px;
+    padding: 21px 20px 19px;
+    letter-spacing: .8px;
+    border-radius: 10px;
+}
+  
+.userButton:last-child {
+    margin-bottom: 0;
+}
+
 .postMiniUserInfo {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
@@ -135,10 +159,6 @@
     padding-right: 5px;
 }
 
-.userAdditional {
-    color: #8798ad;
-}
-
 .postMiniRating {
     margin-top: 23px;
     border: 1px solid #dee5fc;
@@ -158,4 +178,17 @@
 
 .postMiniRatingAmount {
     line-height: 1;
+}
+
+.postMiniRatingText {
+    line-height: 1.1;
+}
+
+.postMiniUserButtons {
+    margin: 24px 24px 24px 14px;
+}
+
+.postMiniUserButton {
+    min-width: 200px;
+    width: 200px;
 }

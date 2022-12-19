@@ -115,7 +115,6 @@
   -webkit-box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
   box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
   width: 1160px;
-  margin-right: 40px;
   margin-bottom: 41px;
   padding: 0 20px;
 }
@@ -306,7 +305,7 @@
 }
 
 .mainWrapper {
-  padding: 60px 0 10px;
+  padding: 40px 0 10px;
 }
 
 .feedFiltersWrapper {

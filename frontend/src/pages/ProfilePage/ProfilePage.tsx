@@ -72,12 +72,12 @@ export const ProfilePage = () => {
                       <span>Лайки</span>
                     </a>
                   </li>
-                  <li className={ styles.sortingItem } onClick={handleToggleLikesPanel}>
+                  <li className={ styles.sortingItem } onClick={handleToggleCommentsPanel}>
                     <a className={CommentsPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
                       <span>Коментарии</span>
                     </a>
                   </li>
-                  <li className={ styles.sortingItem } onClick={handleToggleCommentsPanel}>
+                  <li className={ styles.sortingItem } onClick={handleToggleSubsPanel}>
                     <a className={SubsPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
                       <span>Подписки</span>
                     </a>
@@ -113,6 +113,25 @@ export const ProfilePage = () => {
         <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
         <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
           <ul className={`${ styles.profileSubscriptionsList}`}>
+            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+              <Subscribers/>
+            </li>
+          </ul>
+        </section>
+        </div>
+            </> 
+        ) : (null)} 
+        {SubsPanelVisible ? (
+            <>
+        <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+        <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
+          <ul className={`${ styles.profileSubscriptionsList}`}>
+            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+              <Subscribers/>
+            </li>
+            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+              <Subscribers/>
+            </li>
             <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
               <Subscribers/>
             </li>

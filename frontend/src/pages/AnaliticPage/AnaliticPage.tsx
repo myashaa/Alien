@@ -11,6 +11,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
+import { BackArrow } from "../../components/BackArrow/BackArrow";
 
 export const AnaliticPage = () => {
 
@@ -134,6 +135,7 @@ export const AnaliticPage = () => {
       
         <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
+            <BackArrow />
             <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
               Аналитика
             </h1>
