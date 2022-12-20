@@ -335,37 +335,6 @@
   list-style: none;
 }
 
-.commentsItem {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  border-top: 1px solid #dee5fc;
-}
-
-.commentsAvatar {
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  width: 40px;
-  min-width: 40px;
-  height: 40px;
-  margin-right: 13px;
-  background-color: #e2e8f7;
-  background-image: url("../../img/icon-input-user.svg");
-  border-radius: 50%;
-  background-size: 18px 18px;
-  background-repeat: no-repeat;
-  background-position: center
-}
-
-.commentsForm+.commentsListWrapper .commentsItem:first-child {
-  border: none;
-}
-
 .postDetailsUserButtons:last-child {
   margin-bottom: 0;
 }
@@ -400,65 +369,8 @@
   background-position: center;
 }
 
-.userAvatarLink:focus,
-.userAvatarLink:hover {
-  opacity: .7;
-}
-
-.userAvatarLink:active {
-  opacity: .3;
-}
-
 .commentsPicture {
   border-radius: 50%;
-}
-
-.commentsInfo {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  padding-top: 3px;
-}
-
-.commentsNameWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.commentsUserName {
-  display: block;
-  font-weight: 500;
-}
-
-.commentsUserName:focus,
-.commentsUserName:hover {
-  opacity: .6;
-}
-
-.commentsUserName:active {
-  opacity: .3;
-}
-
-.commentsTime {
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  padding-top: 2px;
-  font-size: 14px;
-  color: #8798ad;
-}
-
-.commentsText {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-right: 60px;
-  line-height: 1.3;
 }
 
 .commentsMoreLink {

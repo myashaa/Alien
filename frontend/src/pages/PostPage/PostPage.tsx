@@ -8,6 +8,7 @@ import IconHeartActive from "../../img/icon-heart-active.svg";
 import IconComment from "../../img/icon-comment.svg"; 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
+import { Comment } from '../../components/Comment/Comment';
 
 export const PostPage = () => {
   return (
@@ -66,44 +67,10 @@ export const PostPage = () => {
                     <button className={`${styles.commentsSubmit} ${baseStyles.button} ${baseStyles.buttonYellow}`} type="submit">Отправить</button>
                   </form>
                   <div className={styles.commentsListWrapper}>
-                    <ul className={styles.commentsList}>
-                      <li className={styles.commentsItem}>
-                        <div className={styles.commentsAvatar}>
-                          <a className={styles.userAvatarLink} href="#">
-                            {/* <img className={styles.commentsPicture} src="img/userpic-larisa.jpg" alt="Аватар пользователя" /> */}
-                          </a>
-                        </div>
-                        <div className={styles.commentsInfo}>
-                          <div className={styles.commentsNameWrapper}>
-                            <a className={styles.commentsUserName} href="#">
-                              <span>Лариса Роговая</span>
-                            </a>
-                            <time className={styles.commentsTime}>1 ч назад</time>
-                          </div>
-                          <p className={styles.commentsText}>
-                            Красота!!!1!
-                          </p>
-                        </div>
-                      </li>
-                      <li className={styles.commentsItem}>
-                        <div className={styles.commentsAvatar}>
-                          <a className={styles.userAvatarLink} href="#">
-                            {/* <img className={styles.commentsPicture} src="img/userpic-larisa.jpg" alt="Аватар пользователя" /> */}
-                          </a>
-                        </div>
-                        <div className={styles.commentsInfo}>
-                          <div className={styles.commentsNameWrapper}>
-                            <a className={styles.commentsUserName} href="#">
-                              <span>Лариса Роговая</span>
-                            </a>
-                            <time className={styles.commentsTime}>1 ч назад</time>
-                          </div>
-                          <p className={styles.commentsText}>
-                            Красота!!!1!
-                          </p>
-                        </div>
-                      </li>
-                    </ul>
+                    <div className={styles.commentsList}>
+                      <Comment />
+                      <Comment />
+                    </div>
                     <a className={styles.commentsMoreLink} href="#">
                       <span>Показать все комментарии</span>
                       <sup className={styles.commentsAmount}>45</sup>
