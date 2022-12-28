@@ -6,8 +6,6 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import { Post } from '../../components/Post/Post';
 
-import IconSort from "../../img/icon-sort.svg"; 
-
 export const MyFeedPage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageFeed}`}>
@@ -22,13 +20,18 @@ export const MyFeedPage = () => {
           <div className={styles.feedFiltersWrapper}>
             <div className={styles.feedSorting}>
               <b className={styles.feedSortingCaption}>Сортировка:</b>
+              <select className={`${ styles.sortingItem } ${ styles.sortingSelect }`}>
+                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                  <span>Все</span>
+                </option>
+                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                  <span>Топ недели</span>
+                </option>
+                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                  <span>Новости</span>
+                </option>
+              </select>
               <ul className={styles.feedSortingList}>
-                <li className={`${ styles.sortingItem } ${ styles.sortingItemFeed }`}>
-                  <a className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`} href="#">
-                    <span>Популярность</span>
-                    <IconSort className={styles.sortingIcon} width="10" height="12" />
-                  </a>
-                </li>
                 <li className={ styles.sortingItem }>
                   <a className={ styles.sortingLink } href="#">
                     <span>Дата</span>

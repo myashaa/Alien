@@ -6,29 +6,33 @@ import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import { Post } from '../../components/Post/Post';
 
-import IconSort from "../../img/icon-sort.svg"; 
-
 export const SearchPage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageSearch}`}>
       <Header />
       <div className={styles.mainWrapper}>
         <div className={baseStyles.container}>
-          <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
-            Поиск
-          </h1>
-        </div>
-        <div className={baseStyles.container}>
           <div className={styles.feedFiltersWrapper}>
             <div className={styles.feedSorting}>
               <b className={styles.feedSortingCaption}>Поиск по:</b>
-              <ul className={styles.feedSortingList}>
-                <li className={`${ styles.sortingItem } ${ styles.sortingItemFeed }`}>
-                  <a className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`} href="#">
-                    <span>Популярность</span>
-                    <IconSort className={styles.sortingIcon} width="10" height="12" />
-                  </a>
-                </li>
+              <div className={styles.feedSortingList}>
+                <select className={`${ styles.sortingItem } ${ styles.sortingItemFeed }`}>
+                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                    <span>Все</span>
+                  </option>
+                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                    <span>Пользователи</span>
+                  </option>
+                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                    <span>Заголовок</span>
+                  </option>
+                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                    <span>Контент</span>
+                  </option>
+                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
+                    <span>Тэг</span>
+                  </option>
+                </select>
                 <form className={styles.searchForm} action="#" method="get">
                   <div className={styles.search}>
                     <label className={baseStyles.visuallyHidden}>Поиск</label>
@@ -38,13 +42,13 @@ export const SearchPage = () => {
                     </button>
                   </div>
                 </form>
-              </ul>
+              </div>
             </div>
           </div>
         </div>
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
-          <Post />
-          <Post />
+          {/* <Post /> */}
+          {/* <Post /> */}
         </div>
       </div>
       <Footer />
