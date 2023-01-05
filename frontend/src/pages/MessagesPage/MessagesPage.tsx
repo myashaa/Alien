@@ -12,11 +12,11 @@ export const MessagesPage = () => {
     <div className={`${baseStyles.page} ${styles.pageMessages}`}>
       <Header />
       <div className={styles.mainWrapper}>
-        <div className={baseStyles.container}>
+        {/* <div className={baseStyles.container}>
           <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleRegistration}`}>
             Сообщения
           </h1>
-        </div>
+        </div> */}
         <div className={`${baseStyles.container} ${styles.messagesWrapper}`}>
           <div className={styles.messagesContacts}>
             <ul className={styles.messagesContactsList}>

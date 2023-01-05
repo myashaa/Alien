@@ -6,7 +6,7 @@
   -ms-flex-positive: 1;
   flex-grow: 1;
   margin-right: auto;
-  padding-top: 39px;
+  padding-top: 15px;
   background-color: #fff;
   border-left: 1px solid #dee5fc;
   border-bottom: 1px solid #dee5fc;
@@ -24,7 +24,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  max-height: 680px;
+  max-height: 557px;
   overflow-y: auto;
   display: flex;
   flex-direction: column-reverse;
