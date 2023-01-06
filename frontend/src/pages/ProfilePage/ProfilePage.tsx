@@ -9,6 +9,8 @@ import { Header } from '../../components/Header/Header';
 import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
 import { Subscribers } from '../../components/Subscribers/Subscribers';
+import { LikesAlert } from '../../components/LikesAlert/LikesAlert';
+import { CommentsAlert } from '../../components/CommentsAlert/CommentsAlert';
 
 export const ProfilePage = () => {
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
@@ -108,17 +110,46 @@ export const ProfilePage = () => {
               </div> 
             </> 
         ) : (null)} 
+         
+        {LikesPanelVisible ? (
+            <>
+              <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+                <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
+                  <ul className={`${ styles.profileLikesList}`}>
+                      <li className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
+                        <LikesAlert/>
+                      </li>
+                  </ul>
+                </section>
+              </div> 
+            </> 
+        ) : (null)}
+
+        {CommentsPanelVisible ? (
+            <>
+              <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+                <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
+                  <ul className={`${ styles.profileLikesList}`}>
+                      <li className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
+                        <CommentsAlert/>
+                      </li>
+                  </ul>
+                </section>
+              </div> 
+            </> 
+        ) : (null)} 
+
         {SubscribersPanelVisible ? (
             <>
-        <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-        <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
-          <ul className={`${ styles.profileSubscriptionsList}`}>
-            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-              <Subscribers/>
-            </li>
-          </ul>
-        </section>
-        </div>
+              <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
+              <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
+                <ul className={`${ styles.profileSubscriptionsList}`}>
+                  <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                    <Subscribers/>
+                  </li>
+                </ul>
+              </section>
+              </div>
             </> 
         ) : (null)} 
         {SubsPanelVisible ? (
