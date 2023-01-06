@@ -56,7 +56,7 @@ export function Header() {
                     <img className={styles.headerProfileAvatar} src={ UserPhoto } alt="Аватар профиля" />
                   </div>
                   <div className={styles.headerProfileName}>
-                    <span>Антон Глуханько</span>
+                    <span>Котик Обыкновенный</span>
                     <HeaderLinkArrow className={styles.headerLinkArrow} width="10" height="6" />
                   </div>
                 </a>
@@ -64,7 +64,7 @@ export function Header() {
                   <div className={styles.headerProfileTooltip}>
                     <ul className={styles.headerProfileNav}>
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="/analitic">
+                        <a className={styles.headerProfileNavLink} href="/profile">
                           <span className={styles.headerProfileNavText}>
                             Мой профиль
                           </span>

@@ -9,9 +9,9 @@ import 'chart.js/auto'; // ADD THIS
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
-import UserPhoto from "../../img/userpic-medium.jpg";
 import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
+import { BackArrow } from "../../components/BackArrow/BackArrow";
 
 export const AnaliticPage = () => {
 
@@ -131,10 +131,11 @@ export const AnaliticPage = () => {
   return (
       <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
         <Header />
-        <Profile></Profile>
+        <Profile />
       
         <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
+            <BackArrow />
             <h1 className={`${baseStyles.pageTitle} ${baseStyles.pageTitleLogin}`}>
               Аналитика
             </h1>
@@ -142,7 +143,7 @@ export const AnaliticPage = () => {
           <div className={baseStyles.container}>
             <div className={styles.feedFiltersWrapper}>
               <div className={styles.feedSorting}>
-                <b className={styles.feedSortingCaption}>Сортировка:</b>
+                <b className={styles.feedSortingCaption}>Показать:</b>
                 <ul className={styles.feedSortingList}>
                   <li className={ styles.sortingItem } onClick={handleToggleActionPanel}>
                     <a className={actionPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
@@ -156,7 +157,7 @@ export const AnaliticPage = () => {
                   </li>
                   <li className={ styles.sortingItem } onClick={handleTogglePostPanel}>
                     <a className={postPanelVisible ? `${styles.sortingLink} ${styles.sortingLinkActive}` : styles.sortingLink}>
-                      <span>Посты</span>
+                      <span>Самые популярные посты</span>
                     </a>
                   </li>
                 </ul>
