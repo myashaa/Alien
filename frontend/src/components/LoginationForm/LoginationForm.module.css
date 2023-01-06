@@ -1,0 +1,20 @@
+@import "/src/colors.css";
+
+.loginInputWrapper {
+  width: 760px;
+  margin-bottom: 22px;
+}
+
+.loginLabel {
+  margin-bottom: 10px;
+}
+
+.loginInput {
+  width: 100%;
+}
+
+.loginSubmit {
+  margin-top: 18px;
+  padding: 21px 75px 19px 76px;
+  letter-spacing: .7px;
+}

@@ -1,0 +1,238 @@
+@import "/src/colors.css";
+
+.pageSearch{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 60px 0;
+}
+
+.feedFiltersWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.feedSorting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: center;
+  max-width: 860px;
+  margin-right: 60px;
+  padding-top: 17px;
+}
+
+.feedSortingCaption {
+  margin-bottom: 14px;
+  margin-right: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  min-width: max-content;
+}
+
+.feedSortingList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sortingItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-right: 8px;
+  margin-bottom: 15px;
+  border: none;
+  background: #dde2f0 url("../../img/icon-sort.svg") 178px 22px/10px 10px no-repeat;
+  outline: none;
+  padding: 18px 36px 18px 18px;
+  border-radius: 21px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .75px;
+  color: #2e384d;
+  text-transform: uppercase;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.sortingItem:last-child {
+  margin-right: 0;
+}
+
+.sortingItemFeed {
+  margin-right: 30px;
+}
+
+.sortingLink {
+  position: relative;
+  padding-right: 17px;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .75px;
+  color: #2e384d;
+  opacity: .4;
+  text-transform: none;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.sortingLinkActive {
+  opacity: 1;
+}
+
+.sortingLinkActive .sortingIcon {
+  display: block;
+}
+
+.sortingLinkReverse .sortingIcon {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.sortingLink:not(.sortingLinkActive):focus,
+.sortingLink:not(.sortingLinkActive):hover {
+  opacity: .6;
+}
+
+.sortingIcon {
+  position: absolute;
+  top: 47%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0;
+  display: none;
+}
+
+.searchForm {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 830px;
+  margin-bottom: 14px;
+  margin-left: 8px;
+}
+
+.search {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 17px 125px 17px 20px;
+  font-size: 16px;
+  border-color: #fff;
+  border-radius: 21px;
+}
+
+.searchInput::-webkit-search-cancel-button,
+.searchInput::-webkit-search-decoration,
+.searchInput::-webkit-search-results-button,
+.searchInput::-webkit-search-results-decoration {
+  display: none;
+}
+
+.searchInput:hover {
+  border-color: #fff;
+}
+
+.searchInput:focus {
+  color: #2e384d;
+  border-color: #fff;
+  /* background-color: transparent; */
+}
+
+.searchInput:focus+.searchButton .searchIcon {
+  fill: #fff;
+}
+
+.searchButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 21px;
+  border: 2px solid #2e384d;
+  width: 120px;
+  background-color: #2e384d;
+}
+
+.searchButton:hover {
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+.searchButton:hover span {
+  color: #2e384d;
+}
+
+.searchButton:active {
+  opacity: 0.3;
+}
+
+.searchButton span {
+  color: #ffffff;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  fill: #2e384d;
+  -webkit-transition: fill .3s;
+  transition: fill .3s;
+}
+
+.feedPosts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  min-height: 50vh;
+  background-image: url("../../img/no-feed-bg.svg");
+  border-radius: 50%;
+  background-size: 102px 115px;
+  background-repeat: no-repeat;
+  background-position: center 150px;
+}

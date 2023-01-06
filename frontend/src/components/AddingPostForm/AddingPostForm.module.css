@@ -1,0 +1,62 @@
+@import "/src/colors.css";
+
+.addingPostInputWrapper {
+  min-width: 759px;
+  width: 759px;
+  margin-bottom: 22px;
+}
+
+.addingPostLabel {
+  margin-bottom: 10px;
+}
+
+.addingPostInput {
+  width: 100%;
+}
+
+.addingPostTextarea {
+  width: 100%;
+  min-height: 250px;
+  resize: none;
+}
+
+.addingPostInputFileContainer {
+  margin-bottom: 40px;
+}
+
+.addingPostInputFileWrapper {
+  min-width: 759px;
+  width: 759px;
+}
+
+.addingPostFileZone {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 40px;
+}
+
+.addingPostSubmit {
+  width: 260px;
+  padding: 21px 20px 19px;
+  letter-spacing: .7px;
+}
+
+.addingPostClose {
+  margin-left: 40px;
+  padding: 21px 0 19px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+  color: rgba(46, 56, 77, .5);
+  text-align: center
+}
+
+.addingPostClose:focus,
+.addingPostClose:hover {
+  color: #2e384d
+}
+
+.addingPostClose:active {
+  color: rgba(46, 56, 77, .3)
+}

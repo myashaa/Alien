@@ -1,0 +1,35 @@
+@import "/src/colors.css";
+
+.pageMessages {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 60px 0 40px;
+}
+
+.messagesWrapper {
+  display: flex;
+}
+
+.messagesContacts {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.messagesContactsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 862px;
+  overflow-y: auto;
+}
+
+.messagesContactsItem {
+  margin-bottom: 7px;
+}

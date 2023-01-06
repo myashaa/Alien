@@ -1,0 +1,74 @@
+@import "/src/colors.css";
+
+.messagesItem {
+  width: 800px;
+  margin-bottom: 8px;
+  padding: 25px 35px 32px 23px;
+  background-color: #f4f6fc;
+  border-radius: 20px;
+}
+
+.messagesInfoWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.messagesItemAvatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  margin-right: 14px;
+  background-color: #e2e8f7;
+  background-image: url("../../img/icon-input-user.svg");
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.messagesAuthorLink:focus,
+.messagesAuthorLink:hover {
+  opacity: .7;
+}
+
+.messagesAuthorLink:active {
+  opacity: .3;
+}
+
+.messagesAvatar {
+  border-radius: 50%;
+}
+
+.messagesItemInfo {
+  padding-top: 3px;
+}
+
+.messagesAuthor {
+  display: block;
+  font-weight: 500;
+}
+
+.messagesAuthor:focus,
+.messagesAuthor:hover {
+  opacity: .6;
+}
+
+.messagesAuthor:active {
+  opacity: .3;
+}
+
+.messagesTime {
+  font-size: 14px;
+  color: #8798ad;
+}
+
+.messagesText {
+  margin-top: 21px;
+  margin-left: 54px;
+  margin-bottom: 0;
+  line-height: 1.25;
+}

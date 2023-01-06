@@ -1,0 +1,13 @@
+@import "/src/colors.css";
+
+.pageAddingPost {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 40px 0;
+}
