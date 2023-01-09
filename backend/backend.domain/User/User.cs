@@ -9,7 +9,7 @@ namespace Backend.Domain.User
         public string Mail { get; set; }
         public string Password { get; set; }
         public int IdPhoto { get; set; }
-        public int Gender { get; set; }
+        public byte Gender { get; set; }
         public int NumberOfSubscribers { get; set; }
         public int NumberOfPosts { get; set; }
         [ForeignKey("IdPhoto")]
