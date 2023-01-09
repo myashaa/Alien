@@ -13,7 +13,7 @@ namespace Backend.Api.Сonverters
                 Login = user.Login,
                 Mail = user.Mail,
                 Password = user.Password,
-                IdPhoto = user.IdPhoto,
+                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
                 Gender = user.Gender,
                 NumberOfSubscribers = user.NumberOfSubscribers,
                 NumberOfPosts = user.NumberOfPosts
@@ -27,10 +27,27 @@ namespace Backend.Api.Сonverters
                 Login = userDto.Login,
                 Mail = userDto.Mail,
                 Password = userDto.Password,
-                IdPhoto = userDto.IdPhoto,
+                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
                 Gender = userDto.Gender,
                 NumberOfSubscribers = userDto.NumberOfSubscribers,
                 NumberOfPosts = userDto.NumberOfPosts
+            };
+        }
+
+        private UserPhotoDto ConvertToUserPhotoDto(UserPhoto userPhoto)
+        {
+            return new UserPhotoDto
+            {
+                IdPhoto = userPhoto.IdPhoto,
+                Url = userPhoto.Url
+            };
+        }
+        private UserPhoto ConvertToUserPhoto(UserPhotoDto userPhotoDto)
+        {
+            return new UserPhoto
+            {
+                IdPhoto = userPhotoDto.IdPhoto,
+                Url = userPhotoDto.Url
             };
         }
     }

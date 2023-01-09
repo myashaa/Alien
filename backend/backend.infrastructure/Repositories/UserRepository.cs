@@ -16,7 +16,7 @@ namespace Backend.Infrastructure.Repositories
         public IEnumerable<User> GetAll()
         {
             return Entities
-                //.Include(r => r.IdPhoto)
+                .Include(u => u.UserPhoto)
                 .ToList();
         }
     }
