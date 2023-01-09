@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Backend.Domain.Abstractions;
+using Backend.Api.Ñonverters;
+using Backend.Domain.User;
+using Backend.Infrastructure.Context;
+using Backend.Infrastructure.Repositories;
 
 namespace backend.api
 {
@@ -25,7 +24,20 @@ namespace backend.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("TheCodePolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddControllers();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<BackendDbContext>>();
+            services.AddDbContext<BackendDbContext>(c =>
+                c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddScoped<IUserConverter, UserConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +54,11 @@ namespace backend.api
 
             app.UseAuthorization();
 
+            app.UseCors("TheCodePolicy");
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireCors("TheCodePolicy");
             });
         }
     }

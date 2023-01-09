@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.domain", "backend.domain\backend.domain.csproj", "{3692518C-904A-417F-9615-0D2C7A0CFBC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Domain", "backend.domain\Backend.Domain.csproj", "{3692518C-904A-417F-9615-0D2C7A0CFBC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.infrastructure", "backend.infrastructure\backend.infrastructure.csproj", "{E5B44BB4-7F68-4B91-9CB6-91C876FB3786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Infrastructure", "backend.infrastructure\Backend.Infrastructure.csproj", "{E5B44BB4-7F68-4B91-9CB6-91C876FB3786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "backend.api", "backend.api\backend.api.csproj", "{03B0033F-BC37-4036-9B22-9BB102BCB368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend.Api", "backend.api\Backend.Api.csproj", "{03B0033F-BC37-4036-9B22-9BB102BCB368}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
