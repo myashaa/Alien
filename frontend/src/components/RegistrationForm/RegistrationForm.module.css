@@ -10,6 +10,40 @@
   margin-bottom: 10px;
 }
 
+.registrationLableRadio {
+  margin-right: 25px;
+  letter-spacing: .8px;
+  color: rgba(137, 140, 152, .6);
+  font-size: 21px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.registrationInputRadio{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #898c98;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+
+  border-color: #898c98;
+  background-color: #f9f9f9;
+  box-shadow: inset 1px 2px 3px 0 rgba(0,0,0,0.1);
+}
+.registrationInputRadio:checked {
+  border: 6px solid #272851;
+}
+
 .registrationInput {
   width: 100%;
 }
