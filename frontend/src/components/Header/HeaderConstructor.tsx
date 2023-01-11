@@ -9,10 +9,12 @@ import { NavLink } from "react-router-dom";
 
 interface HeaderProps {
   login: string,
+  isLoginatedUser: boolean;
 }
 
 export function HeaderConstructor(props: HeaderProps) {
-  const [isUser, setUser] = useState(true);
+
+  const [isUser, setUser] = useState(props.isLoginatedUser);
   
   return (
     <header className={styles.header}>

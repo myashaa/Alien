@@ -13,12 +13,21 @@ export const Header = () => {
         setPost(response.data);
       });
     }, []);
-  
-    if (!post) return null;
 
+    const loginatedUser = true;
+    const notLoginatedUser = false;
+  
+    if (!post)
+    {
+      return (
+        <>  
+          <HeaderConstructor login = {""} isLoginatedUser = {notLoginatedUser} />
+        </>
+    )
+    }
     return (
         <>  
-          <HeaderConstructor login = {post["login"]} />
+          <HeaderConstructor login = {post["login"]}  isLoginatedUser = {loginatedUser}/>
         </>
     )
 
