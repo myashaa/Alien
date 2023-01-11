@@ -30,5 +30,32 @@ namespace backend.api.Controllers
             List<PostDto> posts = _postService.GetPosts().ConvertAll(p => _postConverter.ConvertToPostDto(p)); ;
             return Ok(posts);
         }
+
+        [HttpGet]
+        [Route("{category}/{searchText}")]
+        public IActionResult SearchAllPosts(string category, string searchText)
+        {
+            List<PostDto> posts = _postService.SearchPosts(category, searchText).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public IActionResult AddNewPost([FromBody] PostDto postDto)
+        {
+            Post post = _postConverter.ConvertToPost(postDto);
+            _postService.AddPost(post);
+            _unitOfWork.Commit();
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IActionResult DeleteCurrentPost(int id)
+        {
+            _postService.DeletePost(id);
+            _unitOfWork.Commit();
+            return Ok();
+        }
     }
 }
