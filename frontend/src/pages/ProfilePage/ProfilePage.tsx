@@ -11,10 +11,11 @@ import { LikesAlert } from '../../components/LikesAlert/LikesAlert';
 import { CommentsAlert } from '../../components/CommentsAlert/CommentsAlert';
 import {variables} from  "../../Variables";
 import axios from "axios";
+import {List} from "../../components/Subscribers/List";
 
 export const ProfilePage = () => {
 
-  const [superVillains, setSuperVillains] = useState([]);
+  const [users, setusers] = useState([]);
 
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
     const handleTogglePostPanel = () => {
@@ -58,8 +59,8 @@ export const ProfilePage = () => {
     };
 
     useEffect(() => {
-      axios.get("https://localhost:44390/api/user").then((response) => {
-        setSuperVillains((data) => {
+      axios.get(variables.USER_URL).then((response) => {
+        setusers((data) => {
           return response.data;
         });
       });
@@ -68,7 +69,7 @@ export const ProfilePage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
       <Header />
-      <Profile/>
+      <List/>
 
       <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
@@ -155,9 +156,9 @@ export const ProfilePage = () => {
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
               <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
                 <ul className={`${ styles.profileSubscriptionsList}`}> 
-                  {superVillains.map((sv) =>
-                    <div key = {sv["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers login = {sv["login"]}/>
+                  {users.map((user) =>
+                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
                     </div>)}
                 </ul>
               </section>
@@ -169,9 +170,9 @@ export const ProfilePage = () => {
         <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
         <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
             <ul className={`${ styles.profileSubscriptionsList}`}> 
-                {superVillains.map((sv) =>
-                    <div key = {sv["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers login = {sv["login"]}/>
+                {users.map((user) =>
+                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
                 </div>)}
             </ul>
         </section>

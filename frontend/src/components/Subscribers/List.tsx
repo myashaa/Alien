@@ -4,28 +4,24 @@ import baseStyles from "../../index.module.css";
 import UserPhoto from "../../img/userpic-medium.jpg";
 import {variables} from  "../../Variables";
 import axios, { AxiosResponse } from "axios";
+import {Profile} from "../Profile/Profile";
 
-export const List = (props: any) => { 
-    const [superVillains, setSuperVillains] = useState([]);
- 
-    useEffect(() => {
-      axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-        setSuperVillains((data) => {
-          return response.data;
-        });
+export const List = () => { 
+    const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
+
+    const [post, setPost] = React.useState(null);
+  
+    React.useEffect(() => {
+      axios.get(baseURL).then((response) => {
+        setPost(response.data);
       });
     }, []);
+  
+    if (!post) return null;
 
     return (
         <>  
-            <div >
-                <ul> 
-                 {superVillains.map((sv) =>
-                     <div key = {sv["id"]}>
-                     <span>{sv["title"]}</span>
-                 </div>)}
-                </ul>
-            </div>
+          <Profile login = {post["title"]} numberOfPosts = {post["id"]} numberOfSubscribers = {post["id"]}/>
         </>
     )
 

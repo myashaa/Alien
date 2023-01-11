@@ -6,6 +6,7 @@ import { Pie } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import {useState } from 'react';
 import 'chart.js/auto'; // ADD THIS
+import {List} from "../../components/Subscribers/List";
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
@@ -131,7 +132,7 @@ export const AnaliticPage = () => {
   return (
       <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
         <Header />
-        <Profile />
+        <List/>
       
         <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>

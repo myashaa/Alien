@@ -5,17 +5,25 @@ import UserPhoto from "../../img/userpic-medium.jpg";
 
 interface SubscribersProps {
     login: string,
+    numberOfPosts: number,
+    numberOfSubscribers: number,
 }
 
-
 export const Subscribers = (props: SubscribersProps) => { 
-     
-    const [subPanelVisible, setsubPanelVisible] = useState(true);
+    let subVis = true;
+    let unsubVis = false;
+    if(props.login == "diana")
+    {
+        subVis = false;
+        unsubVis = true;
+    }
+
+    const [subPanelVisible, setsubPanelVisible] = useState(subVis);
     const handleToggleSubPanel = () => {
         setunsubPanelVisible(false);
         setsubPanelVisible(true);
     };
-    const [unsubPanelVisible, setunsubPanelVisible] = useState(false);
+    const [unsubPanelVisible, setunsubPanelVisible] = useState(unsubVis);
     const handleToggleUnsubPanel = () => {
         setunsubPanelVisible(true);
         setsubPanelVisible(false);
@@ -37,11 +45,11 @@ export const Subscribers = (props: SubscribersProps) => {
     </div>
         <div className={`${styles.postMiniRating} ${styles.userRating}`}>
             <p className={`${styles.postMiniRatingItem} ${styles.userRatingItem} ${styles.userRatingItemPublications}`}>
-              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>556</span>
+              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>{props.numberOfPosts}</span>
               <span className={`${styles.postMiniRatingText} ${styles.userRatingText}`}>публикаций</span>
             </p>
             <p className={`${styles.postMiniRatingItem} ${styles.userRatingItem} ${styles.userRatingItemPublications}`}>
-              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>556</span>
+              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>{props.numberOfSubscribers}</span>
               <span className={`${styles.postMiniRatingText} ${styles.userRatingText}`}>подписчиков</span>
             </p>
         </div>

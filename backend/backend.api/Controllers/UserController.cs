@@ -30,5 +30,6 @@ namespace backend.api.Controllers
             List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u)); ;
             return Ok(users);
         }
+
     }
 }
