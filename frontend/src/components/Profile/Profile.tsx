@@ -13,7 +13,6 @@ interface ProfileProps {
   numberOfSubscribers: number,
 }
 
-
 export const Profile = (props: ProfileProps) => {   
   return (
     <div className={`${styles.profile}`}>
@@ -24,7 +23,7 @@ export const Profile = (props: ProfileProps) => {
               <img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
             </div>
             <div>
-              <span className={`${styles.profileName} ${styles.userName}`}>{props.login}<br/> Обыкновенный<br/></span>
+              <span className={`${styles.profileName} ${styles.userName}`}>{props.login}</span>
             </div>
           </div>
 
