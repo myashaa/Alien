@@ -24,7 +24,7 @@ export function Post() {
           колоссальный общественный резонанс! Гагарин стал всенародным героем, любимцем всех женщин СССР сразу или, как сейчас бы сказали, настоящей «звездой».
         </p>
         <div className={styles.postTextMoreLinkWrapper}>
-            <a className={styles.postTextMoreLink} href="#">Читать далее</a>
+            <a className={styles.postTextMoreLink} href="/post">Подробнее</a>
         </div>
       </div>
       <footer className={styles.postFooter}>
@@ -36,7 +36,6 @@ export function Post() {
             </div>
             <div className={styles.postInfo}>
               <b className={ styles.postAuthorName}>Лариса Роговая</b>
-              <time className={styles.postTime}>Месяц назад</time>
             </div>
           </a>
         </div>

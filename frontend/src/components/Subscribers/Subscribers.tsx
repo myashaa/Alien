@@ -33,7 +33,6 @@ export const Subscribers = (props: SubscribersProps) => {
             <a className={`${styles.postMiniName} ${styles.userName}`} href="#">
                 <span>{props.login}</span>
             </a>
-            <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>1 год на сайте</time>
         </div>
     </div>
         <div className={`${styles.postMiniRating} ${styles.userRating}`}>

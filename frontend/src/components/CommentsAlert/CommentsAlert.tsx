@@ -22,7 +22,7 @@ export const CommentsAlert = () => {
                 <div className={styles.postMiniAction}>
                     <span className={`${styles.postMiniActivity} ${styles.userAdditional}`}>Оставил комментарий под вашей
                      космической публикацией</span>
-                    <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>15 минут назад</time>
+                    <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>11.01.2023 17.00</time>
                 </div>
             </div>
         </div>

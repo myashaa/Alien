@@ -20,7 +20,6 @@ export const Profile = () => {
             </div>
             <div>
               <span className={`${styles.profileName} ${styles.userName}`}>Котик<br/> Обыкновенный<br/></span>
-              <time className={`${styles.userTime}`}>6 месяцев на сайте</time>
             </div>
           </div>
 

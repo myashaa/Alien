@@ -24,7 +24,7 @@ export const LikesAlert = () => {
                 </a>
                 <div className={styles.postMiniAction}>
                     <span className={`${styles.postMiniActivity} ${styles.userAdditional}`}>Лайкнул вашу космическую публикацию</span>
-                    <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>5 минут назад</time>
+                    <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>11.01.2023 17.00</time>
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ export function Comment() {
           <a className={styles.commentsUserName} href="#">
             <span>Лариса Роговая</span>
           </a>
-          <time className={styles.commentsTime}>1 ч назад</time>
+          <time className={styles.commentsTime}>11.01.2023 17.00</time>
         </div>
         <p className={styles.commentsText}>
           Красота!!!1!
