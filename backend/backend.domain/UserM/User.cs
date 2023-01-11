@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using Backend.Domain.PostM;
 
-namespace Backend.Domain.User
+namespace Backend.Domain.UserM
 {
     public class User
     {
@@ -14,5 +16,6 @@ namespace Backend.Domain.User
         public int NumberOfPosts { get; set; }
         [ForeignKey("IdPhoto")]
         public UserPhoto UserPhoto { get; set; }
+        //public List<Post> Posts { get; set; }
     }
 }

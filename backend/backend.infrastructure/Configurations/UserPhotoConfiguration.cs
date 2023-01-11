@@ -1,4 +1,4 @@
-﻿using Backend.Domain.User;
+﻿using Backend.Domain.UserM;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

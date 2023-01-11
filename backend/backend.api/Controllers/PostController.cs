@@ -1,7 +1,7 @@
 ﻿using Backend.Api.Dto;
 using Backend.Api.Сonverters;
 using Backend.Domain.Abstractions;
-using Backend.Domain.Post;
+using Backend.Domain.PostM;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

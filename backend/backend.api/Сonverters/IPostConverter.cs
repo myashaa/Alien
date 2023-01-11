@@ -1,5 +1,5 @@
 ﻿using Backend.Api.Dto;
-using Backend.Domain.Post;
+using Backend.Domain.PostM;
 
 namespace Backend.Api.Сonverters
 {

@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Post;
+﻿using Backend.Domain.PostM;
 using Backend.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

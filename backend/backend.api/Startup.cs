@@ -6,8 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Backend.Domain.Abstractions;
 using Backend.Api.Ñonverters;
-using Backend.Domain.User;
-using Backend.Domain.Post;
+using Backend.Domain.UserM;
+using Backend.Domain.PostM;
 using Backend.Infrastructure.Context;
 using Backend.Infrastructure.Repositories;
 

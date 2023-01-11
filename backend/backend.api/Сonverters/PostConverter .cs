@@ -1,5 +1,5 @@
 ﻿using Backend.Api.Dto;
-using Backend.Domain.Post;
+using Backend.Domain.PostM;
 
 namespace Backend.Api.Сonverters
 {
@@ -11,6 +11,7 @@ namespace Backend.Api.Сonverters
             {
                 IdPost = post.IdPost,
                 Text = post.Text,
+                Date = post.Date,
                 Title = post.Title,
                 NumberOfLikes = post.NumberOfLikes,
                 NumberOfComments = post.NumberOfComments,
@@ -23,6 +24,7 @@ namespace Backend.Api.Сonverters
             {
                 IdPost = postDto.IdPost,
                 Text = postDto.Text,
+                Date = postDto.Date,
                 Title = postDto.Title,
                 NumberOfLikes = postDto.NumberOfLikes,
                 NumberOfComments = postDto.NumberOfComments,

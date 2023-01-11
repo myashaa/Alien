@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Backend.Domain.Post
+namespace Backend.Domain.PostM
 {
     public class PostPhoto
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Backend.Domain.User
+namespace Backend.Domain.UserM
 {
     public class UserPhoto
     {

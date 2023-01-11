@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Backend.Domain.Post
+namespace Backend.Domain.PostM
 {
     public interface IPostRepository
     {

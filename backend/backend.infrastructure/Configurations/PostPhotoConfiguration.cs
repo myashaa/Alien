@@ -1,4 +1,4 @@
-﻿using Backend.Domain.Post;
+﻿using Backend.Domain.PostM;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

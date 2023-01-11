@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Backend.Domain.Post
+namespace Backend.Domain.PostM
 {
     public class PostService : IPostService
     {

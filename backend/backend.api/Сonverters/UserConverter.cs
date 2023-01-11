@@ -1,12 +1,27 @@
 ﻿using Backend.Api.Dto;
-using Backend.Domain.User;
+using Backend.Domain.UserM;
+using System.Collections.Generic;
 
 namespace Backend.Api.Сonverters
 {
     public class UserConverter : IUserConverter
     {
+        private IPostConverter _postConverter;
+        public UserConverter(IPostConverter postConverter)
+        {
+            _postConverter = postConverter;
+        }
+
         public UserDto ConvertToUserDto(User user)
         {
+            //List<PostDto> posts = new List<PostDto>();
+
+            //try
+            //{
+            //    posts = user.Posts.ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            //}
+            //catch { }
+
             return new UserDto
             {
                 IdUser = user.IdUser,
@@ -16,7 +31,8 @@ namespace Backend.Api.Сonverters
                 UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
                 Gender = user.Gender,
                 NumberOfSubscribers = user.NumberOfSubscribers,
-                NumberOfPosts = user.NumberOfPosts
+                NumberOfPosts = user.NumberOfPosts,
+                //Posts = posts
             };
         }
         public User ConvertToUser(UserDto userDto)
@@ -30,7 +46,8 @@ namespace Backend.Api.Сonverters
                 UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
                 Gender = userDto.Gender,
                 NumberOfSubscribers = userDto.NumberOfSubscribers,
-                NumberOfPosts = userDto.NumberOfPosts
+                NumberOfPosts = userDto.NumberOfPosts,
+                //Posts = userDto.Posts.ConvertAll(p => _postConverter.ConvertToPost(p))
             };
         }
 
