@@ -1,17 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./Subscribers.module.css";
 import baseStyles from "../../index.module.css";
 import UserPhoto from "../../img/userpic-medium.jpg";
-import {useState } from 'react';
 
-<div className={`${styles.profileAvatar} ${styles.userAvatar}`}>
-<img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
-</div>
+interface SubscribersProps {
+    login: string,
+}
 
-export const Subscribers = () => {  
-    
-  const [subPanelVisible, setsubPanelVisible] = useState(true);
-  const handleToggleSubPanel = () => {
+
+export const Subscribers = (props: SubscribersProps) => { 
+     
+    const [subPanelVisible, setsubPanelVisible] = useState(true);
+    const handleToggleSubPanel = () => {
         setunsubPanelVisible(false);
         setsubPanelVisible(true);
     };
@@ -20,6 +20,7 @@ export const Subscribers = () => {
         setunsubPanelVisible(true);
         setsubPanelVisible(false);
     };
+
   return (
     <>
     <div className={`${styles.postMiniUserInfo} ${styles.userInfo}`}>
@@ -30,7 +31,7 @@ export const Subscribers = () => {
         </div>
         <div className={`${styles.postMiniNameWrapper}`}>
             <a className={`${styles.postMiniName} ${styles.userName}`} href="#">
-                <span>Котик Воторой</span>
+                <span>{props.login}</span>
             </a>
             <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>1 год на сайте</time>
         </div>
@@ -65,7 +66,7 @@ export const Subscribers = () => {
                 </div>
             </> 
         ) : (null)}
-    
+
     </>
 
   );
