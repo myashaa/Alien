@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Backend.Domain.Abstractions;
 using Backend.Api.Ñonverters;
 using Backend.Domain.User;
+using Backend.Domain.Post;
 using Backend.Infrastructure.Context;
 using Backend.Infrastructure.Repositories;
 
@@ -32,12 +33,15 @@ namespace backend.api
             }));
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPostService, PostService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<BackendDbContext>>();
             services.AddDbContext<BackendDbContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddScoped<IUserConverter, UserConverter>();
+            services.AddScoped<IPostConverter, PostConverter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

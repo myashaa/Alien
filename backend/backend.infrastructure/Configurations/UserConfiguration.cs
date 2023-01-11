@@ -11,8 +11,8 @@ namespace Backend.Infrastructure.Configurations
             builder.ToTable(nameof(User)).HasKey(t => t.IdUser);
             builder
                 .HasOne(u => u.UserPhoto)
-                .WithOne(p => p.User)
-                .HasForeignKey<User>(u => u.IdPhoto);
+                .WithMany(p => p.User)
+                .HasForeignKey(u => u.IdPhoto);
         }
     }
 }
