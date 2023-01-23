@@ -1,4 +1,4 @@
-﻿using Backend.Domain.User;
+﻿using Backend.Domain.UserM;
 using Backend.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -17,7 +17,41 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(u => u.UserPhoto)
+                //.Include(u => u.Posts)
                 .ToList();
+        }
+
+        public User GetById(int id)
+        {
+            return Entities
+                .Include(u => u.UserPhoto)
+                .FirstOrDefault(u => u.IdUser == id);
+        }
+
+        public User GetByLogin(string login)
+        {
+            return Entities
+                .Include(u => u.UserPhoto)
+                .FirstOrDefault(u => u.Login == login);
+        }
+
+        public void AddNew(User user)
+        {
+            Add(user);
+        }
+
+        public void DeleteCurrent(int id)
+        {
+            var recipe = GetById(id);
+            Delete(recipe);
+        }
+
+        public void UpdateCurrent(User user)
+        {
+            var recipeFromDatabase = GetById(user.IdUser);
+            recipeFromDatabase.Mail = user.Mail;
+            recipeFromDatabase.Password = user.Password;
+            recipeFromDatabase.UserPhoto = user.UserPhoto;
         }
     }
 }
