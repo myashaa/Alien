@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./Post.module.css";
 import baseStyles from "../../index.module.css";
 
@@ -9,6 +9,8 @@ import IconHeartActive from "../../img/icon-heart-active.svg";
 import IconComment from "../../img/icon-comment.svg"; 
 import IconDelete from "../../img/delete.svg"; 
 import {PhotoPost} from "../PhotoPost/PhotoPost";
+import axios from "axios";
+import {variables} from  "../../Variables";
 
 type PhotoType = {
     idPhoto: number,
@@ -23,9 +25,28 @@ interface PostProps {
   imgUser: string,
   numberOfLikes: number,
   numberOfComments: number,
+  id: number,
 }
 
 export function Post(props: PostProps) {
+  const [post, setPost] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(variables.DELETE_POST_URL ).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+  function deletePost(id: number) {
+    const str = String(id);
+    axios
+      .delete(variables.DELETE_POST_URL + str)
+      .then(() => {
+        alert("Post deleted!");
+        setPost(null)
+      });
+  }
+
   return (
     <article className={ styles.post }>
       <header className={styles.postHeader}>
@@ -67,10 +88,10 @@ export function Post(props: PostProps) {
               <span>{props.numberOfLikes}</span>
               <span className={baseStyles.visuallyHidden}>количество комментариев</span>
             </a>
-            <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Удаление">
+            <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
               <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
               <span className={baseStyles.visuallyHidden}>удаление поста </span>
-            </a>
+            </button>
           </div>
         </div>
       </footer>

@@ -7,7 +7,6 @@ import { Header } from '../../components/Header/Header';
 import { Post } from '../../components/Post/Post';
 import {variables} from  "../../Variables";
 import axios from "axios";
-import { title } from "process";
 
 export const FeedPage = () => {
   const [posts, setusers] = useState([]);
@@ -67,7 +66,7 @@ export const FeedPage = () => {
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
               {posts.map((post) => 
                 <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
-                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]}/>
+                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
               )}
         </div>  
       </div>
