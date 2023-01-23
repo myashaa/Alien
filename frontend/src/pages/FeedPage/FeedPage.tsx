@@ -1,12 +1,25 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./FeedPage.module.css";
 import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import { Post } from '../../components/Post/Post';
+import {variables} from  "../../Variables";
+import axios from "axios";
+import { title } from "process";
 
 export const FeedPage = () => {
+  const [posts, setusers] = useState([]);
+
+  useEffect(() => {
+    axios.get(variables.POST_URL).then((response) => {
+      setusers((data) => {
+        return response.data;
+      });
+    });
+  }, []);
+
   return (
     <div className={`${baseStyles.page} ${styles.pageFeed}`}>
       <Header />
@@ -52,10 +65,10 @@ export const FeedPage = () => {
           </div>
         </div>
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+              {posts.map((post) => 
+                <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]}/>
+              )}
         </div>  
       </div>
       <Footer />

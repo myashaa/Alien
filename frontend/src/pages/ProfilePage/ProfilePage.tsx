@@ -115,10 +115,7 @@ export const ProfilePage = () => {
         {PostPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                {/*<Post />*/}
               </div> 
             </> 
         ) : (null)} 

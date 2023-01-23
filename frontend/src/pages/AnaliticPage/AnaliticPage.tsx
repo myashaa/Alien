@@ -248,8 +248,7 @@ export const AnaliticPage = () => {
         {postPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                <Post />
-                <Post />
+                {/*<Post />*/}
               </div>  
             </> 
         ) : (null)} 

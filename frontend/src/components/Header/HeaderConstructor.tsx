@@ -47,11 +47,11 @@ export function HeaderConstructor(props: HeaderProps) {
                   <span className={baseStyles.visuallyHidden}>Моя лента</span>
                 </NavLink> 
               </li>
-              <li className={`${styles.headerMyPage} ${styles.headerMyPageMessages}`}>
+              {/*<li className={`${styles.headerMyPage} ${styles.headerMyPageMessages}`}>
                 <NavLink to="/messages" className={({isActive}) => isActive ? `${styles.headerPageLink} ${styles.headerPageLinkActive}` : styles.headerPageLink} title="Личные сообщения">
                   <span className={baseStyles.visuallyHidden}>Личные сообщения</span>
                 </NavLink> 
-              </li>
+              </li>*/}
             </ul>
             {isUser ?
             (<ul className={styles.headerUserNav}>
@@ -75,14 +75,14 @@ export function HeaderConstructor(props: HeaderProps) {
                           </span>
                         </a>
                       </li>
-                      <li className={styles.headerProfileNavItem}>
+                      {/*<li className={styles.headerProfileNavItem}>
                         <a className={styles.headerProfileNavLink} href="/messages">
                           <span className={styles.headerProfileNavText}>
                             Сообщения
                             <i className={styles.headerProfileIndicator}>2</i>
                           </span>
                         </a>
-                      </li>
+                      </li>*/}
                       <li className={styles.headerProfileNavItem}>
                         <a className={styles.headerProfileNavLink} href="#">
                           <span className={styles.headerProfileNavText}>

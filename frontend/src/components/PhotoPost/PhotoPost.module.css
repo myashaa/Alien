@@ -1,0 +1,228 @@
+@import "/src/colors.css";
+
+.post {
+  border: 1px solid #dee5fc;
+  border-radius: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+  box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+  width: 360px;
+  margin-right: 40px;
+  margin-bottom: 41px;
+}
+
+.post:nth-child(3n) {
+  margin-right: 0;
+}
+
+.post h2 {
+  padding: 14px 24px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.post h2:focus,
+.post h2:hover {
+  opacity: .8;
+}
+
+.post h2:active {
+  opacity: .6;
+}
+
+.post .postAuthor {
+  padding: 25px 26px;
+  border-bottom: 1px solid #dee5fc;
+}
+
+.post .postIndicatorIcon {
+  top: -1px;
+}
+
+.post .postMain p {
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 15px 0;
+  padding: 0 25px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.post .postTextMoreLink {
+  margin: 2px 24px -4px;
+}
+
+.post .postPhotoImageWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+.postAuthor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postAuthorLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.postAuthorLink:focus,
+.postAuthorLink:hover {
+  opacity: .7;
+}
+
+.postAuthorLink:active {
+  opacity: .3;
+}
+
+.postAvatarWrapper {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin-right: 12px;
+  background-color: #e2e8f7;
+  background-image: url("../../img//icon-input-user.svg");
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.postAuthorAvatar {
+  display: block;
+  border-radius: 50%;
+}
+
+.postInfo {
+  padding-top: 3px;
+}
+
+.postAuthorName {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.postTime {
+  line-height: 1.1;
+  color: #8798ad;
+  font-size: 14px;
+}
+
+.postIndicators {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  padding: 22px 23px 23px;
+}
+
+.postButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.postIndicator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-right: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8798ad;
+  letter-spacing: 1.5px;
+}
+
+.postIndicator span {
+  line-height: 1;
+}
+
+.postIndicator svg {
+  margin-right: 10px;
+}
+
+.postIndicator:active {
+  color: rgba(135, 152, 173, .3);
+}
+
+.postIndicator:focus .postIndicatorIcon,
+.postIndicator:hover .postIndicatorIcon {
+  opacity: .5;
+}
+
+.postIndicator:active .postIndicatorIcon {
+  opacity: .1;
+}
+
+.postIndicator:focus .postIndicatorIconLikeActive,
+.postIndicator:hover .postIndicator-iconLikeActive {
+  opacity: 1;
+}
+
+.postIndicator:active .postIndicatorIconLikeActive {
+  opacity: .1;
+}
+
+.postIndicatorLikesActive .postIndicatorIcon {
+  display: none;
+}
+
+.postIndicatorLikesActive .postIndicatorIconLikeActive {
+  display: block;
+}
+
+.postTextMoreLinkWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.postTextMoreLink {
+  display: inline-block;
+  margin: 8px 43px 19px;
+  font-weight: 700;
+  color: #3e5dde;
+}
+
+.postTextMoreLink:focus,
+.postTextMoreLink:hover {
+  opacity: .6;
+}
+
+.postTextMoreLink:active {
+  opacity: .3;
+}

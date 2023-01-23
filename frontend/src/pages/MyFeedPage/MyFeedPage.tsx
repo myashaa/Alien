@@ -20,17 +20,6 @@ export const MyFeedPage = () => {
           <div className={styles.feedFiltersWrapper}>
             <div className={styles.feedSorting}>
               <b className={styles.feedSortingCaption}>Сортировка:</b>
-              <select className={`${ styles.sortingItem } ${ styles.sortingSelect }`}>
-                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
-                  <span>Все</span>
-                </option>
-                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
-                  <span>Топ недели</span>
-                </option>
-                <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
-                  <span>Новости</span>
-                </option>
-              </select>
               <ul className={styles.feedSortingList}>
                 <li className={ styles.sortingItem }>
                   <a className={ styles.sortingLink } href="#">
@@ -52,10 +41,7 @@ export const MyFeedPage = () => {
           </div>
         </div>
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {/*<Post />*/}
         </div>  
       </div>
       <Footer />

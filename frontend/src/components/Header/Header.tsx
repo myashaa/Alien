@@ -21,7 +21,7 @@ export const Header = () => {
     {
       return (
         <>  
-          <HeaderConstructor login = {""} isLoginatedUser = {notLoginatedUser} />
+          <HeaderConstructor login = {""} isLoginatedUser = {loginatedUser} />
         </>
     )
     }

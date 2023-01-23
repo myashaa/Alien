@@ -7,21 +7,36 @@ import UserPhoto from "../../img/userpic-larisa-small.jpg";
 import IconHeart from "../../img/icon-heart.svg"; 
 import IconHeartActive from "../../img/icon-heart-active.svg"; 
 import IconComment from "../../img/icon-comment.svg"; 
+import IconDelete from "../../img/delete.svg"; 
+import {PhotoPost} from "../PhotoPost/PhotoPost";
 
-export function Post() {
+type PhotoType = {
+    idPhoto: number,
+    url: string
+}
+
+interface PostProps {
+  login: string,
+  text: string,
+  title: string,
+  imgs: Array<PhotoType>,
+  imgUser: string,
+  numberOfLikes: number,
+  numberOfComments: number,
+}
+
+export function Post(props: PostProps) {
   return (
     <article className={ styles.post }>
       <header className={styles.postHeader}>
-        <h2><a href="#">Наконец, полет в открытый космос!</a></h2>
+        <h2><a href="#">{props.title}</a></h2>
       </header>
       <div className={styles.postMain}>
-        <div className={styles.postPhotoImageWrapper}>
-          <img src={Photo} alt="Фото от пользователя" width="360" height="240" />
-        </div>
+          {props.imgs.map((photo) => 
+            <PhotoPost key = {photo.idPhoto} url = {photo.url} />
+          )}
         <p>
-          60 лет назад произошло событие огромной исторической значимости. Полетел в космос первый человек — советский лётчик Юрий Гагарин.
-          Этот триумфальный полёт и сегодня воспринимается как невероятный прорыв, необычайное достижение всего человечества. Событие имело
-          колоссальный общественный резонанс! Гагарин стал всенародным героем, любимцем всех женщин СССР сразу или, как сейчас бы сказали, настоящей «звездой».
+          {props.text}
         </p>
         <div className={styles.postTextMoreLinkWrapper}>
             <a className={styles.postTextMoreLink} href="/post">Подробнее</a>
@@ -35,7 +50,7 @@ export function Post() {
                 alt="Аватар пользователя" />
             </div>
             <div className={styles.postInfo}>
-              <b className={ styles.postAuthorName}>Лариса Роговая</b>
+              <b className={ styles.postAuthorName}>{props.login}</b>
             </div>
           </a>
         </div>
@@ -44,13 +59,17 @@ export function Post() {
             <a className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} href="#" title="Лайк">
               <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />
               {/* <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/> */}
-              <span>250</span>
+              <span>{props.numberOfLikes}</span>
               <span className={baseStyles.visuallyHidden}>количество лайков</span>
             </a>
             <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
               <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
-              <span>25</span>
+              <span>{props.numberOfLikes}</span>
               <span className={baseStyles.visuallyHidden}>количество комментариев</span>
+            </a>
+            <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Удаление">
+              <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
+              <span className={baseStyles.visuallyHidden}>удаление поста </span>
             </a>
           </div>
         </div>

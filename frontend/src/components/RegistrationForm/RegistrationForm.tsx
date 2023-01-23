@@ -125,12 +125,6 @@ export function RegistrationForm() {
         </div>
         <div className={`${ styles.registrationInputFileContainer } ${ baseStyles.formInputContainer }`}>
           <div className={styles.registrationInputFileWrapper}>
-            <div className={`${ styles.registrationFileZone } ${ baseStyles.formFileZone }`}>
-              <input className={baseStyles.formInputFile} id="userpic-file" type="file" name="userpic-file" title=" " />
-              <div className={baseStyles.formFileZoneText}>
-                <span>Перетащите фото сюда</span>
-              </div>
-            </div>
             <button className={`${ baseStyles.formInputFileButton } ${ baseStyles.button }`} type="button">
               <span>Выбрать фото</span>
               <IconAttach className={baseStyles.formAttachIcon}width="10" height="20" />
