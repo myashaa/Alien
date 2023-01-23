@@ -9,8 +9,9 @@ using System.Collections.Generic;
 namespace backend.api.Controllers
 {
     [EnableCors("TheCodePolicy")]
-    [Route("api/[controller]/")]
+    [Route("api/[controller]")]
     [ApiController]
+
     public class UserController : ControllerBase
     {
         private IUserService _userService;
@@ -29,15 +30,6 @@ namespace backend.api.Controllers
         {
             List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u)); ;
             return Ok(users);
-        }
-
-        [HttpGet("{userId:int}")]
-        [Route("")]
-        public IActionResult GetUser()
-        {
-            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u));
-            UserDto user = users[0];
-            return Ok(user);
         }
     }
 }
