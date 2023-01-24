@@ -4,11 +4,15 @@ import {variables} from  "../../Variables";
 import axios, { AxiosResponse } from "axios";
 import {Profile} from "../Profile/Profile";
 
-export const List = () => { 
+interface ProfileConstructorProps {
+   idUser?: string,
+}
+
+export const ProfileConstructor = (props: ProfileConstructorProps) => { 
     const [post, setPost] = React.useState(null);
   
     React.useEffect(() => {
-      axios.get(variables.MY_USER_URL).then((response) => {
+      axios.get(variables.USER_URL + props.idUser).then((response) => {
         setPost(response.data);
       });
     }, []);

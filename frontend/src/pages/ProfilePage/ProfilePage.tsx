@@ -11,7 +11,7 @@ import { LikesAlert } from '../../components/LikesAlert/LikesAlert';
 import { CommentsAlert } from '../../components/CommentsAlert/CommentsAlert';
 import {variables} from  "../../Variables";
 import axios from "axios";
-import {List} from "../../components/Subscribers/List";
+import {ProfileConstructor} from "../../components/Profile/ProfileConstructor";
 
 export const ProfilePage = () => {
 
@@ -69,7 +69,7 @@ export const ProfilePage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
       <Header />
-      <List/>
+      <ProfileConstructor idUser={String(3)}/>
 
       <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>

@@ -28,9 +28,15 @@ export function AddingPostForm() {
     });
   }, []);
 
-  function createPost(post: PostType) {
+  function createPost(){
     axios
-      .post(variables.POST_URL, post)
+      .post(variables.POST_URL, {
+        text:"I do it! Force in me!",
+        date:"2004-05-23T14:25:10",
+        title:"Dart Vader",
+        numberOfLikes:0,
+        numberOfComments:0,
+        postPhotos:[{url:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Star_Wars_-_Darth_Vader.jpg/640px-Star_Wars_-_Darth_Vader.jpg"}]})
       .then((response) => {
         setPost(response.data);
       });
@@ -43,7 +49,7 @@ export function AddingPostForm() {
   return (
     <section className={baseStyles.container}>
       <h2 className={baseStyles.visuallyHidden}>Форма добавления поста</h2>
-      <form className={styles.addingPostForm} action="#" method="post">
+      <form className={styles.addingPostForm}>
         <div className={baseStyles.formTextInputsWrapper}>
           <div>
             <div className={`${ styles.addingPostInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -135,14 +141,8 @@ export function AddingPostForm() {
             </button>
           </div>
         </div>
-        <button className={`${styles.addingPostSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`} type="submit"
-        onClick={() => createPost({
-          text: textIn,
-          title: titleIn,
-          date:  "2004-05-23T14:25:10",
-          numbersOfLikes: 0,
-          numbersOfComments: 0,
-        })}>
+        <button className={`${styles.addingPostSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`}
+        onClick={() => createPost()}>
           Опубликовать
         </button>
         <a className={styles.addingPostClose} href="#">Закрыть</a>
