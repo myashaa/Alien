@@ -17,7 +17,6 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(u => u.UserPhoto)
-                //.Include(u => u.Posts)
                 .ToList();
         }
 

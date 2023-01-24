@@ -23,6 +23,7 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        //тестовы метод GetAllUsers. удалить потом и все что в нем используются
         [HttpGet]
         [Route("")]
         public IActionResult GetAllUsers()
@@ -35,16 +36,24 @@ namespace backend.api.Controllers
         [Route("{id:int}")]
         public IActionResult GetUserById(int id)
         {
-            UserDto user = _userConverter.ConvertToUserDto(_userService.GetUser(id));
-            return Ok(user);
+            User user = _userService.GetUser(id);
+            if (user == null)
+                return NotFound();
+
+            UserDto userDto = _userConverter.ConvertToUserDto(user);
+            return Ok(userDto);
         }
 
         [HttpGet]
         [Route("{login}")]
         public IActionResult GetUserByLogin(string login)
         {
-            UserDto user = _userConverter.ConvertToUserDto(_userService.GetUser(login));
-            return Ok(user);
+            User user = _userService.GetUser(login);
+            if (user == null)
+                return NotFound();
+
+            UserDto userDto = _userConverter.ConvertToUserDto(user);
+            return Ok(userDto);
         }
 
         [HttpPost]

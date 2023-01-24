@@ -21,24 +21,20 @@ namespace Backend.Infrastructure.Repositories
                 .ToList();
         }
 
-        public IEnumerable<Post> SearchAll(string category, string searchText)
+        public IEnumerable<Post> GetAllByIdUser(int id)
         {
-            switch (category)
-            {
-                case SearchConstans.title:
-                    return Entities
-                        .Include(p => p.PostPhotos)
-                        .Where(p => p.Title == searchText)
-                        .ToList();
-                case SearchConstans.text:
-                    return Entities
-                        .Include(p => p.PostPhotos)
-                        .Where(p => p.Text == searchText)
-                        .ToList();
-                default:
-                    break;
-            }
-            return null;
+            return Entities
+                .Include(p => p.PostPhotos)
+                .Where(p => p.IdUser == id)
+                .ToList();
+        }
+
+        public IEnumerable<Post> GetAllByTitle(string title)
+        {
+            return Entities
+                .Include(p => p.PostPhotos)
+                .Where(p => p.Title.Contains(title))
+                .ToList();
         }
 
         public void AddNew(Post post)

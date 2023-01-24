@@ -16,6 +16,6 @@ namespace Backend.Domain.UserM
         public int NumberOfPosts { get; set; }
         [ForeignKey("IdPhoto")]
         public UserPhoto UserPhoto { get; set; }
-        //public List<Post> Posts { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }

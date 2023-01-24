@@ -18,9 +18,15 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
-        public List<Post> SearchPosts(string category, string searchText)
+        public List<Post> GetPostsByUser(int id)
         {
-            var posts = _postRepository.SearchAll(category, searchText);
+            var posts = _postRepository.GetAllByIdUser(id);
+            return posts.ToList();
+        }
+
+        public List<Post> GetPostsByTitle(string title)
+        {
+            var posts = _postRepository.GetAllByTitle(title);
             return posts.ToList();
         }
 

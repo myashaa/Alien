@@ -12,6 +12,5 @@ namespace Backend.Api.Dto
         public byte Gender { get; set; }
         public int NumberOfSubscribers { get; set; }
         public int NumberOfPosts { get; set; }
-        //public List<PostDto> Posts { get; set; }
     }
 }
