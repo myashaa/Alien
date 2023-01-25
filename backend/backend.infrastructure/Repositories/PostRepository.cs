@@ -37,6 +37,14 @@ namespace Backend.Infrastructure.Repositories
                 .ToList();
         }
 
+        public IEnumerable<Post> GetAllByTag(string tag)
+        {
+            return Entities
+                .Include(p => p.PostPhotos)
+                .Include(p => p.PostTags)
+                .ToList();
+        }
+
         public void AddNew(Post post)
         {
             Add(post);

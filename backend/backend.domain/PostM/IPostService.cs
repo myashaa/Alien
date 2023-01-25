@@ -7,6 +7,7 @@ namespace Backend.Domain.PostM
         List<Post> GetPosts();
         List<Post> GetPostsByUser(int id);
         List<Post> GetPostsByTitle(string title);
+        List<Post> GetPostsByTag(string tag);
         void AddPost(Post Post);
         void DeletePost(int id);
     }

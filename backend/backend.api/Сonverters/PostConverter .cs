@@ -1,5 +1,6 @@
 ﻿using Backend.Api.Dto;
 using Backend.Domain.PostM;
+using System.Collections.Generic;
 
 namespace Backend.Api.Сonverters
 {
@@ -15,7 +16,8 @@ namespace Backend.Api.Сonverters
                 Title = post.Title,
                 NumberOfLikes = post.NumberOfLikes,
                 NumberOfComments = post.NumberOfComments,
-                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p))
+                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p)),
+                //PostTags = ConvertToTagDto(post.PostTags)
             };
         }
         public Post ConvertToPost(PostDto postDto)
@@ -28,7 +30,8 @@ namespace Backend.Api.Сonverters
                 Title = postDto.Title,
                 NumberOfLikes = postDto.NumberOfLikes,
                 NumberOfComments = postDto.NumberOfComments,
-                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p))
+                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
+                //PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p))
             };
         }
 

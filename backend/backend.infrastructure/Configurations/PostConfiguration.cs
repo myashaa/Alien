@@ -13,6 +13,10 @@ namespace Backend.Infrastructure.Configurations
                 .HasOne(p => p.User)
                 .WithMany(u => u.Posts)
                 .HasForeignKey(p => p.IdUser);
+            builder
+                .HasMany(p => p.PostTags)
+                .WithMany(t => t.PostTags)
+                .UsingEntity(j => j.ToTable("PostHasTag"));
         }
     }
 }

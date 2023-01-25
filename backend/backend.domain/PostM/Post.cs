@@ -15,6 +15,7 @@ namespace Backend.Domain.PostM
         public int NumberOfLikes { get; set; }
         public int NumberOfComments { get; set; }
         public List<PostPhoto> PostPhotos { get; set; }
+        public List<Tag> PostTags { get; set; } = new List<Tag>();
         [ForeignKey("IdUser")]
         public User User { get; set; }
     }

@@ -30,6 +30,12 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
+        public List<Post> GetPostsByTag(string tag)
+        {
+            var posts = _postRepository.GetAllByTag(tag);
+            return posts.ToList();
+        }
+
         public void AddPost(Post post)
         {
             _postRepository.AddNew(post);

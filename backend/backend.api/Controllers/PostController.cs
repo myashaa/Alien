@@ -48,6 +48,14 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [HttpGet]
+        [Route("tag/{tag}")]
+        public IActionResult GetPostsByTag(string tag)
+        {
+            List<PostDto> posts = _postService.GetPostsByTag(tag).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
         [HttpPost]
         [Route("")]
         public IActionResult AddNewPost([FromBody] PostDto postDto)

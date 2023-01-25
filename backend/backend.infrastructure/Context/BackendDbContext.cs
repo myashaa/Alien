@@ -15,6 +15,7 @@ namespace Backend.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new PostConfiguration());
             modelBuilder.ApplyConfiguration(new UserPhotoConfiguration());
             modelBuilder.ApplyConfiguration(new PostPhotoConfiguration());
+            modelBuilder.ApplyConfiguration(new TagConfiguration());
         }
     }
 }
