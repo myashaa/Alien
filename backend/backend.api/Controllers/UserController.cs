@@ -28,7 +28,7 @@ namespace backend.api.Controllers
         [Route("")]
         public IActionResult GetAllUsers()
         {
-            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u)); ;
+            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u));
             return Ok(users);
         }
 
@@ -44,7 +44,7 @@ namespace backend.api.Controllers
         [Route("{login}")]
         public IActionResult GetUserByLogin(string login)
         {
-            UserDto user = _userConverter.ConvertToUserDto(_userService.GetUser(login));
+            List<UserDto> user = _userService.GetUser(login).ConvertAll(u => _userConverter.ConvertToUserDto(u));
             return Ok(user);
         }
 

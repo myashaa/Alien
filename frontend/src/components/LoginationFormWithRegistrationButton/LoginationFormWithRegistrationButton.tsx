@@ -9,13 +9,13 @@ import IconInputPassword from "../../img/icon-input-password.svg";
 
 export function LoginationFormWithRegistrationButton() {
   const dispatch = useAppDispatch();
-  const [login, setLogin] = useState("");
+  const [mail, setmail] = useState("");
   const [password, setPassword] = useState("");
  
   const handelSubmit = (e:FormEvent) => {
     e.preventDefault();
 
-    dispatch(loginUser({login, password}))
+    dispatch(loginUser({mail, password}))
   }
 
   return (
@@ -23,11 +23,11 @@ export function LoginationFormWithRegistrationButton() {
       <h2 className={baseStyles.visuallyHidden}>Авторизация</h2>
       <form className={styles.authorizationForm} onSubmit={handelSubmit}>
         <div className={`${ styles.authorizationInputWrapper } ${ baseStyles.formInputWrapper }`}>
-          <input className={`${ styles.authorizationInput } ${ baseStyles.formInput }`} type="text" name="login" placeholder="Логин" 
-          onChange={(e) => setLogin(e.target.value)}/>
+          <input className={`${ styles.authorizationInput } ${ baseStyles.formInput }`} type="text" name="mail" placeholder="Email" 
+          onChange={(e) => setmail(e.target.value)}/>
           <IconInputUser className={baseStyles.formInputIcon}  width="19" height="18" />
-          <label className={baseStyles.visuallyHidden}>Логин</label>
-          <span className={baseStyles.formErrorLabel}>Неверный логин</span>
+          <label className={baseStyles.visuallyHidden}>Email</label>
+          <span className={baseStyles.formErrorLabel}>Неверный email</span>
         </div>
         <div className={`${ styles.authorizationInputWrapper } ${ baseStyles.formInputWrapper }`}>
           <input className={`${styles.authorizationInput} ${baseStyles.formInput}`} type="password" name="password" placeholder="Пароль" 

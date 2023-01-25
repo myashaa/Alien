@@ -33,7 +33,7 @@ export const logoutUser =
 
         dispatch(logoutSuccess())
 
-        //history.push('/')
+        history.push('/')
       } catch (e) {
           console.error(e)
       }
