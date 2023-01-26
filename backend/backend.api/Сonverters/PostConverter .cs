@@ -6,6 +6,12 @@ namespace Backend.Api.Сonverters
 {
     public class PostConverter : IPostConverter
     {
+        private IUserConverter _userConverter;
+        public PostConverter(IUserConverter userConverter)
+        {
+            _userConverter = userConverter;
+        }
+
         public PostDto ConvertToPostDto(Post post)
         {
             return new PostDto
@@ -16,7 +22,8 @@ namespace Backend.Api.Сonverters
                 Title = post.Title,
                 NumberOfLikes = post.NumberOfLikes,
                 NumberOfComments = post.NumberOfComments,
-                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p))
+                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p)),
+                User = _userConverter.ConvertToUserNameDto(post.User)
             };
         }
         public PostDetailsDto ConvertToPostDetailsDto(Post post)
@@ -30,7 +37,8 @@ namespace Backend.Api.Сonverters
                 NumberOfLikes = post.NumberOfLikes,
                 NumberOfComments = post.NumberOfComments,
                 PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p)),
-                PostTags = post.PostTags.ConvertAll(p => ConvertToTagDto(p))
+                PostTags = post.PostTags.ConvertAll(p => ConvertToTagDto(p)),
+                User = _userConverter.ConvertToUserInfoDto(post.User)
             };
         }
         public Post ConvertToPost(PostDto postDto)
@@ -43,7 +51,8 @@ namespace Backend.Api.Сonverters
                 Title = postDto.Title,
                 NumberOfLikes = postDto.NumberOfLikes,
                 NumberOfComments = postDto.NumberOfComments,
-                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p))
+                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
+                User = _userConverter.ConvertToUser(postDto.User)
             };
         }
         public Post ConvertToPost(PostDetailsDto postDto)
@@ -57,7 +66,8 @@ namespace Backend.Api.Сonverters
                 NumberOfLikes = postDto.NumberOfLikes,
                 NumberOfComments = postDto.NumberOfComments,
                 PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
-                PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p))
+                PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p)),
+                User = _userConverter.ConvertToUser(postDto.User)
             };
         }
 

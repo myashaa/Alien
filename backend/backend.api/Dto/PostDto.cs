@@ -12,5 +12,6 @@ namespace Backend.Api.Dto
         public int NumberOfLikes { get; set; }
         public int NumberOfComments { get; set; }
         public List<PostPhotoDto> PostPhotos { get; set; }
+        public UserNameDto User { get; set; }
     }
 }

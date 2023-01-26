@@ -49,7 +49,7 @@ namespace Backend.Infrastructure.Repositories
         public void UpdateCurrent(User user)
         {
             var recipeFromDatabase = GetById(user.IdUser);
-            recipeFromDatabase.Mail = user.Mail;
+            recipeFromDatabase.Login = user.Login;
             recipeFromDatabase.Password = user.Password;
             recipeFromDatabase.UserPhoto = user.UserPhoto;
         }
