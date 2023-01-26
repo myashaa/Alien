@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Backend.Domain.UserM;
 
@@ -7,6 +8,7 @@ namespace Backend.Domain.PostM
 {
     public class Post
     {
+        [Key]
         public int IdPost { get; set; }
         public int IdUser { get; set; }
         public string Text { get; set; }
@@ -19,5 +21,6 @@ namespace Backend.Domain.PostM
         [ForeignKey("IdUser")]
         public User User { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<Like> Likes { get; set; }
     }
 }
