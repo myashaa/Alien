@@ -6,7 +6,7 @@ namespace Backend.Domain.UserM
     {
         List<User> GetUsers();
         User GetUser(int id);
-        User GetUser(string login);
+        List<User> GetUsersByLogin(string login);
         void AddUser(User user);
         void DeleteUser(int id);
         void UpdateUser(User user);

@@ -34,6 +34,18 @@ namespace backend.api.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        public IActionResult GetPostById(int id)
+        {
+            Post post = _postService.GetPost(id);
+            if (post == null)
+                return NotFound();
+
+            PostDetailsDto postDto = _postConverter.ConvertToPostDetailsDto(post);
+            return Ok(postDto);
+        }
+
+        [HttpGet]
+        [Route("user/{id:int}")]
         public IActionResult GetPostsByIdUser(int id)
         {
             List<PostDto> posts = _postService.GetPostsByUser(id).ConvertAll(p => _postConverter.ConvertToPostDto(p));

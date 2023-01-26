@@ -46,14 +46,10 @@ namespace backend.api.Controllers
 
         [HttpGet]
         [Route("{login}")]
-        public IActionResult GetUserByLogin(string login)
+        public IActionResult GetUsersByLogin(string login)
         {
-            User user = _userService.GetUser(login);
-            if (user == null)
-                return NotFound();
-
-            UserDto userDto = _userConverter.ConvertToUserDto(user);
-            return Ok(userDto);
+            List<UserDto> users = _userService.GetUsersByLogin(login).ConvertAll(p => _userConverter.ConvertToUserDto(p));
+            return Ok(users);
         }
 
         [HttpPost]

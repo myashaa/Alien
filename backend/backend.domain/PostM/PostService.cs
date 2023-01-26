@@ -18,6 +18,12 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
+        public Post GetPost(int id)
+        {
+            var post = _postRepository.GetById(id);
+            return post;
+        }
+
         public List<Post> GetPostsByUser(int id)
         {
             var posts = _postRepository.GetAllByIdUser(id);

@@ -18,7 +18,16 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(p => p.PostPhotos)
+                .Include(p => p.PostTags)
                 .ToList();
+        }
+
+        public Post GetById(int id)
+        {
+            return Entities
+                .Include(p => p.PostPhotos)
+                .Include(p => p.PostTags)
+                .FirstOrDefault(p => p.IdPost == id);
         }
 
         public IEnumerable<Post> GetAllByIdUser(int id)
@@ -39,9 +48,12 @@ namespace Backend.Infrastructure.Repositories
 
         public IEnumerable<Post> GetAllByTag(string tag)
         {
-            return Entities
+            IEnumerable<Post> entities = Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.PostTags)
+                .Include(p => p.PostTags
+                    .Where(t => t.Name == tag));
+            return entities
+                .Where(p => p.PostTags.Count() > 0)
                 .ToList();
         }
 
@@ -52,9 +64,7 @@ namespace Backend.Infrastructure.Repositories
 
         public void DeleteCurrent(int id)
         {
-            var post = Entities
-                .Include(p => p.PostPhotos)
-                .FirstOrDefault(p => p.IdPost == id);
+            var post = GetById(id);
             Delete(post);
         }
     }

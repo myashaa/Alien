@@ -27,11 +27,12 @@ namespace Backend.Infrastructure.Repositories
                 .FirstOrDefault(u => u.IdUser == id);
         }
 
-        public User GetByLogin(string login)
+        public IEnumerable<User> GetAllByLogin(string login)
         {
             return Entities
                 .Include(u => u.UserPhoto)
-                .FirstOrDefault(u => u.Login == login);
+                .Where(u => u.Login.Contains(login))
+                .ToList();
         }
 
         public void AddNew(User user)
