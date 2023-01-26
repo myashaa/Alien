@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit"
-import api from "../../api"
+/*import api from "../../api"
 import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
 import { loginStart, loginSucess, loginFailure, logoutSuccess,loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer"
 import { history } from '../../utils/history'
@@ -82,4 +82,4 @@ export const getAccessToken =
 
             return null
         }
-    }
+    }*/

@@ -2,20 +2,29 @@ import {FormEvent, useState} from "react";
 import styles from "./LoginationFormWithRegistrationButton.module.css";
 import baseStyles from "../../index.module.css";
 import { useAppDispatch } from "../../store";
-import { loginUser } from "../../store/auth/actionCreators";
+//import { loginUser } from "../../store/auth/actionCreators";
 
 import IconInputUser from "../../img/icon-input-user.svg";
 import IconInputPassword from "../../img/icon-input-password.svg";
+import axios from "axios";
+import { StringDecoder } from "string_decoder";
 
 export function LoginationFormWithRegistrationButton() {
   const dispatch = useAppDispatch();
+  const [user, setUser] = useState("");
   const [mail, setmail] = useState("");
   const [password, setPassword] = useState("");
  
-  const handelSubmit = (e:FormEvent) => {
+  const handelSubmit = async (e:FormEvent) => {
     e.preventDefault();
+    try{
+      const res = await axios.post("https://localhost:44390/api/auth/login", {mail, password});
+      setUser(res.data);
+      console.log(user);
+    } catch
+    {
 
-    dispatch(loginUser({mail, password}))
+    }
   }
 
   return (

@@ -33,7 +33,7 @@ namespace Backend.Api.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("login")]
         public IActionResult Login([FromBody] UserLoginDto userLoginDto)
         {
