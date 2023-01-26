@@ -18,5 +18,6 @@ namespace Backend.Domain.PostM
         public List<Tag> PostTags { get; set; } = new List<Tag>();
         [ForeignKey("IdUser")]
         public User User { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

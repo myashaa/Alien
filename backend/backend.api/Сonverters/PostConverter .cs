@@ -104,5 +104,28 @@ namespace Backend.Api.Сonverters
                 Name = tagDto.Name
             };
         }
+
+        private CommentDto ConvertToCommentDto(Comment comment)
+        {
+            return new CommentDto
+            {
+                IdComment = comment.IdComment,
+                User = comment.User,
+                Post = comment.Post,
+                Date = comment.Date,
+                Text = comment.Text
+            };
+        }
+        private Comment ConvertToComment(CommentDto commentDto)
+        {
+            return new Comment
+            {
+                IdComment = commentDto.IdComment,
+                User = commentDto.User,
+                Post = commentDto.Post,
+                Date = commentDto.Date,
+                Text = commentDto.Text
+            };
+        }
     }
 }

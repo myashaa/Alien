@@ -17,5 +17,6 @@ namespace Backend.Domain.UserM
         [ForeignKey("IdPhoto")]
         public UserPhoto UserPhoto { get; set; }
         public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
