@@ -10,13 +10,13 @@ namespace Backend.Infrastructure.Configurations
         {
             builder.ToTable(nameof(Like)).HasKey(t => new { t.IdUser, t.IdPost });
             builder
-                .HasOne(c => c.User)
+                .HasOne(l => l.User)
                 .WithMany(u => u.Likes)
-                .HasForeignKey(c => c.IdUser);
+                .HasForeignKey(l => l.IdUser);
             builder
-                .HasOne(c => c.Post)
+                .HasOne(l => l.Post)
                 .WithMany(p => p.Likes)
-                .HasForeignKey(c => c.IdPost);
+                .HasForeignKey(l => l.IdPost);
         }
     }
 }

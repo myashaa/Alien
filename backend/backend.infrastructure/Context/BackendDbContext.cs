@@ -18,6 +18,7 @@ namespace Backend.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new LikeConfiguration());
+            modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
         }
     }
 }
