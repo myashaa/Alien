@@ -17,7 +17,6 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(u => u.UserPhoto)
-                //.Include(u => u.Posts)
                 .ToList();
         }
 
@@ -28,7 +27,7 @@ namespace Backend.Infrastructure.Repositories
                 .FirstOrDefault(u => u.IdUser == id);
         }
 
-        public IEnumerable<User> GetByLogin(string login)
+        public IEnumerable<User> GetAllByLogin(string login)
         {
             return Entities
                 .Include(u => u.UserPhoto)
@@ -57,7 +56,7 @@ namespace Backend.Infrastructure.Repositories
         public void UpdateCurrent(User user)
         {
             var recipeFromDatabase = GetById(user.IdUser);
-            recipeFromDatabase.Mail = user.Mail;
+            recipeFromDatabase.Login = user.Login;
             recipeFromDatabase.Password = user.Password;
             recipeFromDatabase.UserPhoto = user.UserPhoto;
         }

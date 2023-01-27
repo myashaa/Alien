@@ -24,16 +24,16 @@ namespace Backend.Domain.UserM
             return user;
         }
 
-        public List<User> GetUser(string login)
-        {
-            var users = _userRepository.GetByLogin(login);
-            return users.ToList();
-        }
-
         public User GetUser(string mail, string password)
         {
             var user = _userRepository.GetByMailAndPassword(mail, password);
             return user;
+        }    
+        
+        public List<User> GetUsersByLogin(string login)
+        {
+            var users = _userRepository.GetAllByLogin(login);
+            return users.ToList(); ;
         }
 
         public void AddUser(User user)

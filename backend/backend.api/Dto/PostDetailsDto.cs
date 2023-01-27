@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Backend.Api.Dto
 {
-    public class PostDto
+    public class PostDetailsDto
     {
         public int IdPost { get; set; }
         public string Text { get; set; }
@@ -12,6 +12,7 @@ namespace Backend.Api.Dto
         public int NumberOfLikes { get; set; }
         public int NumberOfComments { get; set; }
         public List<PostPhotoDto> PostPhotos { get; set; }
-        public UserNameDto User { get; set; }
+        public List<TagDto> PostTags { get; set; }
+        public UserInfoDto User { get; set; }
     }
 }

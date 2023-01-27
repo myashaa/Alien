@@ -5,7 +5,10 @@ namespace Backend.Domain.PostM
     public interface IPostService
     {
         List<Post> GetPosts();
-        List<Post> SearchPosts(string category, string searchText);
+        Post GetPost(int id);
+        List<Post> GetPostsByUser(int id);
+        List<Post> GetPostsByTitle(string title);
+        List<Post> GetPostsByTag(string tag);
         void AddPost(Post Post);
         void DeletePost(int id);
     }

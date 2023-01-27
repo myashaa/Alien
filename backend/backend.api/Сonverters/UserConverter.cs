@@ -6,22 +6,8 @@ namespace Backend.Api.Сonverters
 {
     public class UserConverter : IUserConverter
     {
-        private IPostConverter _postConverter;
-        public UserConverter(IPostConverter postConverter)
-        {
-            _postConverter = postConverter;
-        }
-
         public UserDto ConvertToUserDto(User user)
         {
-            //List<PostDto> posts = new List<PostDto>();
-
-            //try
-            //{
-            //    posts = user.Posts.ConvertAll(p => _postConverter.ConvertToPostDto(p));
-            //}
-            //catch { }
-
             return new UserDto
             {
                 IdUser = user.IdUser,
@@ -31,8 +17,27 @@ namespace Backend.Api.Сonverters
                 UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
                 Gender = user.Gender,
                 NumberOfSubscribers = user.NumberOfSubscribers,
-                NumberOfPosts = user.NumberOfPosts,
-                //Posts = posts
+                NumberOfPosts = user.NumberOfPosts
+            };
+        }
+        public UserNameDto ConvertToUserNameDto(User user)
+        {
+            return new UserNameDto
+            {
+                IdUser = user.IdUser,
+                Login = user.Login,
+                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto)
+            };
+        }
+        public UserInfoDto ConvertToUserInfoDto(User user)
+        {
+            return new UserInfoDto
+            {
+                IdUser = user.IdUser,
+                Login = user.Login,
+                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
+                NumberOfSubscribers = user.NumberOfSubscribers,
+                NumberOfPosts = user.NumberOfPosts
             };
         }
         public User ConvertToUser(UserDto userDto)
@@ -46,8 +51,27 @@ namespace Backend.Api.Сonverters
                 UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
                 Gender = userDto.Gender,
                 NumberOfSubscribers = userDto.NumberOfSubscribers,
-                NumberOfPosts = userDto.NumberOfPosts,
-                //Posts = userDto.Posts.ConvertAll(p => _postConverter.ConvertToPost(p))
+                NumberOfPosts = userDto.NumberOfPosts
+            };
+        }
+        public User ConvertToUser(UserNameDto userDto)
+        {
+            return new User
+            {
+                IdUser = userDto.IdUser,
+                Login = userDto.Login,
+                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto)
+            };
+        }
+        public User ConvertToUser(UserInfoDto userDto)
+        {
+            return new User
+            {
+                IdUser = userDto.IdUser,
+                Login = userDto.Login,
+                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
+                NumberOfSubscribers = userDto.NumberOfSubscribers,
+                NumberOfPosts = userDto.NumberOfPosts
             };
         }
 

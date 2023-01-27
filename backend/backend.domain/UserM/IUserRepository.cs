@@ -6,8 +6,8 @@ namespace Backend.Domain.UserM
     {
         IEnumerable<User> GetAll();
         User GetById(int id);
-        IEnumerable<User> GetByLogin(string login);
         User GetByMailAndPassword(string mail, string password);
+        IEnumerable<User> GetAllByLogin(string login);
         void AddNew(User user);
         void DeleteCurrent(int id);
         void UpdateCurrent(User user);

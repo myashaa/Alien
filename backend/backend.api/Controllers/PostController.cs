@@ -23,19 +23,48 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        //тестовы метод GetAllPosts. удалить потом и все что в нем используются
         [HttpGet]
         [Route("")]
         public IActionResult GetAllPosts()
         {
-            List<PostDto> posts = _postService.GetPosts().ConvertAll(p => _postConverter.ConvertToPostDto(p)); ;
+            List<PostDto> posts = _postService.GetPosts().ConvertAll(p => _postConverter.ConvertToPostDto(p));
             return Ok(posts);
         }
 
         [HttpGet]
-        [Route("{category}/{searchText}")]
-        public IActionResult SearchAllPosts(string category, string searchText)
+        [Route("{id:int}")]
+        public IActionResult GetPostById(int id)
         {
-            List<PostDto> posts = _postService.SearchPosts(category, searchText).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            Post post = _postService.GetPost(id);
+            if (post == null)
+                return NotFound();
+
+            PostDetailsDto postDto = _postConverter.ConvertToPostDetailsDto(post);
+            return Ok(postDto);
+        }
+
+        [HttpGet]
+        [Route("user/{id:int}")]
+        public IActionResult GetPostsByIdUser(int id)
+        {
+            List<PostDto> posts = _postService.GetPostsByUser(id).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("title/{title}")]
+        public IActionResult GetPostsByTitle(string title)
+        {
+            List<PostDto> posts = _postService.GetPostsByTitle(title).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("tag/{tag}")]
+        public IActionResult GetPostsByTag(string tag)
+        {
+            List<PostDto> posts = _postService.GetPostsByTag(tag).ConvertAll(p => _postConverter.ConvertToPostDto(p));
             return Ok(posts);
         }
 
