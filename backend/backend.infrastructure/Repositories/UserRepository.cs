@@ -35,6 +35,13 @@ namespace Backend.Infrastructure.Repositories
                 .ToList();
         }
 
+        public User GetByMailAndPassword(string mail, string password)
+        {
+            return Entities
+                .Include(u => u.UserPhoto)
+                .FirstOrDefault(u => u.Mail == mail && u.Password == password);
+        }
+
         public void AddNew(User user)
         {
             Add(user);

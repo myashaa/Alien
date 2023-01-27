@@ -12,6 +12,7 @@ import { Header } from '../../components/Header/Header';
 import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
 import { BackArrow } from "../../components/BackArrow/BackArrow";
+import { ProfileConstructor } from "../../components/Profile/ProfileConstructor";
 
 export const AnaliticPage = () => {
 
@@ -131,7 +132,7 @@ export const AnaliticPage = () => {
   return (
       <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
         <Header />
-        <Profile />
+        <ProfileConstructor idUser={String(3)}/>
       
         <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
@@ -247,8 +248,7 @@ export const AnaliticPage = () => {
         {postPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                <Post />
-                <Post />
+                {/*<Post />*/}
               </div>  
             </> 
         ) : (null)} 

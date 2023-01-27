@@ -16,7 +16,7 @@ export function Message() {
             Лариса Роговая
           </a>
           <time className={styles.messagesTime}>
-            1 ч назад
+            11.01.2023 17.00
           </time>
         </div>
       </div>

@@ -1,25 +1,34 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./Subscribers.module.css";
 import baseStyles from "../../index.module.css";
 import UserPhoto from "../../img/userpic-medium.jpg";
-import {useState } from 'react';
 
-<div className={`${styles.profileAvatar} ${styles.userAvatar}`}>
-<img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
-</div>
+interface SubscribersProps {
+    login: string,
+    numberOfPosts: number,
+    numberOfSubscribers: number,
+}
 
-export const Subscribers = () => {  
-    
-  const [subPanelVisible, setsubPanelVisible] = useState(true);
-  const handleToggleSubPanel = () => {
+export const Subscribers = (props: SubscribersProps) => { 
+    let subVis = true;
+    let unsubVis = false;
+    if(props.login == "diana")
+    {
+        subVis = false;
+        unsubVis = true;
+    }
+
+    const [subPanelVisible, setsubPanelVisible] = useState(subVis);
+    const handleToggleSubPanel = () => {
         setunsubPanelVisible(false);
         setsubPanelVisible(true);
     };
-    const [unsubPanelVisible, setunsubPanelVisible] = useState(false);
+    const [unsubPanelVisible, setunsubPanelVisible] = useState(unsubVis);
     const handleToggleUnsubPanel = () => {
         setunsubPanelVisible(true);
         setsubPanelVisible(false);
     };
+
   return (
     <>
     <div className={`${styles.postMiniUserInfo} ${styles.userInfo}`}>
@@ -30,18 +39,17 @@ export const Subscribers = () => {
         </div>
         <div className={`${styles.postMiniNameWrapper}`}>
             <a className={`${styles.postMiniName} ${styles.userName}`} href="#">
-                <span>Котик Воторой</span>
+                <span>{props.login}</span>
             </a>
-            <time className={`${styles.postMiniTime} ${styles.userAdditional}`}>1 год на сайте</time>
         </div>
     </div>
         <div className={`${styles.postMiniRating} ${styles.userRating}`}>
             <p className={`${styles.postMiniRatingItem} ${styles.userRatingItem} ${styles.userRatingItemPublications}`}>
-              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>556</span>
+              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>{props.numberOfPosts}</span>
               <span className={`${styles.postMiniRatingText} ${styles.userRatingText}`}>публикаций</span>
             </p>
             <p className={`${styles.postMiniRatingItem} ${styles.userRatingItem} ${styles.userRatingItemPublications}`}>
-              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>556</span>
+              <span className={`${styles.postMiniRatingAmount} ${styles.userRatingAmount}`}>{props.numberOfSubscribers}</span>
               <span className={`${styles.postMiniRatingText} ${styles.userRatingText}`}>подписчиков</span>
             </p>
         </div>
@@ -65,7 +73,7 @@ export const Subscribers = () => {
                 </div>
             </> 
         ) : (null)}
-    
+
     </>
 
   );

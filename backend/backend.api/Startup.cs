@@ -10,6 +10,7 @@ using Backend.Domain.UserM;
 using Backend.Domain.PostM;
 using Backend.Infrastructure.Context;
 using Backend.Infrastructure.Repositories;
+using Backend.Api.Security;
 
 namespace backend.api
 {
@@ -42,6 +43,9 @@ namespace backend.api
             );
             services.AddScoped<IUserConverter, UserConverter>();
             services.AddScoped<IPostConverter, PostConverter>();
+
+            var authOptionsConfiguration = Configuration.GetSection("Auth");
+            services.Configure<AuthOptions>(authOptionsConfiguration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

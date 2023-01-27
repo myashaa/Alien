@@ -11,6 +11,7 @@ namespace backend.api.Controllers
     [EnableCors("TheCodePolicy")]
     [Route("api/[controller]")]
     [ApiController]
+
     public class UserController : ControllerBase
     {
         private IUserService _userService;
@@ -28,7 +29,7 @@ namespace backend.api.Controllers
         [Route("")]
         public IActionResult GetAllUsers()
         {
-            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u)); ;
+            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u));
             return Ok(users);
         }
 
@@ -80,5 +81,6 @@ namespace backend.api.Controllers
             _unitOfWork.Commit();
             return Ok();
         }
+
     }
 }

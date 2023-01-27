@@ -47,6 +47,32 @@ export function RegistrationForm() {
             </div>
             <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
               <label className={`${styles.registrationLabel} ${baseStyles.formLabel}`}>
+              Ваш пол <span className={baseStyles.formInputRequired}>*</span>
+              </label>
+              <div className={baseStyles.formInputSection}>
+                <div>
+                  <input className={styles.registrationInputRadio} type="radio" id="alienChoice" name="contact" value="alien"/>
+                  <label htmlFor = "alienChoice" className={`${styles.registrationLableRadio}`}>Инопланетянин</label>
+
+                  <input className={styles.registrationInputRadio} type="radio" id="mChoice" name="contact" value="men"/>
+                  <label htmlFor = "mChoice" className={`${styles.registrationLableRadio}`}>Сэр</label>
+
+                  <input className={styles.registrationInputRadio} type="radio" id="wChoice" name="contact" value="women"/>
+                  <label htmlFor = "wChoice" className={`${styles.registrationLableRadio}`}>Мэм</label>
+                </div>  
+                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
+                <div className={baseStyles.formErrorText}>
+                  <h3 className={baseStyles.formErrorTitle}>
+                    Заголовок сообщения
+                  </h3>
+                  <p className={baseStyles.formErrorDesc}>
+                    Текст сообщения об ошибке, подробно объясняющий, что не так.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
+              <label className={`${styles.registrationLabel} ${baseStyles.formLabel}`}>
                 Пароль<span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
@@ -99,12 +125,6 @@ export function RegistrationForm() {
         </div>
         <div className={`${ styles.registrationInputFileContainer } ${ baseStyles.formInputContainer }`}>
           <div className={styles.registrationInputFileWrapper}>
-            <div className={`${ styles.registrationFileZone } ${ baseStyles.formFileZone }`}>
-              <input className={baseStyles.formInputFile} id="userpic-file" type="file" name="userpic-file" title=" " />
-              <div className={baseStyles.formFileZoneText}>
-                <span>Перетащите фото сюда</span>
-              </div>
-            </div>
             <button className={`${ baseStyles.formInputFileButton } ${ baseStyles.button }`} type="button">
               <span>Выбрать фото</span>
               <IconAttach className={baseStyles.formAttachIcon}width="10" height="20" />

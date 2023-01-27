@@ -1,9 +1,7 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styles from "./ProfilePage.module.css";
 import baseStyles from "../../index.module.css";
-import {useState } from 'react';
 import { NavLink } from "react-router-dom";
-
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
 import { Profile } from '../../components/Profile/Profile';
@@ -11,8 +9,14 @@ import { Post } from '../../components/Post/Post';
 import { Subscribers } from '../../components/Subscribers/Subscribers';
 import { LikesAlert } from '../../components/LikesAlert/LikesAlert';
 import { CommentsAlert } from '../../components/CommentsAlert/CommentsAlert';
+import {variables} from  "../../Variables";
+import axios from "axios";
+import {ProfileConstructor} from "../../components/Profile/ProfileConstructor";
 
 export const ProfilePage = () => {
+
+  const [users, setusers] = useState([]);
+
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
     const handleTogglePostPanel = () => {
         setPostPanelVisible(true);
@@ -54,10 +58,18 @@ export const ProfilePage = () => {
         setSubscribersPanelVisible(false);
     };
 
+    useEffect(() => {
+      axios.get(variables.USER_URL).then((response) => {
+        setusers((data) => {
+          return response.data;
+        });
+      });
+    }, []);
+
   return (
     <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
       <Header />
-      <Profile/>
+      <ProfileConstructor idUser={String(3)}/>
 
       <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
@@ -103,10 +115,7 @@ export const ProfilePage = () => {
         {PostPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+                {/*<Post />*/}
               </div> 
             </> 
         ) : (null)} 
@@ -143,10 +152,11 @@ export const ProfilePage = () => {
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
               <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
-                <ul className={`${ styles.profileSubscriptionsList}`}>
-                  <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                    <Subscribers/>
-                  </li>
+                <ul className={`${ styles.profileSubscriptionsList}`}> 
+                  {users.map((user) =>
+                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
+                    </div>)}
                 </ul>
               </section>
               </div>
@@ -156,17 +166,12 @@ export const ProfilePage = () => {
             <>
         <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
         <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
-          <ul className={`${ styles.profileSubscriptionsList}`}>
-            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-              <Subscribers/>
-            </li>
-            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-              <Subscribers/>
-            </li>
-            <li className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-              <Subscribers/>
-            </li>
-          </ul>
+            <ul className={`${ styles.profileSubscriptionsList}`}> 
+                {users.map((user) =>
+                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
+                </div>)}
+            </ul>
         </section>
         </div>
             </> 

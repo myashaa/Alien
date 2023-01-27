@@ -800,6 +800,11 @@ img {
   padding-left: 35px;
 }
 
+.DeleteButton
+{
+  margin-top: 10px;
+}
+
 .formInputFileButton:focus,
 .formInputFileButton:hover {
   color: rgba(46, 56, 77, .7);

@@ -163,3 +163,8 @@
   background-repeat: no-repeat;
   background-position: center 150px;
 }
+
+.ulPost
+{
+  list-style-type: none;
+}
