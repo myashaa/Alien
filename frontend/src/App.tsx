@@ -21,13 +21,11 @@ import { AnotherProfilePage } from './pages/AnotherProfilePage copy/AnotherProfi
 import { useSelector } from 'react-redux';
 import { IRootState } from './store';
 
-
-
 function App() {
   const isLoggedIn = useSelector(
-    //(state: IRootState) => true
     (state: IRootState) => !!state.auth.authData.accessToken
   );
+  console.log("ff- ", isLoggedIn);
   const router = createBrowserRouter([
     {
       path: "/",

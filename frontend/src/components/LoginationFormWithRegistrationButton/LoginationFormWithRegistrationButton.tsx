@@ -1,11 +1,12 @@
 import {FormEvent, useState} from "react";
 import styles from "./LoginationFormWithRegistrationButton.module.css";
 import baseStyles from "../../index.module.css";
-import { useAppDispatch } from "../../store";
+import { IRootState, store, useAppDispatch } from "../../store";
 import { loginUser } from "../../store/auth/actionCreators";
 
 import IconInputUser from "../../img/icon-input-user.svg";
 import IconInputPassword from "../../img/icon-input-password.svg";
+import { useSelector } from "react-redux";
 
 export function LoginationFormWithRegistrationButton() {
   const dispatch = useAppDispatch();
@@ -15,8 +16,15 @@ export function LoginationFormWithRegistrationButton() {
   const handelSubmit = (e:FormEvent) => {
     e.preventDefault();
 
-    dispatch(loginUser({mail, password}))
+    store.dispatch(loginUser({mail, password}));
+    console.log("rr- ", store.getState());
+
   }
+
+  const isLoggedIn = useSelector(
+    (state: IRootState) => !!state.auth.authData.accessToken
+  );
+  console.log("rr- ", store.getState());
 
   return (
     <section className={styles.authorization}>
