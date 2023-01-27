@@ -8,11 +8,6 @@ import { useSelector } from "react-redux";
 import { IRootState } from "../../store";
 
 export const MainPage = () => {
- 
-  const isLoginated = useSelector(
-    (state: IRootState) => !!state.auth.authData.accessToken
-  );
-
   return (
     <div className={`${baseStyles.page} ${styles.pageMain}`}>
       <div className={`${baseStyles.pageMainWrapper} ${baseStyles.container}`}>
@@ -26,7 +21,7 @@ export const MainPage = () => {
             <li className={styles.introAdvantage}>Мы ждём вас в <span className={styles.introAdvantageText}>Alien</span></li>
           </ul>
         </section>
-        {isLoginated ? <div>Вы успешно вошли!</div> : <LoginationFormWithRegistrationButton />}
+        <LoginationFormWithRegistrationButton />
       </div>
       <Footer />
     </div>
