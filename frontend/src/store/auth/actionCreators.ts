@@ -2,10 +2,11 @@ import { Dispatch } from "@reduxjs/toolkit"
 import api from "../../api"
 import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
 import { loginStart, loginSucess, loginFailure, logoutSuccess,loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer"
-import { history } from '../../utils/history'
 import { store } from ".."
 import axios, { AxiosPromise } from "axios"
 import { isTokenExpired } from "../../utils/jwt"
+
+
 
 export const loginUser =
   (data: ILoginRequest) =>
@@ -38,7 +39,7 @@ export const logoutUser =
 
         dispatch(logoutSuccess())
 
-        history.push('/')
+        //history.push('/')
       } catch (e) {
           console.error(e)
       }

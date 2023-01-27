@@ -6,8 +6,13 @@ import { Footer } from "../../components/Footer/Footer";
 import { LoginationFormWithRegistrationButton } from '../../components/LoginationFormWithRegistrationButton/LoginationFormWithRegistrationButton';
 import { useSelector } from "react-redux";
 import { IRootState } from "../../store";
+import { Navigate } from "react-router-dom";
 
 export const MainPage = () => {
+  const isLoggedIn = useSelector(
+    (state: IRootState) => !!state.auth.authData.accessToken
+  );
+
   return (
     <div className={`${baseStyles.page} ${styles.pageMain}`}>
       <div className={`${baseStyles.pageMainWrapper} ${baseStyles.container}`}>
@@ -21,7 +26,8 @@ export const MainPage = () => {
             <li className={styles.introAdvantage}>Мы ждём вас в <span className={styles.introAdvantageText}>Alien</span></li>
           </ul>
         </section>
-        <LoginationFormWithRegistrationButton />
+        {isLoggedIn ? <Navigate to="/profile" /> : <LoginationFormWithRegistrationButton />}
+        
       </div>
       <Footer />
     </div>

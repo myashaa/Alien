@@ -18,68 +18,64 @@ import { SearchPage } from './pages/SearchPage/SearchPage';
 import { AnaliticPage } from './pages/AnaliticPage/AnaliticPage';
 import { EditingProfilePage } from './pages/EditingProfilePage/EditingProfilePage';
 import { AnotherProfilePage } from './pages/AnotherProfilePage copy/AnotherProfilePage';
-import { useSelector } from 'react-redux';
-import { IRootState } from './store';
+import { history } from './utils/history';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/adding-post",
+    element: <AddingPostPage />,
+  },
+  {
+    path: "/feed",
+    element: <FeedPage />,
+  },
+  {
+    path: "/messages",
+    element: <MessagesPage />,
+  },
+  {
+    path: "/my-feed",
+    element: <MyFeedPage />,
+  },
+  {
+    path: "/post",
+    element: <PostPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/profile/:profileId",
+    element: <AnotherProfilePage />,
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage />,
+  },
+  {
+    path: "/search",
+    element: <SearchPage />,
+  },
+  {
+    path: "/analitic",
+    element: <AnaliticPage />,
+  },
+  {
+    path: "/editing-profile",
+    element: <EditingProfilePage />,
+  },
+]);
 
 function App() {
-  const isLoggedIn = useSelector(
-    (state: IRootState) => !!state.auth.authData.accessToken
-  );
-  console.log("ff- ", isLoggedIn);
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: isLoggedIn ? <ProfilePage /> : <MainPage />,
-    },
-    {
-      path: "/login",
-      element: <LoginPage />,
-    },
-    {
-      path: "/adding-post",
-      element: <AddingPostPage />,
-    },
-    {
-      path: "/feed",
-      element: <FeedPage />,
-    },
-    {
-      path: "/messages",
-      element: <MessagesPage />,
-    },
-    {
-      path: "/my-feed",
-      element: <MyFeedPage />,
-    },
-    {
-      path: "/post",
-      element: <PostPage />,
-    },
-    {
-      path: "/profile",
-      element: <ProfilePage />,
-    },
-    {
-      path: "/profile/:profileId",
-      element: <AnotherProfilePage />,
-    },
-    {
-      path: "/registration",
-      element: <RegistrationPage />,
-    },
-    {
-      path: "/search",
-      element: <SearchPage />,
-    },
-    {
-      path: "/analitic",
-      element: <AnaliticPage />,
-    },
-    {
-      path: "/editing-profile",
-      element: <EditingProfilePage />,
-    },
-  ]);
   return (
       <RouterProvider router={router} />
   );

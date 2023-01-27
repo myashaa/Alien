@@ -17,7 +17,6 @@ export function LoginationFormWithRegistrationButton() {
     e.preventDefault();
 
     store.dispatch(loginUser({mail, password}));
-    console.log("rr- ", store.getState());
 
   }
 
