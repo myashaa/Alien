@@ -4,6 +4,8 @@ import {variables} from  "../../Variables";
 import axios, { AxiosResponse } from "axios";
 import {Profile} from "../Profile/Profile";
 import { HeaderConstructor } from "./HeaderConstructor";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../store";
 
 export const Header = () => { 
     const [post, setPost] = React.useState(null);
@@ -14,20 +16,21 @@ export const Header = () => {
       });
     }, []);
 
-    const loginatedUser = true;
-    const notLoginatedUser = false;
+    const isLoggedIn = useSelector(
+      (state: IRootState) => !!state.auth.authData.accessToken
+    );
   
     if (!post)
     {
       return (
         <>  
-          <HeaderConstructor login = {""} isLoginatedUser = {loginatedUser} />
+          <HeaderConstructor login = {""} isLoginatedUser = {isLoggedIn} />
         </>
     )
     }
     return (
         <>  
-          <HeaderConstructor login = {post["login"]}  isLoginatedUser = {loginatedUser}/>
+          <HeaderConstructor login = {post["login"]}  isLoginatedUser = {isLoggedIn}/>
         </>
     )
 

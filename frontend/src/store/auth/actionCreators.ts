@@ -2,10 +2,11 @@ import { Dispatch } from "@reduxjs/toolkit"
 import api from "../../api"
 import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
 import { loginStart, loginSucess, loginFailure, logoutSuccess,loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer"
-import { history } from '../../utils/history'
 import { store } from ".."
-import { AxiosPromise } from "axios"
+import axios, { AxiosPromise } from "axios"
 import { isTokenExpired } from "../../utils/jwt"
+
+
 
 export const loginUser =
   (data: ILoginRequest) =>
@@ -13,10 +14,15 @@ export const loginUser =
       try {
         dispatch(loginStart())
 
-        const res = await api.auth.login(data)
+        //const res = await api.auth.login(data)
 
-        dispatch(loginSucess(res.data.accessToken))
-        dispatch(getProfile())
+        const res = await axios.post("https://localhost:44390/api/auth/login", data);
+
+        console.log(res.data);
+
+
+        store.dispatch(loginSucess(res.data))
+        //dispatch(getProfile())
         
       } catch (e: any) {
         console.error(e)

@@ -29,13 +29,7 @@ interface PostProps {
 }
 
 export function Post(props: PostProps) {
-  const [post, setPost] = React.useState(null);
-
-  React.useEffect(() => {
-    axios.get(variables.DELETE_POST_URL ).then((response) => {
-      setPost(response.data);
-    });
-  }, []);
+  const [post, setPost] = React.useState(true);
 
   function deletePost(id: number) {
     const str = String(id);
@@ -43,58 +37,62 @@ export function Post(props: PostProps) {
       .delete(variables.DELETE_POST_URL + str)
       .then(() => {
         alert("Post deleted!");
-        setPost(null)
       });
+      setPost(false)
   }
 
   return (
+    <>
+    {post ?
     <article className={ styles.post }>
-      <header className={styles.postHeader}>
-        <h2><a href="#">{props.title}</a></h2>
-      </header>
-      <div className={styles.postMain}>
-          {props.imgs.map((photo) => 
-            <PhotoPost key = {photo.idPhoto} url = {photo.url} />
-          )}
-        <p>
-          {props.text}
-        </p>
-        <div className={styles.postTextMoreLinkWrapper}>
-            <a className={styles.postTextMoreLink} href="/post">Подробнее</a>
+    <header className={styles.postHeader}>
+      <h2><a href="#">{props.title}</a></h2>
+    </header>
+    <div className={styles.postMain}>
+        {props.imgs.map((photo) => 
+          <PhotoPost key = {photo.idPhoto} url = {photo.url} />
+        )}
+      <p>
+        {props.text}
+      </p>
+      <div className={styles.postTextMoreLinkWrapper}>
+          <a className={styles.postTextMoreLink} href="/post">Подробнее</a>
+      </div>
+    </div>
+    <footer className={styles.postFooter}>
+      <div className={styles.postAuthor}>
+        <a className={styles.postAuthorLink} href="#" title="Автор">
+          <div className={styles.postAvatarWrapper}>
+            <img className={styles.postAuthorAvatar} src={UserPhoto}
+              alt="Аватар пользователя" />
+          </div>
+          <div className={styles.postInfo}>
+            <b className={ styles.postAuthorName}>{props.login}</b>
+          </div>
+        </a>
+      </div>
+      <div className={styles.postIndicators}>
+        <div className={styles.postButtons}>
+          <a className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} href="#" title="Лайк">
+            <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />
+            {/* <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/> */}
+            <span>{props.numberOfLikes}</span>
+            <span className={baseStyles.visuallyHidden}>количество лайков</span>
+          </a>
+          <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
+            <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
+            <span>{props.numberOfLikes}</span>
+            <span className={baseStyles.visuallyHidden}>количество комментариев</span>
+          </a>
+          <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
+            <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
+            <span className={baseStyles.visuallyHidden}>удаление поста </span>
+          </button>
         </div>
       </div>
-      <footer className={styles.postFooter}>
-        <div className={styles.postAuthor}>
-          <a className={styles.postAuthorLink} href="#" title="Автор">
-            <div className={styles.postAvatarWrapper}>
-              <img className={styles.postAuthorAvatar} src={UserPhoto}
-                alt="Аватар пользователя" />
-            </div>
-            <div className={styles.postInfo}>
-              <b className={ styles.postAuthorName}>{props.login}</b>
-            </div>
-          </a>
-        </div>
-        <div className={styles.postIndicators}>
-          <div className={styles.postButtons}>
-            <a className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} href="#" title="Лайк">
-              <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />
-              {/* <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/> */}
-              <span>{props.numberOfLikes}</span>
-              <span className={baseStyles.visuallyHidden}>количество лайков</span>
-            </a>
-            <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
-              <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
-              <span>{props.numberOfLikes}</span>
-              <span className={baseStyles.visuallyHidden}>количество комментариев</span>
-            </a>
-            <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
-              <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
-              <span className={baseStyles.visuallyHidden}>удаление поста </span>
-            </button>
-          </div>
-        </div>
-      </footer>
-    </article>
+    </footer>
+  </article>
+     : <></>}
+    </>
   );
 }

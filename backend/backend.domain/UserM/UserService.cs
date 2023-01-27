@@ -24,9 +24,15 @@ namespace Backend.Domain.UserM
             return user;
         }
 
-        public User GetUser(string login)
+        public List<User> GetUser(string login)
         {
-            var user = _userRepository.GetByLogin(login);
+            var users = _userRepository.GetByLogin(login);
+            return users.ToList();
+        }
+
+        public User GetUser(string mail, string password)
+        {
+            var user = _userRepository.GetByMailAndPassword(mail, password);
             return user;
         }
 
@@ -44,5 +50,6 @@ namespace Backend.Domain.UserM
         {
             _userRepository.UpdateCurrent(user);
         }
+
     }
 }

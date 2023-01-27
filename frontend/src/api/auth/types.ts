@@ -1,7 +1,7 @@
 // login
 
 export interface ILoginRequest {
-    login: string
+    mail: string
     password: string
   }
   
