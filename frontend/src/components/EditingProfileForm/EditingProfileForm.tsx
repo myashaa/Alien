@@ -16,7 +16,7 @@ export function EditingProfileForm() {
                 Электронная почта <span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-email" type="email" name="email" placeholder="Укажите эл.почту" />
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-email" type="email" name="email" placeholder="Укажите эл.почту" disabled />
                 <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
                 <div className={baseStyles.formErrorText}>
                   <h3 className={baseStyles.formErrorTitle}>
@@ -33,7 +33,7 @@ export function EditingProfileForm() {
                 Логин <span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-login" type="text" name="login" placeholder="Укажите логин" disabled />
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-login" type="text" name="login" placeholder="Укажите логин" />
                 <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
                 <div className={baseStyles.formErrorText}>
                   <h3 className={baseStyles.formErrorTitle}>

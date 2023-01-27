@@ -18,16 +18,10 @@ export const SearchPage = () => {
               <div className={styles.feedSortingList}>
                 <select className={`${ styles.sortingItem } ${ styles.sortingItemFeed }`}>
                   <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
-                    <span>Все</span>
-                  </option>
-                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
                     <span>Пользователи</span>
                   </option>
                   <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
                     <span>Заголовок</span>
-                  </option>
-                  <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
-                    <span>Контент</span>
                   </option>
                   <option className={`${ styles.sortingLink } ${ styles.sortingLinkActive }`}>
                     <span>Тэг</span>
