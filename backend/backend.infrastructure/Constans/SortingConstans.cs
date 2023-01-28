@@ -6,4 +6,4 @@
         public const string like = "like";
         public const string comment = "comment";
     }
-}
+} 
