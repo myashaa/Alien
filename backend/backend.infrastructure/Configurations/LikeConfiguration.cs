@@ -12,11 +12,13 @@ namespace Backend.Infrastructure.Configurations
             builder
                 .HasOne(l => l.User)
                 .WithMany(u => u.Likes)
-                .HasForeignKey(l => l.IdUser);
+                .HasForeignKey(l => l.IdUser)
+                .OnDelete(DeleteBehavior.NoAction);
             builder
                 .HasOne(l => l.Post)
                 .WithMany(p => p.Likes)
-                .HasForeignKey(l => l.IdPost);
+                .HasForeignKey(l => l.IdPost)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

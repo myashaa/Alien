@@ -12,7 +12,8 @@ namespace Backend.Infrastructure.Configurations
             builder
                 .HasOne(p => p.User)
                 .WithMany(u => u.Posts)
-                .HasForeignKey(p => p.IdUser);
+                .HasForeignKey(p => p.IdUser)
+                .OnDelete(DeleteBehavior.Cascade);
             builder
                 .HasMany(p => p.PostTags)
                 .WithMany(t => t.PostTags)

@@ -16,28 +16,28 @@ namespace Backend.Infrastructure.Repositories
         public IEnumerable<User> GetAll()
         {
             return Entities
-                .Include(u => u.UserPhoto)
+                .Include(u => u.UserPhotos)
                 .ToList();
         }
 
         public User GetById(int id)
         {
             return Entities
-                .Include(u => u.UserPhoto)
+                .Include(u => u.UserPhotos)
                 .FirstOrDefault(u => u.IdUser == id);
         }
 
         public User GetByMailAndPassword(string mail, string password)
         {
             return Entities
-                .Include(u => u.UserPhoto)
+                .Include(u => u.UserPhotos)
                 .FirstOrDefault(u => u.Mail == mail && u.Password == password);
         }
 
         public IEnumerable<User> GetAllByLogin(string login)
         {
             return Entities
-                .Include(u => u.UserPhoto)
+                .Include(u => u.UserPhotos)
                 .Where(u => u.Login.Contains(login))
                 .ToList();
         }
@@ -58,7 +58,7 @@ namespace Backend.Infrastructure.Repositories
             var recipeFromDatabase = GetById(user.IdUser);
             recipeFromDatabase.Login = user.Login;
             recipeFromDatabase.Password = user.Password;
-            recipeFromDatabase.UserPhoto = user.UserPhoto;
+            recipeFromDatabase.UserPhotos = user.UserPhotos;
         }
     }
 }

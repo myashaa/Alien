@@ -14,7 +14,7 @@ namespace Backend.Api.Сonverters
                 Login = user.Login,
                 Mail = user.Mail,
                 Password = user.Password,
-                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
+                UserPhotos = user.UserPhotos.ConvertAll(p => ConvertToUserPhotoDto(p)),
                 Gender = user.Gender,
                 NumberOfSubscribers = user.NumberOfSubscribers,
                 NumberOfPosts = user.NumberOfPosts
@@ -26,7 +26,7 @@ namespace Backend.Api.Сonverters
             {
                 IdUser = user.IdUser,
                 Login = user.Login,
-                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto)
+                UserPhotos = user.UserPhotos.ConvertAll(p => ConvertToUserPhotoDto(p))
             };
         }
         public UserInfoDto ConvertToUserInfoDto(User user)
@@ -35,7 +35,7 @@ namespace Backend.Api.Сonverters
             {
                 IdUser = user.IdUser,
                 Login = user.Login,
-                UserPhoto = ConvertToUserPhotoDto(user.UserPhoto),
+                UserPhotos = user.UserPhotos.ConvertAll(ConvertToUserPhotoDto),
                 NumberOfSubscribers = user.NumberOfSubscribers,
                 NumberOfPosts = user.NumberOfPosts
             };
@@ -48,7 +48,7 @@ namespace Backend.Api.Сonverters
                 Login = userDto.Login,
                 Mail = userDto.Mail,
                 Password = userDto.Password,
-                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
+                UserPhotos = userDto.UserPhotos.ConvertAll(ConvertToUserPhoto),
                 Gender = userDto.Gender,
                 NumberOfSubscribers = userDto.NumberOfSubscribers,
                 NumberOfPosts = userDto.NumberOfPosts
@@ -60,7 +60,7 @@ namespace Backend.Api.Сonverters
             {
                 IdUser = userDto.IdUser,
                 Login = userDto.Login,
-                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto)
+                UserPhotos = userDto.UserPhotos.ConvertAll(ConvertToUserPhoto)
             };
         }
         public User ConvertToUser(UserInfoDto userDto)
@@ -69,7 +69,7 @@ namespace Backend.Api.Сonverters
             {
                 IdUser = userDto.IdUser,
                 Login = userDto.Login,
-                UserPhoto = ConvertToUserPhoto(userDto.UserPhoto),
+                UserPhotos = userDto.UserPhotos.ConvertAll(ConvertToUserPhoto),
                 NumberOfSubscribers = userDto.NumberOfSubscribers,
                 NumberOfPosts = userDto.NumberOfPosts
             };
