@@ -236,3 +236,75 @@
   background-repeat: no-repeat;
   background-position: center 150px;
 }
+
+.analiticPosts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  min-height: 50vh;
+  background-image: url("../../img/no-feed-bg.svg");
+  border-radius: 50%;
+  background-size: 102px 115px;
+  background-repeat: no-repeat;
+  background-position: center 150px;
+}
+
+.post {
+  border: 1px solid #dee5fc;
+  border-radius: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+  box-shadow: 0 15px 40px 0 rgba(46, 91, 255, .09);
+  width: 1160px;
+  margin-right: 40px;
+  margin-bottom: 41px;
+  padding: 0 20px;
+}
+
+.postMini {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.postMini:last-child {
+  margin-bottom: 0;
+}
+
+
+.tabsContent:not(.tabsContentActive) {
+  display: none;
+}
+
+.profileSubscriptions .postMini,
+.searchResultsWrapper .postMini {
+  margin-bottom: 15px;
+}
+
+.profileSubscriptions .postMini:last-child,
+.searchResultsWrapper .postMini:last-child {
+  margin-bottom: 0;
+}
+
+.tabsContent:not(.tabsContentActive) {
+    display: none;
+}
+
+.profileSubscriptionsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
