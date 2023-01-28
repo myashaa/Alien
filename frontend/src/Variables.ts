@@ -4,6 +4,8 @@ export const variables={
     MY_USER_URL:"https://localhost:44390/api/user/3",
     POST_URL:"https://localhost:44390/api/post/",
     DELETE_POST_URL:"https://localhost:44390/api/post/",
+    POST_TITLE_URL:"https://localhost:44390/api/post/title/",
+    POST_TAG_URL:"https://localhost:44390/api/post/tag/",
 }
 /*https://localhost:44390/api/user           - все пользователи
 

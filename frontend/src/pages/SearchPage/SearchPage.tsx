@@ -49,7 +49,7 @@ export const SearchPage = () => {
       }
       if(titlePanelVisible)
       {
-          axios.get(variables.POST_URL + titleStr).then((response) => {
+          axios.get(variables.POST_TITLE_URL + titleStr).then((response) => {
             setTitle((data) => {
               return response.data;
             });
@@ -57,7 +57,7 @@ export const SearchPage = () => {
       }
       if(tagPanelVisible)
       {
-          axios.get(variables.POST_URL + tagStr).then((response) => {
+          axios.get(variables.POST_TAG_URL + tagStr).then((response) => {
             setTag((data) => {
               return response.data;
             });
@@ -138,14 +138,24 @@ export const SearchPage = () => {
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
           {titlePanelVisible ? (
             <>
-                <p>Title</p>
-                {/*<Post />*/}
+              <p>Title</p>
+              <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
+                {title.map((post) => 
+                  <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                  imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
+                )}
+              </div>  
             </> 
           ) : (null)}
           {tagPanelVisible ? (
             <>
             <p>Tag</p>
-                {/*<Post />*/}
+            <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
+              {tag.map((post) => 
+                <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
+              )}
+              </div>  
             </> 
           ) : (null)}
           {peoplePanelVisible ? (
