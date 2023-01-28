@@ -6,7 +6,7 @@ namespace Backend.Api.Dto
     {
         public int IdUser { get; set; }
         public string Login { get; set; }
-        public UserPhotoDto UserPhoto { get; set; }
+        public List<UserPhotoDto> UserPhotos { get; set; }
         public int NumberOfSubscribers { get; set; }
         public int NumberOfPosts { get; set; }
     }

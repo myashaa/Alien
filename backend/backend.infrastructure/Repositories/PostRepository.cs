@@ -17,7 +17,7 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.User).ThenInclude(u => u.UserPhoto)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .ToList();
         }
 
@@ -25,7 +25,7 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.User).ThenInclude(u => u.UserPhoto)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Include(p => p.PostTags)
                 .FirstOrDefault(p => p.IdPost == id);
         }
@@ -34,7 +34,7 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.User).ThenInclude(u => u.UserPhoto)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.IdUser == id)
                 .ToList();
         }
@@ -43,7 +43,7 @@ namespace Backend.Infrastructure.Repositories
         {
             return Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.User).ThenInclude(u => u.UserPhoto)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.Title.Contains(title))
                 .ToList();
         }
@@ -52,7 +52,7 @@ namespace Backend.Infrastructure.Repositories
         {
             IEnumerable<Post> entities = Entities
                 .Include(p => p.PostPhotos)
-                .Include(p => p.User).ThenInclude(u => u.UserPhoto)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Include(p => p.PostTags
                     .Where(t => t.Name == tag));
             return entities

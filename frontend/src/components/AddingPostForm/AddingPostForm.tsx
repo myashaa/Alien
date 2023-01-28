@@ -3,6 +3,8 @@ import styles from "./AddingPostForm.module.css";
 import baseStyles from "../../index.module.css";
 import {variables} from  "../../Variables";
 import axios from "axios";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 
 import IconAttach from "../../img/icon-attach.svg";
 
@@ -46,6 +48,14 @@ export function AddingPostForm() {
     setUrl(str);
   } 
 
+  const handleClick = () => {
+    console.info('You clicked the Chip.');
+  };
+
+  const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  };
+
   return (
     <section className={baseStyles.container}>
       <h2 className={baseStyles.visuallyHidden}>Форма добавления поста</h2>
@@ -73,7 +83,20 @@ export function AddingPostForm() {
             <div className={`${ styles.addingPostInputWrapper } ${ baseStyles.formInputWrapper }`}>
               <label className={`${styles.addingPostLabel} ${baseStyles.formLabel}`}>Теги</label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.addingPostInput} ${baseStyles.formInput}`} id="tags" type="text" name="heading" placeholder="Введите теги" />
+                <div className={`${styles.addingPostTagDiv} ${baseStyles.formInput}`}>
+                  <Chip
+                    label="Clickable Deletable"
+                    onClick={handleClick}
+                    onDelete={handleDelete}
+                  />
+                  <Chip
+                    label="Clickable Deletable"
+                    variant="outlined"
+                    onClick={handleClick}
+                    onDelete={handleDelete}
+                  />
+                </div>
+                {/* <input className={`${styles.addingPostInput} ${baseStyles.formInput}`} id="tags" type="text" name="heading" placeholder="Введите теги" /> */}
                 <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
                 <div className={baseStyles.formErrorText}>
                   <h3 className={baseStyles.formErrorTitle}>
