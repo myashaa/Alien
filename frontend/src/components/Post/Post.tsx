@@ -11,21 +11,27 @@ import IconDelete from "../../img/delete.svg";
 import {PhotoPost} from "../PhotoPost/PhotoPost";
 import axios from "axios";
 import {variables} from  "../../Variables";
+import { UserPhotoPost } from "../UserPhotoPost/UserPhotoPost";
 
 type PhotoType = {
     idPhoto: number,
     url: string
 }
 
-interface PostProps {
+type UserType = {
+  id: number,
   login: string,
+  userPhotos: Array<PhotoType>,
+}
+
+interface PostProps {
   text: string,
   title: string,
   imgs: Array<PhotoType>,
-  imgUser: string,
   numberOfLikes: number,
   numberOfComments: number,
   id: number,
+  user: UserType
 }
 
 export function Post(props: PostProps) {
@@ -62,12 +68,11 @@ export function Post(props: PostProps) {
     <footer className={styles.postFooter}>
       <div className={styles.postAuthor}>
         <a className={styles.postAuthorLink} href="#" title="Автор">
-          <div className={styles.postAvatarWrapper}>
-            <img className={styles.postAuthorAvatar} src={UserPhoto}
-              alt="Аватар пользователя" />
-          </div>
+           {props.user.userPhotos.map((photo) => 
+            <UserPhotoPost key = {photo.idPhoto} url = {photo.url} />
+           )}
           <div className={styles.postInfo}>
-            <b className={ styles.postAuthorName}>{props.login}</b>
+            <b className={ styles.postAuthorName}>{props.user.login}</b>
           </div>
         </a>
       </div>

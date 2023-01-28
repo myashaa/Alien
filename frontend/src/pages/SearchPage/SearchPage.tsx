@@ -141,8 +141,8 @@ export const SearchPage = () => {
               <p>Title</p>
               <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
                 {title.map((post) => 
-                  <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
-                  imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
+                  <Post key = {post["idPost"]}  numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                  imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
                 )}
               </div>  
             </> 
@@ -152,8 +152,8 @@ export const SearchPage = () => {
             <p>Tag</p>
             <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
               {tag.map((post) => 
-                <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
-                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
+                <Post key = {post["idPost"]}  numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
               )}
               </div>  
             </> 

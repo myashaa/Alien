@@ -65,8 +65,8 @@ export const FeedPage = () => {
         </div>
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
               {posts.map((post) => 
-                <Post key = {post["idPost"]} login = "none" numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
-                imgs = {post["postPhotos"]} imgUser = "none" text= {post["text"]} id = {post["idPost"]}/>
+                <Post key = {post["idPost"]} numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
               )}
         </div>  
       </div>
