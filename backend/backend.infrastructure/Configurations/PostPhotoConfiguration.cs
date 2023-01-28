@@ -12,8 +12,7 @@ namespace Backend.Infrastructure.Configurations
             builder
                 .HasOne(h => h.Post)
                 .WithMany(p => p.PostPhotos)
-                .HasForeignKey(h => h.IdPost)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(h => h.IdPost);
         }
     }
 }

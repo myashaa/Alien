@@ -104,7 +104,7 @@ export const PostPage = () => {
                 </div>
                 <div className={styles.postDetailsUserButtons}>
                   <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonMain}`} type="button">Подписаться</button>
-                  {/* <a className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} href="#">Сообщение</a> */}
+                  <a className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} href="#">Сообщение</a>
                 </div>
               </div>
             </div>

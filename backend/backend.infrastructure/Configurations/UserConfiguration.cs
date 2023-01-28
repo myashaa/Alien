@@ -9,6 +9,10 @@ namespace Backend.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable(nameof(User)).HasKey(t => t.IdUser);
+            builder
+                .HasOne(u => u.UserPhoto)
+                .WithMany(p => p.User)
+                .HasForeignKey(u => u.IdPhoto);
         }
     }
 }
