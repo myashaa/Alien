@@ -9,7 +9,7 @@ import IconInputPassword from "../../img/icon-input-password.svg";
 import { useSelector } from "react-redux";
 
 export function LoginationFormWithRegistrationButton() {
-  const dispatch = useAppDispatch();
+  
   const [mail, setmail] = useState("");
   const [password, setPassword] = useState("");
  
@@ -23,7 +23,6 @@ export function LoginationFormWithRegistrationButton() {
   const isLoggedIn = useSelector(
     (state: IRootState) => !!state.auth.authData.accessToken
   );
-  console.log("rr- ", store.getState());
 
   return (
     <section className={styles.authorization}>

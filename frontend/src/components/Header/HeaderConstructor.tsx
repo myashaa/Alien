@@ -26,12 +26,12 @@ export function HeaderConstructor(props: HeaderProps) {
         </div>
         <form className={styles.headerSearchForm} action="#" method="get">
           <div className={styles.headerSearch}>
-            <label className={baseStyles.visuallyHidden}>Поиск</label>
-            <input className={`${ styles.headerSearchInput } ${ baseStyles.formInput }`} type="search" />
-            <button className={`${styles.headerSearchButton} ${baseStyles.button}`} type="submit">
-              <IconSearch className={styles.headerSearchIcon} width="18" height="18" />
-              <span className={baseStyles.visuallyHidden}>Начать поиск</span>
-            </button>
+            <a className={`${styles.buttonSearchWidth} ${ styles.headerSearchInput } ${ baseStyles.formInput }`} type="submit" href="/search">
+              <div className={`${styles.headerSearchButton} ${baseStyles.button}`} >
+                <IconSearch className={styles.headerSearchIcon} width="18" height="18" />
+                <span className={baseStyles.visuallyHidden}>Начать поиск</span>
+              </div>
+            </a>
           </div>
         </form>
         <div className={styles.headerNavWrapper}>
