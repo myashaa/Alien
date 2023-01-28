@@ -4,7 +4,9 @@ namespace Backend.Domain.PostM
 {
     public interface IPostService
     {
-        List<Post> GetPosts();
+        List<Post> GetAllPosts(string sortingType);
+        List<Post> GetNewsPosts(string sortingType);
+        List<Post> GetTopPosts(string sortingType);
         Post GetPost(int id);
         List<Post> GetPostsByUser(int id);
         List<Post> GetPostsByTitle(string title);

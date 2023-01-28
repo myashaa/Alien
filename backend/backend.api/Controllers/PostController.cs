@@ -23,12 +23,27 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        //тестовы метод GetAllPosts. удалить потом и все что в нем используются
         [HttpGet]
-        [Route("")]
-        public IActionResult GetAllPosts()
+        [Route("{sortingType}")]
+        public IActionResult GetAllPosts(string sortingType)
         {
-            List<PostDto> posts = _postService.GetPosts().ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            List<PostDto> posts = _postService.GetAllPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("news/{sortingType}")]
+        public IActionResult GetNewsPosts(string sortingType)
+        {
+            List<PostDto> posts = _postService.GetNewsPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("top/{sortingType}")]
+        public IActionResult GetTopPosts(string sortingType)
+        {
+            List<PostDto> posts = _postService.GetTopPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostDto(p));
             return Ok(posts);
         }
 

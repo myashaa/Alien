@@ -12,9 +12,21 @@ namespace Backend.Domain.PostM
             _postRepository = postRepository;
         }
 
-        public List<Post> GetPosts()
+        public List<Post> GetAllPosts(string sortingType)
         {
-            var posts = _postRepository.GetAll();
+            var posts = _postRepository.GetAll(sortingType);
+            return posts.ToList();
+        }
+
+        public List<Post> GetNewsPosts(string sortingType)
+        {
+            var posts = _postRepository.GetNews(sortingType);
+            return posts.ToList();
+        }
+
+        public List<Post> GetTopPosts(string sortingType)
+        {
+            var posts = _postRepository.GetTop(sortingType);
             return posts.ToList();
         }
 
