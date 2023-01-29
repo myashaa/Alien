@@ -3,9 +3,6 @@ import styles from "./AddingPostForm.module.css";
 import baseStyles from "../../index.module.css";
 import {variables} from  "../../Variables";
 import axios from "axios";
-//import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import ChipInput from "../ChipInput/ChipInput";
 import { TextField, Chip } from "@material-ui/core";
 import { Autocomplete } from "@mui/material";
 
