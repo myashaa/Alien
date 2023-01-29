@@ -17,6 +17,21 @@ namespace Backend.Api.Сonverters
             return new PostDto
             {
                 IdPost = post.IdPost,
+                IdUser = post.IdUser,
+                Text = post.Text,
+                Date = post.Date,
+                Title = post.Title,
+                NumberOfLikes = post.NumberOfLikes,
+                NumberOfComments = post.NumberOfComments,
+                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p)),
+                PostTags = post.PostTags.ConvertAll(p => ConvertToTagDto(p))
+            };
+        }
+        public PostPreviewDto ConvertToPostPreviewDto(Post post)
+        {
+            return new PostPreviewDto
+            {
+                IdPost = post.IdPost,
                 Text = post.Text,
                 Date = post.Date,
                 Title = post.Title,
@@ -46,6 +61,21 @@ namespace Backend.Api.Сonverters
             return new Post
             {
                 IdPost = postDto.IdPost,
+                IdUser = postDto.IdUser,
+                Text = postDto.Text,
+                Date = postDto.Date,
+                Title = postDto.Title,
+                NumberOfLikes = postDto.NumberOfLikes,
+                NumberOfComments = postDto.NumberOfComments,
+                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
+                PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p))
+            };
+        }
+        public Post ConvertToPost(PostPreviewDto postDto)
+        {
+            return new Post
+            {
+                IdPost = postDto.IdPost,
                 Text = postDto.Text,
                 Date = postDto.Date,
                 Title = postDto.Title,
@@ -70,6 +100,7 @@ namespace Backend.Api.Сonverters
                 User = _userConverter.ConvertToUser(postDto.User)
             };
         }
+
 
         private PostPhotoDto ConvertToPostPhotoDto(PostPhoto postPhoto)
         {
@@ -102,29 +133,6 @@ namespace Backend.Api.Сonverters
             {
                 IdTag = tagDto.IdTag,
                 Name = tagDto.Name
-            };
-        }
-
-        private CommentDto ConvertToCommentDto(Comment comment)
-        {
-            return new CommentDto
-            {
-                IdComment = comment.IdComment,
-                User = comment.User,
-                Post = comment.Post,
-                Date = comment.Date,
-                Text = comment.Text
-            };
-        }
-        private Comment ConvertToComment(CommentDto commentDto)
-        {
-            return new Comment
-            {
-                IdComment = commentDto.IdComment,
-                User = commentDto.User,
-                Post = commentDto.Post,
-                Date = commentDto.Date,
-                Text = commentDto.Text
             };
         }
     }

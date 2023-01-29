@@ -4,7 +4,9 @@ namespace Backend.Domain.PostM
 {
     public interface IPostRepository
     {
-        IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAll(string sortingType);
+        IEnumerable<Post> GetNews(string sortingType);
+        IEnumerable<Post> GetTop(string sortingType);
         Post GetById(int id);
         IEnumerable<Post> GetAllByIdUser(int id);
         IEnumerable<Post> GetAllByTitle(string title);

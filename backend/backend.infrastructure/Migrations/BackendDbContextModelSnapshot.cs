@@ -220,13 +220,13 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.PostM.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("IdPost")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Backend.Domain.UserM.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Post");

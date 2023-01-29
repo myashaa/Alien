@@ -23,12 +23,27 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        //тестовы метод GetAllPosts. удалить потом и все что в нем используются
         [HttpGet]
-        [Route("")]
-        public IActionResult GetAllPosts()
+        [Route("{sortingType}")]
+        public IActionResult GetAllPosts(string sortingType)
         {
-            List<PostDto> posts = _postService.GetPosts().ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            List<PostPreviewDto> posts = _postService.GetAllPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("news/{sortingType}")]
+        public IActionResult GetNewsPosts(string sortingType)
+        {
+            List<PostPreviewDto> posts = _postService.GetNewsPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("top/{sortingType}")]
+        public IActionResult GetTopPosts(string sortingType)
+        {
+            List<PostPreviewDto> posts = _postService.GetTopPosts(sortingType).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
             return Ok(posts);
         }
 
@@ -48,7 +63,7 @@ namespace backend.api.Controllers
         [Route("user/{id:int}")]
         public IActionResult GetPostsByIdUser(int id)
         {
-            List<PostDto> posts = _postService.GetPostsByUser(id).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            List<PostPreviewDto> posts = _postService.GetPostsByUser(id).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
             return Ok(posts);
         }
 
@@ -56,7 +71,7 @@ namespace backend.api.Controllers
         [Route("title/{title}")]
         public IActionResult GetPostsByTitle(string title)
         {
-            List<PostDto> posts = _postService.GetPostsByTitle(title).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            List<PostPreviewDto> posts = _postService.GetPostsByTitle(title).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
             return Ok(posts);
         }
 
@@ -64,7 +79,7 @@ namespace backend.api.Controllers
         [Route("tag/{tag}")]
         public IActionResult GetPostsByTag(string tag)
         {
-            List<PostDto> posts = _postService.GetPostsByTag(tag).ConvertAll(p => _postConverter.ConvertToPostDto(p));
+            List<PostPreviewDto> posts = _postService.GetPostsByTag(tag).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
             return Ok(posts);
         }
 

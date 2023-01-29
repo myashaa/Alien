@@ -8,6 +8,6 @@ namespace Backend.Domain.PostM
         [Key]
         public int IdTag { get; set; }
         public string Name { get; set; }
-        public List<Post> PostTags { get; set; } = new List<Post>();
+        public List<Post> PostTags { get; set; }
     }
 }

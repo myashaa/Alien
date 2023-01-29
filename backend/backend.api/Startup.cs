@@ -35,14 +35,17 @@ namespace backend.api
             services.AddControllers();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<BackendDbContext>>();
             services.AddDbContext<BackendDbContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddScoped<IUserConverter, UserConverter>();
             services.AddScoped<IPostConverter, PostConverter>();
+            services.AddScoped<ICommentConverter, CommentConverter>();
 
             var authOptionsConfiguration = Configuration.GetSection("Auth");
             services.Configure<AuthOptions>(authOptionsConfiguration);

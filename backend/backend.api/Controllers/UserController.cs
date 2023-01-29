@@ -49,7 +49,7 @@ namespace backend.api.Controllers
         [Route("{login}")]
         public IActionResult GetUsersByLogin(string login)
         {
-            List<UserDto> users = _userService.GetUsersByLogin(login).ConvertAll(p => _userConverter.ConvertToUserDto(p));
+            List<UserInfoDto> users = _userService.GetUsersByLogin(login).ConvertAll(p => _userConverter.ConvertToUserInfoDto(p));
             return Ok(users);
         }
 
@@ -73,7 +73,7 @@ namespace backend.api.Controllers
         }
 
         [HttpPut]
-        [Route("{id:int}")]
+        [Route("")]
         public IActionResult UpdateCurrentUser([FromBody] UserDto userDto)
         {
             User user = _userConverter.ConvertToUser(userDto);
