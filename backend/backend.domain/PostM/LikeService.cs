@@ -12,6 +12,18 @@ namespace Backend.Domain.PostM
             _likeRepository = likeRepository;
         }
 
+        public List<Like> GetLikesByUser(int id)
+        {
+            var likes = _likeRepository.GetAllByIdUser(id);
+            return likes.ToList();
+        }
+
+        public Like CheckLikeAvailability(int idUser, int idPost)
+        {
+            var like = _likeRepository.CheckAvailability(idUser, idPost);
+            return like;
+        }
+
         public void AddLike(Like like)
         {
             _likeRepository.AddNew(like);

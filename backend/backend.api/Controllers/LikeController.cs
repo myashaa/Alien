@@ -23,6 +23,25 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpGet]
+        [Route("{id:int}")]
+        public IActionResult GetLikesByIdUser(int id)
+        {
+            List<LikeUserDto> likes = _likeService.GetLikesByUser(id).ConvertAll(l => _likeConverter.ConvertToLikeUserDto(l));
+            return Ok(likes);
+        }
+
+        [HttpGet]
+        [Route("{IdUser:int}/{IdPost:int}")]
+        public IActionResult CheckLikeAvailability(int idUser, int idPost)
+        {
+            Like like = _likeService.CheckLikeAvailability(idUser, idPost);
+            if (like == null)
+                return NotFound(false);
+
+            return Ok(true);
+        }
+
         [HttpPost]
         [Route("")]
         public IActionResult AddNewlike([FromBody] LikeDto likeDto)

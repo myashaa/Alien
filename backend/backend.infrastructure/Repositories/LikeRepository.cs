@@ -15,6 +15,21 @@ namespace Backend.Infrastructure.Repositories
         {
         }
 
+        public IEnumerable<Like> GetAllByIdUser(int id)
+        {
+            return Entities
+                .Include(l => l.User).ThenInclude(u => u.UserPhotos)
+                .Include(l => l.Post).ThenInclude(p => p.PostPhotos)
+                .Where(l => l.Post.IdUser == id)
+                .ToList()
+                .OrderBy(l => l.Date);
+        }
+
+        public Like CheckAvailability(int idUser, int idPost)
+        {
+            return GetById(idUser, idPost);
+        }
+
         public void AddNew(Like like)
         {
             Add(like);

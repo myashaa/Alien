@@ -51,7 +51,7 @@ namespace backend.api.Controllers
         [Route("{login}")]
         public IActionResult GetUsersByLogin(string login)
         {
-            List<UserInfoDto> users = _userService.GetUsersByLogin(login).ConvertAll(p => _userConverter.ConvertToUserInfoDto(p));
+            List<UserInfoDto> users = _userService.GetUsersByLogin(login).ConvertAll(u => _userConverter.ConvertToUserInfoDto(u));
             return Ok(users);
         }
 

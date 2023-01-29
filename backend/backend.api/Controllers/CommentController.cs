@@ -27,7 +27,7 @@ namespace backend.api.Controllers
         [Route("{id:int}")]
         public IActionResult GetAllComments(int id)
         {
-            List<CommentPreviewDto> comments = _commentService.GetAllComments(id).ConvertAll(p => _commentConverter.ConvertToCommentPreviewDto(p));
+            List<CommentPreviewDto> comments = _commentService.GetAllComments(id).ConvertAll(c => _commentConverter.ConvertToCommentPreviewDto(c));
             return Ok(comments);
         }
 
