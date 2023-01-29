@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend.Api.Dto
 {
-    public class LikeUserDto
+    public class CommentUserDto
     {
         public UserNameDto User { get; set; }
         public List<PostPhotoDto> PostPhotos { get; set; }

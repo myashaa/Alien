@@ -11,5 +11,7 @@ namespace Backend.Api.Сonverters
         Post ConvertToPost(PostDto postDto);
         Post ConvertToPost(PostPreviewDto postDto);
         Post ConvertToPost(PostDetailsDto postDto);
+        public PostPhotoDto ConvertToPostPhotoDto(PostPhoto postPhoto);
+        public PostPhoto ConvertToPostPhoto(PostPhotoDto postPhotoDto);
     }
 }

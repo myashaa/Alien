@@ -31,6 +31,14 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
+        [HttpGet]
+        [Route("user/{id:int}")]
+        public IActionResult GetCommentsByIdUser(int id)
+        {
+            List<CommentUserDto> comments = _commentService.GetCommentsByUser(id).ConvertAll(c => _commentConverter.ConvertToCommentUserDto(c));
+            return Ok(comments);
+        }
+
         [HttpPost]
         [Route("")]
         public IActionResult AddNewComment([FromBody] CommentDto commentDto)

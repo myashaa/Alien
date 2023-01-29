@@ -8,6 +8,5 @@ namespace Backend.Api.Сonverters
         public LikeDto ConvertToLikeDto(Like like);
         public LikeUserDto ConvertToLikeUserDto(Like like);
         public Like ConvertToLike(LikeDto likeDto);
-        public Like ConvertToLike(LikeUserDto likeDto);
     }
 }

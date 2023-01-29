@@ -28,7 +28,7 @@ namespace Backend.Api.Сonverters
             return new LikeUserDto
             {
                 User = _userConverter.ConvertToUserNameDto(like.User),
-                Post = _postConverter.ConvertToPostPreviewDto(like.Post),
+                PostPhotos = like.Post.PostPhotos.ConvertAll(p => _postConverter.ConvertToPostPhotoDto(p)),
                 Date = like.Date
             };
         }
@@ -38,15 +38,6 @@ namespace Backend.Api.Сonverters
             {
                 IdUser = likeDto.IdUser,
                 IdPost = likeDto.IdPost,
-                Date = likeDto.Date
-            };
-        }
-        public Like ConvertToLike(LikeUserDto likeDto)
-        {
-            return new Like
-            {
-                User = _userConverter.ConvertToUser(likeDto.User),
-                Post = _postConverter.ConvertToPost(likeDto.Post),
                 Date = likeDto.Date
             };
         }

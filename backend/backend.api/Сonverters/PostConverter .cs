@@ -102,7 +102,7 @@ namespace Backend.Api.Сonverters
         }
 
 
-        private PostPhotoDto ConvertToPostPhotoDto(PostPhoto postPhoto)
+        public PostPhotoDto ConvertToPostPhotoDto(PostPhoto postPhoto)
         {
             return new PostPhotoDto
             {
@@ -110,7 +110,7 @@ namespace Backend.Api.Сonverters
                 Url = postPhoto.Url
             };
         }
-        private PostPhoto ConvertToPostPhoto(PostPhotoDto postPhotoDto)
+        public PostPhoto ConvertToPostPhoto(PostPhotoDto postPhotoDto)
         {
             return new PostPhoto
             {

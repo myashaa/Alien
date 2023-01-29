@@ -7,9 +7,11 @@ namespace Backend.Api.Сonverters
     public class CommentConverter : ICommentConverter
     {
         private IUserConverter _userConverter;
-        public CommentConverter(IUserConverter userConverter)
+        private IPostConverter _postConverter;
+        public CommentConverter(IUserConverter userConverter, IPostConverter postConverter)
         {
             _userConverter = userConverter;
+            _postConverter = postConverter;
         }
 
         public CommentDto ConvertToCommentDto(Comment comment)
@@ -31,6 +33,15 @@ namespace Backend.Api.Сonverters
                 User = _userConverter.ConvertToUserNameDto(comment.User),
                 Date = comment.Date,
                 Text = comment.Text
+            };
+        }
+        public CommentUserDto ConvertToCommentUserDto(Comment comment)
+        {
+            return new CommentUserDto
+            {
+                User = _userConverter.ConvertToUserNameDto(comment.User),
+                PostPhotos = comment.Post.PostPhotos.ConvertAll(p => _postConverter.ConvertToPostPhotoDto(p)),
+                Date = comment.Date
             };
         }
         public Comment ConvertToComment(CommentDto commentDto)
