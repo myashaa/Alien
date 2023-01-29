@@ -36,9 +36,11 @@ namespace backend.api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<ILikeService, LikeService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<ILikeRepository, LikeRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<BackendDbContext>>();
             services.AddDbContext<BackendDbContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
@@ -46,6 +48,7 @@ namespace backend.api
             services.AddScoped<IUserConverter, UserConverter>();
             services.AddScoped<IPostConverter, PostConverter>();
             services.AddScoped<ICommentConverter, CommentConverter>();
+            services.AddScoped<ILikeConverter, LikeConverter>();
 
             var authOptionsConfiguration = Configuration.GetSection("Auth");
             services.Configure<AuthOptions>(authOptionsConfiguration);

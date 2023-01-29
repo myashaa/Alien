@@ -239,13 +239,13 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.PostM.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("IdPost")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Backend.Domain.UserM.User", "User")
                         .WithMany("Likes")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Post");
