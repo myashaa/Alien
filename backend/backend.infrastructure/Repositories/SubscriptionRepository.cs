@@ -13,6 +13,31 @@ namespace Backend.Infrastructure.Repositories
         {
         }
 
+        public Subscription CheckAvailability(int idUser, int idSubscriber)
+        {
+            return GetById(idUser, idSubscriber);
+        }
+
+        public IEnumerable<Subscription> GetSubscriptionsByIdUser(int id)
+        {
+            return Entities
+                .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
+                .Include(s => s.User).ThenInclude(u => u.UserPhotos)
+                .Where(s => s.IdUser == id)
+                .ToList()
+                .OrderBy(s => s.Date);
+        }
+
+        public IEnumerable<Subscription> GetSubscribersByIdUser(int id)
+        {
+            return Entities
+                .Include(s => s.User).ThenInclude(u => u.UserPhotos)
+                .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
+                .Where(s => s.IdSubscriber == id)
+                .ToList()
+                .OrderBy(s => s.Date);
+        }
+
         public void AddNew(Subscription subscription)
         {
             Add(subscription);

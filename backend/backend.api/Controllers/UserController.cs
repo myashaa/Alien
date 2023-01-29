@@ -84,6 +84,33 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
+        public IActionResult CheckSubscriptionAvailability(int idUser, int idSubscriber)
+        {
+            Subscription subscription = _subscriptionService.CheckSubscriptionAvailability(idUser, idSubscriber);
+            if (subscription == null)
+                return NotFound(false);
+
+            return Ok(true);
+        }
+
+        [HttpGet]
+        [Route("subscriptions/{id:int}")]
+        public IActionResult GetSubscriptions(int id)
+        {
+            List<SubscriptionUserDto> users = _subscriptionService.GetSubscriptions(id).ConvertAll(s => _userConverter.ConvertToSubscriptionUserDto(s));
+            return Ok(users);
+        }
+
+        [HttpGet]
+        [Route("subscribers/{id:int}")]
+        public IActionResult GetSubscribers(int id)
+        {
+            List<SubscriptionUserDto> users = _subscriptionService.GetSubscribers(id).ConvertAll(s => _userConverter.ConvertToSubscriptionUserDto(s));
+            return Ok(users);
+        }
+
         [HttpPost]
         [Route("subscription")]
         public IActionResult Subscribe([FromBody] SubscriptionDto subscriptionDto)

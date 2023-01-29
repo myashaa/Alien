@@ -75,6 +75,23 @@ namespace Backend.Api.Сonverters
             };
         }
 
+        public SubscriptionDto ConvertToSubscriptionDto(Subscription subscription)
+        {
+            return new SubscriptionDto
+            {
+                IdUser = subscription.IdUser,
+                IdSubscriber = subscription.IdSubscriber,
+                Date = subscription.Date
+            };
+        }
+        public SubscriptionUserDto ConvertToSubscriptionUserDto(Subscription subscription)
+        {
+            return new SubscriptionUserDto
+            {
+                User = ConvertToUserInfoDto(subscription.User),
+                Subscriber = ConvertToUserInfoDto(subscription.Subscriber)
+            };
+        }
         public Subscription ConvertToSubscription(SubscriptionDto subscriptionDto)
         {
             return new Subscription
@@ -84,13 +101,12 @@ namespace Backend.Api.Сonverters
                 Date = subscriptionDto.Date
             };
         }
-        public SubscriptionDto ConvertToSubscriptionDto(Subscription subscription)
+        public Subscription ConvertToSubscription(SubscriptionUserDto subscriptionDto)
         {
-            return new SubscriptionDto
+            return new Subscription
             {
-                IdUser = subscription.IdUser,
-                IdSubscriber = subscription.IdSubscriber,
-                Date = subscription.Date
+                User = ConvertToUser(subscriptionDto.User),
+                Subscriber = ConvertToUser(subscriptionDto.Subscriber)
             };
         }
 

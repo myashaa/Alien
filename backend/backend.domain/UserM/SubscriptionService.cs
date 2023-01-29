@@ -12,6 +12,24 @@ namespace Backend.Domain.UserM
             _subscriptionRepository = subscriptionRepository;
         }
 
+        public Subscription CheckSubscriptionAvailability(int idUser, int idSubscriber)
+        {
+            var subscription = _subscriptionRepository.CheckAvailability(idUser, idSubscriber);
+            return subscription;
+        }
+
+        public List<Subscription> GetSubscriptions(int id)
+        {
+            var subscriptions = _subscriptionRepository.GetSubscriptionsByIdUser(id);
+            return subscriptions.ToList();
+        }
+
+        public List<Subscription> GetSubscribers(int id)
+        {
+            var subscriptions = _subscriptionRepository.GetSubscribersByIdUser(id);
+            return subscriptions.ToList();
+        }
+
         public void AddSubscription(Subscription subscription)
         {
             _subscriptionRepository.AddNew(subscription);
