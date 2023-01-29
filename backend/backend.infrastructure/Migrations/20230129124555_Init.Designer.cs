@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Infrastructure.Migrations
 {
     [DbContext(typeof(BackendDbContext))]
-    [Migration("20230128125749_Init")]
+    [Migration("20230129124555_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -222,13 +222,13 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.PostM.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("IdPost")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Backend.Domain.UserM.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Post");

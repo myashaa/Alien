@@ -123,12 +123,14 @@ namespace Backend.Infrastructure.Migrations
                         name: "FK_Comment_Post_IdPost",
                         column: x => x.IdPost,
                         principalTable: "Post",
-                        principalColumn: "IdPost");
+                        principalColumn: "IdPost",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comment_User_IdUser",
                         column: x => x.IdUser,
                         principalTable: "User",
-                        principalColumn: "IdUser");
+                        principalColumn: "IdUser",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
