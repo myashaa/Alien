@@ -67,3 +67,10 @@
     "IdPost": 1, 
     "date": "2004-05-23T14:25:10"
 }
+
+// Subscribe
+{
+    "IdUser": 2,
+    "IdSubscriber": 1, 
+    "date": "2004-05-23T14:25:10"
+}

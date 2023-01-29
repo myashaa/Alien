@@ -11,5 +11,7 @@ namespace Backend.Api.Сonverters
         User ConvertToUser(UserDto userDto);
         User ConvertToUser(UserNameDto userDto);
         User ConvertToUser(UserInfoDto userDto);
+        Subscription ConvertToSubscription(SubscriptionDto subscriptionDto);
+        SubscriptionDto ConvertToSubscriptionDto(Subscription subscription);
     }
 }

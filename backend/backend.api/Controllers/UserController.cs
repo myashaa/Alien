@@ -15,11 +15,13 @@ namespace backend.api.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
+        private ISubscriptionService _subscriptionService;
         private IUserConverter _userConverter;
         private IUnitOfWork _unitOfWork;
-        public UserController(IUserService userService, IUserConverter userConverter, IUnitOfWork unitOfWork)
+        public UserController(IUserService userService, ISubscriptionService subscriptionService, IUserConverter userConverter, IUnitOfWork unitOfWork)
         {
             _userService = userService;
+            _subscriptionService = subscriptionService;
             _userConverter = userConverter;
             _unitOfWork = unitOfWork;
         }
@@ -82,5 +84,23 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("subscription")]
+        public IActionResult Subscribe([FromBody] SubscriptionDto subscriptionDto)
+        {
+            Subscription subscription = _userConverter.ConvertToSubscription(subscriptionDto);
+            _subscriptionService.AddSubscription(subscription);
+            _unitOfWork.Commit();
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
+        public IActionResult Unsubscribe(int idUser, int idSubscriber)
+        {
+            _subscriptionService.DeleteSubscription(idUser, idSubscriber);
+            _unitOfWork.Commit();
+            return Ok();
+        }
     }
 }

@@ -75,6 +75,25 @@ namespace Backend.Api.Сonverters
             };
         }
 
+        public Subscription ConvertToSubscription(SubscriptionDto subscriptionDto)
+        {
+            return new Subscription
+            {
+                IdUser = subscriptionDto.IdUser,
+                IdSubscriber = subscriptionDto.IdSubscriber,
+                Date = subscriptionDto.Date
+            };
+        }
+        public SubscriptionDto ConvertToSubscriptionDto(Subscription subscription)
+        {
+            return new SubscriptionDto
+            {
+                IdUser = subscription.IdUser,
+                IdSubscriber = subscription.IdSubscriber,
+                Date = subscription.Date
+            };
+        }
+
         private UserPhotoDto ConvertToUserPhotoDto(UserPhoto userPhoto)
         {
             return new UserPhotoDto
