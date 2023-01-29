@@ -86,7 +86,7 @@ export function Post(props: PostProps) {
           </a>
           <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
             <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
-            <span>{props.numberOfLikes}</span>
+            <span>{props.numberOfComments}</span>
             <span className={baseStyles.visuallyHidden}>количество комментариев</span>
           </a>
           <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">

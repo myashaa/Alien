@@ -1,0 +1,52 @@
+@import "/src/colors.css";
+
+.post .postPhotoImageWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+
+.postAuthorLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.postAuthorLink:focus,
+.postAuthorLink:hover {
+  opacity: .7;
+}
+
+.postAuthorLink:active {
+  opacity: .3;
+}
+
+.postAvatarWrapper {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  margin-right: 12px;
+  background-color: #e2e8f7;
+  background-image: url("../../img//icon-input-user.svg");
+  border-radius: 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.postAuthorAvatar {
+  display: block;
+  border-radius: 50%;
+}

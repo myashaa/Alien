@@ -138,7 +138,6 @@ export const SearchPage = () => {
         <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
           {titlePanelVisible ? (
             <>
-              <p>Title</p>
               <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
                 {title.map((post) => 
                   <Post key = {post["idPost"]}  numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
@@ -149,7 +148,6 @@ export const SearchPage = () => {
           ) : (null)}
           {tagPanelVisible ? (
             <>
-            <p>Tag</p>
             <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
               {tag.map((post) => 
                 <Post key = {post["idPost"]}  numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
