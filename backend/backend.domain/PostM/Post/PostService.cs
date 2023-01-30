@@ -30,6 +30,12 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
+        public List<Post> GetPopularPosts(int id)
+        {
+            var posts = _postRepository.GetPopular(id);
+            return posts.ToList();
+        }
+
         public Post GetPost(int id)
         {
             var post = _postRepository.GetById(id);
