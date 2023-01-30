@@ -21,8 +21,10 @@ export const loginUser =
         console.log(res.data);
 
 
-        store.dispatch(loginSucess(res.data))
+        store.dispatch(loginSucess(res.data));
         //dispatch(getProfile())
+
+        localStorage.setItem('token', res.data.accessToken);
         
       } catch (e: any) {
         console.error(e)

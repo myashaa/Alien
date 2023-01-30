@@ -4,8 +4,8 @@ import baseStyles from "../../index.module.css";
 
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from '../../components/Header/Header';
-import { EditingProfileForm } from '../../components/EditingProfileForm/EditingProfileForm';
 import { BackArrow } from "../../components/BackArrow/BackArrow";
+import { EditingProfileFormConstructor } from "../../components/EditingProfileForm/EditingProfileFormConstructor";
 
 export const EditingProfilePage = () => {
   return (
@@ -18,7 +18,7 @@ export const EditingProfilePage = () => {
             Редактировать профиль
           </h1>
         </div>
-        <EditingProfileForm />
+        <EditingProfileFormConstructor />
       </div>
       <Footer />
     </div>

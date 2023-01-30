@@ -2,7 +2,7 @@ export const variables={
     API_URL:"https://localhost:44390/api/",
     USER_URL:"https://localhost:44390/api/user/",
     CREATE_USER: "https://localhost:44390/api/user",
-    MY_USER_URL:"https://localhost:44390/api/user/3",
+    MY_USER_URL:"https://localhost:44390/api/user/1",
     CREATE_POST_URL:"https://localhost:44390/api/post",
     TOP_POST_LIKE: "https://localhost:44390/api/post/top/like",
     TOP_POST_COMMENT: "https://localhost:44390/api/post/top/comment",
