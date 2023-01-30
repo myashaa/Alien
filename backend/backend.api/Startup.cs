@@ -19,10 +19,6 @@ namespace backend.api
 {
     public class Startup
     {
-        private readonly Action<AuthenticationOptions> JwtBarerDefault;
-
-        //private readonly object JwtBearerDefaults;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -70,9 +66,7 @@ namespace backend.api
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
                 {
-                    //options.SaveToken = true;
                     options.RequireHttpsMetadata = false;
-                    //options.Audience = AuthOptions.AUDIENCE;
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
                         ValidateIssuer = true,

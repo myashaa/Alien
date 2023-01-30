@@ -2,6 +2,7 @@
 using Backend.Api.Сonverters;
 using Backend.Domain.Abstractions;
 using Backend.Domain.PostM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{sortingType}")]
         public IActionResult GetAllPosts(string sortingType)
@@ -31,6 +33,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("news/{sortingType}")]
         public IActionResult GetNewsPosts(string sortingType)
@@ -39,6 +42,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("top/{sortingType}")]
         public IActionResult GetTopPosts(string sortingType)
@@ -47,6 +51,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetPostById(int id)
@@ -59,6 +64,7 @@ namespace backend.api.Controllers
             return Ok(postDto);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("user/{id:int}")]
         public IActionResult GetPostsByIdUser(int id)
@@ -67,6 +73,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("title/{title}")]
         public IActionResult GetPostsByTitle(string title)
@@ -75,6 +82,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("tag/{tag}")]
         public IActionResult GetPostsByTag(string tag)
@@ -83,6 +91,7 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("")]
         public IActionResult AddNewPost([FromBody] PostDto postDto)
@@ -93,6 +102,7 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult DeleteCurrentPost(int id)

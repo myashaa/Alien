@@ -2,6 +2,7 @@
 using Backend.Api.Сonverters;
 using Backend.Domain.Abstractions;
 using Backend.Domain.PostM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetAllComments(int id)
@@ -31,6 +33,7 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("user/{id:int}")]
         public IActionResult GetCommentsByIdUser(int id)
@@ -39,6 +42,7 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
+        [Authorize]
         [HttpPost]
         [Route("")]
         public IActionResult AddNewComment([FromBody] CommentDto commentDto)

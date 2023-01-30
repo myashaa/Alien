@@ -32,8 +32,6 @@ namespace Backend.Api.Controllers
             this.authOptions = authOptions;
             _userService = userService;
             _userConverter = userConverter;
-           //_idUser = context.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //_idUser = User.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value;
         }
 
 
@@ -55,19 +53,6 @@ namespace Backend.Api.Controllers
         public User FindUserLoginEmail([FromBody] UserLoginDto userLoginDto)
         {
             return _userService.GetUser(userLoginDto.Mail, userLoginDto.Password);
-        }
-
-        [Authorize]
-        [HttpGet]
-        [Route("")]
-        public IActionResult GetUser()
-        {
-            User user = _userService.GetUser(Int32.Parse(_idUser));
-            if (user == null)
-                return NotFound();
-
-            UserDto userDto = _userConverter.ConvertToUserDto(user);
-            return Ok(userDto);
         }
 
         private string GenerateJWT(User user)
