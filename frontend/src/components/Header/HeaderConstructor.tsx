@@ -7,14 +7,26 @@ import HeaderLinkArrow from "../../img/icon-link-arrow.svg";
 import UserPhoto from "../../img/userpic-medium.jpg";
 import { NavLink } from "react-router-dom";
 
+type PhotoType = {
+  idPhoto: number,
+  url: string
+}
+
 interface HeaderProps {
   login: string,
-  isLoginatedUser: boolean;
+  isLoginatedUser: boolean,
+  photo: Array<PhotoType>,
 }
 
 export function HeaderConstructor(props: HeaderProps) {
 
   const [isUser, setUser] = useState(props.isLoginatedUser);
+
+  let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
+  if(props.photo.length != 0)
+  {
+    photo = props.photo[0].url;
+  }
   
   return (
     <header className={styles.header}>
@@ -58,7 +70,7 @@ export function HeaderConstructor(props: HeaderProps) {
               <li className={styles.headerProfile}>
                 <a className={styles.headerProfileLink} href="/profile">
                   <div className={styles.headerAvatarWrapper}>
-                    <img className={styles.headerProfileAvatar} src={ UserPhoto } alt="Аватар профиля" />
+                    <img className={styles.headerProfileAvatar} src={photo} alt="Аватар профиля" />
                   </div>
                   <div className={styles.headerProfileName}>
                     <span>{props.login}</span>

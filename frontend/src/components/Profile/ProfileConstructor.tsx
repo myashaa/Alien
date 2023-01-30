@@ -9,19 +9,19 @@ interface ProfileConstructorProps {
 }
 
 export const ProfileConstructor = (props: ProfileConstructorProps) => { 
-    const [post, setPost] = React.useState(null);
+    const [user, setUser] = React.useState(null);
   
     React.useEffect(() => {
       axios.get(variables.USER_URL + props.idUser).then((response) => {
-        setPost(response.data);
+        setUser(response.data);
       });
     }, []);
   
-    if (!post) return null;
+    if (!user) return null;
 
     return (
         <>  
-          <Profile login = {post["login"]} numberOfPosts = {post["numberOfPosts"]} numberOfSubscribers = {post["numberOfSubscribers"]}/>
+          <Profile login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]} photo = {user["userPhotos"]}/>
         </>
     )
 

@@ -37,6 +37,12 @@ interface PostProps {
 export function Post(props: PostProps) {
   const [post, setPost] = React.useState(true);
 
+  let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
+  if(props.user.userPhotos.length != 0)
+  {
+    photo = props.user.userPhotos[0].url;
+  }
+
   function deletePost(id: number) {
     const str = String(id);
     axios
