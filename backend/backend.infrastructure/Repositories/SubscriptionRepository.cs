@@ -1,6 +1,7 @@
 ﻿using Backend.Domain.UserM;
 using Backend.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,14 +29,32 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(s => s.Date);
         }
 
-        public IEnumerable<Subscription> GetSubscribersByIdUser(int id)
+        public IEnumerable<S> GetSubscribersByIdUser(int id)
         {
-            return Entities
-                .Include(s => s.User).ThenInclude(u => u.UserPhotos)
-                .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
-                .Where(s => s.IdSubscriber == id)
-                .ToList()
-                .OrderBy(s => s.Date);
+            //return Entities
+            //    .Include(s => s.User).ThenInclude(u => u.UserPhotos)
+            //    .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
+            //    .Where(s => s.IdSubscriber == id)
+            //    .ToList()
+            //    .OrderBy(s => s.Date);
+
+            //pol
+            //return Entities
+            //    .Where(s => s.IdSubscriber == id)
+            //    .GroupBy(s => s.User.Gender)
+            //    .Select(s => new S { Gender = s.Key, Count = s.Count() })
+            //    .ToList();
+
+            //что-то
+            //DateTime today = DateTime.Today;
+            //int numberOfDays = -1 * today.Day + 1;
+            //DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
+            //return Entities
+            //    .Where(s => s.IdSubscriber == id)
+            //    .Where(s => s.Date > thirtyDaysAgo)
+            //    .GroupBy(l => l.Date.Day)
+            //    .Select(l => new L { Date = l.Key, Count = l.Count() })
+            //    .ToList();
         }
 
         public void AddNew(Subscription subscription)

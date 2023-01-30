@@ -18,6 +18,12 @@ namespace Backend.Domain.PostM
             return likes.ToList();
         }
 
+        public List<L> Stat(int id)
+        {
+            var likes = _likeRepository.Stat(id);
+            return likes.ToList();
+        }
+
         public Like CheckLikeAvailability(int idUser, int idPost)
         {
             var like = _likeRepository.CheckAvailability(idUser, idPost);

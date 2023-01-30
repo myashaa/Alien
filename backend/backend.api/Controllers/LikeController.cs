@@ -33,6 +33,15 @@ namespace backend.api.Controllers
             return Ok(likes);
         }
 
+        //[Authorize]
+        [HttpGet]
+        [Route("stat/{id:int}")]
+        public IActionResult Stat(int id)
+        {
+            List<LDto> likes = _likeService.Stat(id).ConvertAll(l => _likeConverter.ConvertToLDto(l));
+            return Ok(likes);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("{IdUser:int}/{IdPost:int}")]

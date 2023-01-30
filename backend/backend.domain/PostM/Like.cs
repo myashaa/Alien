@@ -14,4 +14,10 @@ namespace Backend.Domain.PostM
         [ForeignKey("IdPost")]
         public Post Post { get; set; }
     }
+
+    public class L
+    {
+        public int Date { get; set; }
+        public int Count { get; set; }
+    }
 }

@@ -25,6 +25,30 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(l => l.Date);
         }
 
+        public IEnumerable<L>Stat(int id)
+        {
+            //DateTime today = DateTime.Today;
+            //int numberOfDays = -1 * today.Day + 1;
+            //DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
+            //return Entities
+            //    .Where(l => l.Post.IdUser == id)
+            //    .Where(l => l.Date > thirtyDaysAgo)
+            //    .GroupBy(l => l.Date.Day)
+            //    .Select(l => new L { Date = l.Key, Count = l.Count() })
+            //    .ToList();
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
+            int numberOfMonths = -1 * today.Month + 1;
+            thirtyDaysAgo = thirtyDaysAgo.AddMonths(numberOfMonths);
+            return Entities
+                .Where(l => l.Post.IdUser == id)
+                .Where(l => l.Date > thirtyDaysAgo)
+                .GroupBy(l => l.Date.Month)
+                .Select(l => new L { Date = l.Key, Count = l.Count() })
+                .ToList();
+        }
+
         public Like CheckAvailability(int idUser, int idPost)
         {
             return GetById(idUser, idPost);

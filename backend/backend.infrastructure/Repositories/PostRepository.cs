@@ -105,12 +105,20 @@ namespace Backend.Infrastructure.Repositories
 
         public IEnumerable<Post> GetAllByIdUser(int id)
         {
+            //return Entities
+            //    .Include(p => p.PostPhotos)
+            //    .Include(p => p.User).ThenInclude(u => u.UserPhotos)
+            //    .Where(p => p.IdUser == id)
+            //    .ToList()
+            //    .OrderBy(p => p.Date);
+
             return Entities
                 .Include(p => p.PostPhotos)
                 .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.IdUser == id)
                 .ToList()
-                .OrderBy(p => p.Date);
+                .OrderBy(p => p.NumberOfLikes + p.NumberOfComments)
+                .Take(5);
         }
 
         public IEnumerable<Post> GetAllByTitle(string title)

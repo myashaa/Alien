@@ -32,6 +32,14 @@ namespace Backend.Api.Сonverters
                 Date = like.Date
             };
         }
+        public LDto ConvertToLDto(L like)
+        {
+            return new LDto
+            {
+                Date = like.Date,
+                Count = like.Count
+            };
+        }
         public Like ConvertToLike(LikeDto likeDto)
         {
             return new Like
