@@ -14,17 +14,6 @@ namespace Backend.Api.Сonverters
             _postConverter = postConverter;
         }
 
-        public CommentDto ConvertToCommentDto(Comment comment)
-        {
-            return new CommentDto
-            {
-                IdComment = comment.IdComment,
-                IdUser = comment.IdUser,
-                IdPost = comment.IdPost,
-                Date = comment.Date,
-                Text = comment.Text
-            };
-        }
         public CommentPreviewDto ConvertToCommentPreviewDto(Comment comment)
         {
             return new CommentPreviewDto
@@ -51,16 +40,6 @@ namespace Backend.Api.Сonverters
                 IdComment = commentDto.IdComment,
                 IdUser = commentDto.IdUser,
                 IdPost = commentDto.IdPost,
-                Date = commentDto.Date,
-                Text = commentDto.Text
-            };
-        }
-        public Comment ConvertToComment(CommentPreviewDto commentDto)
-        {
-            return new Comment
-            {
-                IdComment = commentDto.IdComment,
-                User = _userConverter.ConvertToUser(commentDto.User),
                 Date = commentDto.Date,
                 Text = commentDto.Text
             };

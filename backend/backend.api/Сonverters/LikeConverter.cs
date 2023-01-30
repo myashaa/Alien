@@ -14,15 +14,6 @@ namespace Backend.Api.Сonverters
             _postConverter = postConverter;
         }
 
-        public LikeDto ConvertToLikeDto(Like like)
-        {
-            return new LikeDto
-            {
-                IdUser = like.IdUser,
-                IdPost = like.IdPost,
-                Date = like.Date
-            };
-        }
         public LikeUserDto ConvertToLikeUserDto(Like like)
         {
             return new LikeUserDto
@@ -32,9 +23,9 @@ namespace Backend.Api.Сonverters
                 Date = like.Date
             };
         }
-        public LDto ConvertToLDto(L like)
+        public LikeStatisticsDto ConvertToLDto(LikeStatistics like)
         {
-            return new LDto
+            return new LikeStatisticsDto
             {
                 Date = like.Date,
                 Count = like.Count

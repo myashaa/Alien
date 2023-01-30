@@ -25,27 +25,31 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(l => l.Date);
         }
 
-        public IEnumerable<L>Stat(int id)
+        public IEnumerable<LikeStatistics> GetAllForMonth(int id)
         {
-            //DateTime today = DateTime.Today;
-            //int numberOfDays = -1 * today.Day + 1;
-            //DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
-            //return Entities
-            //    .Where(l => l.Post.IdUser == id)
-            //    .Where(l => l.Date > thirtyDaysAgo)
-            //    .GroupBy(l => l.Date.Day)
-            //    .Select(l => new L { Date = l.Key, Count = l.Count() })
-            //    .ToList();
             DateTime today = DateTime.Today;
             int numberOfDays = -1 * today.Day + 1;
-            DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
-            int numberOfMonths = -1 * today.Month + 1;
-            thirtyDaysAgo = thirtyDaysAgo.AddMonths(numberOfMonths);
+            DateTime lowerBound = today.AddDays(numberOfDays);
             return Entities
                 .Where(l => l.Post.IdUser == id)
-                .Where(l => l.Date > thirtyDaysAgo)
+                .Where(l => l.Date > lowerBound)
+                .GroupBy(l => l.Date.Day)
+                .Select(l => new LikeStatistics { Date = l.Key, Count = l.Count() })
+                .ToList();
+        }
+
+        public IEnumerable<LikeStatistics> GetAllForYear(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            int numberOfMonths = -1 * today.Month + 1;
+            lowerBound = lowerBound.AddMonths(numberOfMonths);
+            return Entities
+                .Where(l => l.Post.IdUser == id)
+                .Where(l => l.Date > lowerBound)
                 .GroupBy(l => l.Date.Month)
-                .Select(l => new L { Date = l.Key, Count = l.Count() })
+                .Select(l => new LikeStatistics { Date = l.Key, Count = l.Count() })
                 .ToList();
         }
 

@@ -12,21 +12,6 @@ namespace Backend.Api.Сonverters
             _userConverter = userConverter;
         }
 
-        public PostDto ConvertToPostDto(Post post)
-        {
-            return new PostDto
-            {
-                IdPost = post.IdPost,
-                IdUser = post.IdUser,
-                Text = post.Text,
-                Date = post.Date,
-                Title = post.Title,
-                NumberOfLikes = post.NumberOfLikes,
-                NumberOfComments = post.NumberOfComments,
-                PostPhotos = post.PostPhotos.ConvertAll(p => ConvertToPostPhotoDto(p)),
-                PostTags = post.PostTags.ConvertAll(p => ConvertToTagDto(p))
-            };
-        }
         public PostPreviewDto ConvertToPostPreviewDto(Post post)
         {
             return new PostPreviewDto
@@ -71,36 +56,6 @@ namespace Backend.Api.Сonverters
                 PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p))
             };
         }
-        public Post ConvertToPost(PostPreviewDto postDto)
-        {
-            return new Post
-            {
-                IdPost = postDto.IdPost,
-                Text = postDto.Text,
-                Date = postDto.Date,
-                Title = postDto.Title,
-                NumberOfLikes = postDto.NumberOfLikes,
-                NumberOfComments = postDto.NumberOfComments,
-                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
-                User = _userConverter.ConvertToUser(postDto.User)
-            };
-        }
-        public Post ConvertToPost(PostDetailsDto postDto)
-        {
-            return new Post
-            {
-                IdPost = postDto.IdPost,
-                Text = postDto.Text,
-                Date = postDto.Date,
-                Title = postDto.Title,
-                NumberOfLikes = postDto.NumberOfLikes,
-                NumberOfComments = postDto.NumberOfComments,
-                PostPhotos = postDto.PostPhotos.ConvertAll(p => ConvertToPostPhoto(p)),
-                PostTags = postDto.PostTags.ConvertAll(p => ConvertToTag(p)),
-                User = _userConverter.ConvertToUser(postDto.User)
-            };
-        }
-
 
         public PostPhotoDto ConvertToPostPhotoDto(PostPhoto postPhoto)
         {

@@ -54,15 +54,6 @@ namespace Backend.Api.Сonverters
                 NumberOfPosts = userDto.NumberOfPosts
             };
         }
-        public User ConvertToUser(UserNameDto userDto)
-        {
-            return new User
-            {
-                IdUser = userDto.IdUser,
-                Login = userDto.Login,
-                UserPhotos = userDto.UserPhotos.ConvertAll(u => ConvertToUserPhoto(u))
-            };
-        }
         public User ConvertToUser(UserInfoDto userDto)
         {
             return new User
@@ -75,15 +66,6 @@ namespace Backend.Api.Сonverters
             };
         }
 
-        public SubscriptionDto ConvertToSubscriptionDto(Subscription subscription)
-        {
-            return new SubscriptionDto
-            {
-                IdUser = subscription.IdUser,
-                IdSubscriber = subscription.IdSubscriber,
-                Date = subscription.Date
-            };
-        }
         public SubscriptionUserDto ConvertToSubscriptionUserDto(Subscription subscription)
         {
             return new SubscriptionUserDto
@@ -99,14 +81,6 @@ namespace Backend.Api.Сonverters
                 IdUser = subscriptionDto.IdUser,
                 IdSubscriber = subscriptionDto.IdSubscriber,
                 Date = subscriptionDto.Date
-            };
-        }
-        public Subscription ConvertToSubscription(SubscriptionUserDto subscriptionDto)
-        {
-            return new Subscription
-            {
-                User = ConvertToUser(subscriptionDto.User),
-                Subscriber = ConvertToUser(subscriptionDto.Subscriber)
             };
         }
 

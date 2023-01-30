@@ -15,7 +15,7 @@ namespace Backend.Domain.PostM
         public Post Post { get; set; }
     }
 
-    public class L
+    public class LikeStatistics
     {
         public int Date { get; set; }
         public int Count { get; set; }
