@@ -21,7 +21,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(c => c.User).ThenInclude(c => c.UserPhotos)
                 .Where(c => c.IdPost == id)
                 .ToList()
-                .OrderBy(c => c.Date);
+                .OrderByDescending(c => c.Date);
         }
 
         public IEnumerable<Comment> GetAllByIdUser(int id)
@@ -31,7 +31,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(c => c.Post).ThenInclude(c => c.PostPhotos)
                 .Where(c => c.Post.IdUser == id)
                 .ToList()
-                .OrderBy(c => c.Date);
+                .OrderByDescending(c => c.Date);
         }
 
         public IEnumerable<CommentStatistics> GetAllForMonth(int id)

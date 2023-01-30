@@ -22,7 +22,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(l => l.Post).ThenInclude(p => p.PostPhotos)
                 .Where(l => l.Post.IdUser == id)
                 .ToList()
-                .OrderBy(l => l.Date);
+                .OrderByDescending(l => l.Date);
         }
 
         public IEnumerable<LikeStatistics> GetAllForMonth(int id)

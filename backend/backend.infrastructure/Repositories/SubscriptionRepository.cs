@@ -26,7 +26,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(s => s.User).ThenInclude(u => u.UserPhotos)
                 .Where(s => s.IdUser == id)
                 .ToList()
-                .OrderBy(s => s.Date);
+                .OrderByDescending(s => s.Date);
         }
 
         public IEnumerable<Subscription> GetSubscribersByIdUser(int id)
@@ -36,7 +36,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
                 .Where(s => s.IdSubscriber == id)
                 .ToList()
-                .OrderBy(s => s.Date);
+                .OrderByDescending(s => s.Date);
         }
 
         public IEnumerable<SubscriptionStatistics> GetSubscribersForMonth(int id)

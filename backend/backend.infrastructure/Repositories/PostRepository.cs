@@ -25,13 +25,13 @@ namespace Backend.Infrastructure.Repositories
             {
                 case SortingConstans.date:
                     return entities
-                        .OrderBy(p => p.Date);
+                        .OrderByDescending(p => p.Date);
                 case SortingConstans.like:
                     return entities
-                        .OrderBy(p => p.NumberOfLikes);
+                        .OrderByDescending(p => p.NumberOfLikes);
                 case SortingConstans.comment:
                     return entities
-                        .OrderBy(p => p.NumberOfComments);
+                        .OrderByDescending(p => p.NumberOfComments);
                 default:
                     break;
             }
@@ -51,17 +51,17 @@ namespace Backend.Infrastructure.Repositories
                     return entities
                         .Where(p => p.PostTags.Count() > 0)
                         .ToList()
-                        .OrderBy(p => p.Date);
+                        .OrderByDescending(p => p.Date);
                 case SortingConstans.like:
                     return entities
                         .Where(p => p.PostTags.Count() > 0)
                         .ToList()
-                        .OrderBy(p => p.NumberOfLikes);
+                        .OrderByDescending(p => p.NumberOfLikes);
                 case SortingConstans.comment:
                     return entities
                         .Where(p => p.PostTags.Count() > 0)
                         .ToList()
-                        .OrderBy(p => p.NumberOfComments);
+                        .OrderByDescending(p => p.NumberOfComments);
                 default:
                     break;
             }
@@ -81,13 +81,16 @@ namespace Backend.Infrastructure.Repositories
             {
                 case SortingConstans.date:
                     return entities
-                        .OrderBy(p => p.Date);
+                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
+                        .ThenByDescending(p => p.Date);
                 case SortingConstans.like:
                     return entities
-                        .OrderBy(p => p.NumberOfLikes);
+                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
+                        .ThenByDescending(p => p.NumberOfLikes);
                 case SortingConstans.comment:
                     return entities
-                        .OrderBy(p => p.NumberOfComments);
+                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
+                        .ThenByDescending(p => p.NumberOfComments);
                 default:
                     break;
             }
@@ -101,7 +104,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.IdUser == id)
                 .ToList()
-                .OrderBy(p => p.NumberOfLikes + p.NumberOfComments)
+                .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
                 .Take(5);
         }
 
@@ -121,7 +124,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.IdUser == id)
                 .ToList()
-                .OrderBy(p => p.Date);
+                .OrderByDescending(p => p.Date);
         }
 
         public IEnumerable<Post> GetAllByTitle(string title)
@@ -131,7 +134,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => p.Title.Contains(title))
                 .ToList()
-                .OrderBy(p => p.Date);
+                .OrderByDescending(p => p.Date);
         }
 
         public IEnumerable<Post> GetAllByTag(string tag)
@@ -144,7 +147,7 @@ namespace Backend.Infrastructure.Repositories
             return entities
                 .Where(p => p.PostTags.Count() > 0)
                 .ToList()
-                .OrderBy(p => p.Date);
+                .OrderByDescending(p => p.Date);
         }
 
         public void AddNew(Post post)
