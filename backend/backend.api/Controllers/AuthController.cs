@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Api.Controllers
 {
@@ -24,12 +25,15 @@ namespace Backend.Api.Controllers
         private readonly IOptions<AuthOptions> authOptions;
         private IUserService _userService;
         private IUserConverter _userConverter;
+        private string _idUser => User.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value;
 
         public AuthController(IOptions<AuthOptions> authOptions, IUserService userService, IUserConverter userConverter)
         {
             this.authOptions = authOptions;
             _userService = userService;
             _userConverter = userConverter;
+           //_idUser = context.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //_idUser = User.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value;
         }
 
 
@@ -51,6 +55,19 @@ namespace Backend.Api.Controllers
         public User FindUserLoginEmail([FromBody] UserLoginDto userLoginDto)
         {
             return _userService.GetUser(userLoginDto.Mail, userLoginDto.Password);
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("")]
+        public IActionResult GetUser()
+        {
+            User user = _userService.GetUser(Int32.Parse(_idUser));
+            if (user == null)
+                return NotFound();
+
+            UserDto userDto = _userConverter.ConvertToUserDto(user);
+            return Ok(userDto);
         }
 
         private string GenerateJWT(User user)

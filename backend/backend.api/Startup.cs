@@ -11,11 +11,18 @@ using Backend.Domain.PostM;
 using Backend.Infrastructure.Context;
 using Backend.Infrastructure.Repositories;
 using Backend.Api.Security;
+using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 
 namespace backend.api
 {
     public class Startup
     {
+        private readonly Action<AuthenticationOptions> JwtBarerDefault;
+
+        //private readonly object JwtBearerDefaults;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -53,7 +60,30 @@ namespace backend.api
             services.AddScoped<ILikeConverter, LikeConverter>();
 
             var authOptionsConfiguration = Configuration.GetSection("Auth");
+            var authOptions = Configuration.GetSection("Auth").Get<AuthOptions>();
             services.Configure<AuthOptions>(authOptionsConfiguration);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+                {
+                    //options.SaveToken = true;
+                    options.RequireHttpsMetadata = false;
+                    //options.Audience = AuthOptions.AUDIENCE;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = authOptions.Issuer,
+                        ValidateAudience = true,
+                        ValidAudience = authOptions.Audience,
+                        ValidateLifetime = true,
+                        IssuerSigningKey = authOptions.GetSymmetricSecurityKey(),
+                        ValidateIssuerSigningKey = true
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +98,7 @@ namespace backend.api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseCors("TheCodePolicy");
