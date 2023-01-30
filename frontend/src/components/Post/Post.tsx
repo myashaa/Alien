@@ -19,7 +19,7 @@ type PhotoType = {
 }
 
 type UserType = {
-  id: number,
+  idUser: number,
   login: string,
   userPhotos: Array<PhotoType>,
 }
@@ -53,6 +53,12 @@ export function Post(props: PostProps) {
       setPost(false)
   }
 
+  
+  let num: number = props.user.idUser;
+  console.log(num);
+  let str = num?.toString() || '';
+  let link: string = "/profile/" + str;
+
   return (
     <>
     {post ?
@@ -73,7 +79,7 @@ export function Post(props: PostProps) {
     </div>
     <footer className={styles.postFooter}>
       <div className={styles.postAuthor}>
-        <a className={styles.postAuthorLink} href="#" title="Автор">
+        <a className={styles.postAuthorLink} href={link} title="Автор">
            {props.user.userPhotos.map((photo) => 
             <UserPhotoPost key = {photo.idPhoto} url = {photo.url} />
            )}

@@ -17,12 +17,12 @@ export const AnotherProfilePage: React.FC = (): JSX.Element => {
   let idAnotherUser = String(id);
   console.log(typeof(params.profileId));
 
-  const [users, setusers] = useState([]);
+  const [posts, setPosts] = useState([]);
   
 
     useEffect(() => {
-      axios.get(variables.USER_URL).then((response) => {
-        setusers((data) => {
+      axios.get(variables.POST_DATE).then((response) => {
+        setPosts((data) => {
           return response.data;
         });
       });
@@ -42,7 +42,10 @@ export const AnotherProfilePage: React.FC = (): JSX.Element => {
           </div>
         </div>
           <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-            {/*<Post />*/}
+              {posts.map((post) => 
+                <Post key = {post["idPost"]} numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
+              )}
           </div> 
 
       <Footer />
