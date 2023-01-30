@@ -37,14 +37,15 @@ namespace Backend.Infrastructure.Repositories
                 .Where(s => s.IdSubscriber == id)
                 .ToList()
                 .OrderBy(s => s.Date);
+        }
 
-            //pol
-            //return Entities
-            //    .Where(s => s.IdSubscriber == id)
-            //    .GroupBy(s => s.User.Gender)
-            //    .Select(s => new S { Gender = s.Key, Count = s.Count() })
-            //    .ToList();
-
+        public IEnumerable<GenderStatistics> GetGendersByIdUser(int id)
+        {
+            return Entities
+                .Where(g => g.IdSubscriber == id)
+                .GroupBy(g => g.User.Gender)
+                .Select(g => new GenderStatistics { Gender = g.Key, Count = g.Count() })
+                .ToList();
             //подписки за день
             //DateTime today = DateTime.Today;
             //int numberOfDays = -1 * today.Day + 1;

@@ -119,6 +119,15 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
+        //[Authorize]
+        [HttpGet]
+        [Route("genders/{id:int}")]
+        public IActionResult GetGenders(int id)
+        {
+            List<GenderStatisticsDto> genders = _subscriptionService.GetGenders(id).ConvertAll(g => _userConverter.ConvertToGenderStatisticsDto(g));
+            return Ok(genders);
+        }
+
         [Authorize]
         [HttpPost]
         [Route("subscription")]

@@ -84,6 +84,15 @@ namespace Backend.Api.Сonverters
             };
         }
 
+        public GenderStatisticsDto ConvertToGenderStatisticsDto(GenderStatistics gender)
+        {
+            return new GenderStatisticsDto
+            {
+                Gender = gender.Gender,
+                Count = gender.Count
+            };
+        }
+
         private UserPhotoDto ConvertToUserPhotoDto(UserPhoto userPhoto)
         {
             return new UserPhotoDto

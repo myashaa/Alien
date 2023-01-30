@@ -14,7 +14,13 @@ namespace Backend.Domain.UserM
         public User Subscriber { get; set; }
     }
 
-    public class S
+    public class SubscriptionStatistics
+    {
+        public byte Gender { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class GenderStatistics
     {
         public byte Gender { get; set; }
         public int Count { get; set; }
