@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, FormEvent} from "react";
 import styles from "./AddingPostForm.module.css";
 import baseStyles from "../../index.module.css";
 import {variables} from  "../../Variables";
 import axios from "axios";
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import { TextField, Chip } from "@material-ui/core";
+import { Autocomplete } from "@mui/material";
 
 import IconAttach from "../../img/icon-attach.svg";
+import { Navigate } from "react-router";
 
 type PostType = {
   text: string,
@@ -16,50 +17,61 @@ type PostType = {
   numbersOfComments: number
 }
 
+type TagType =
+{
+  name: string,
+}
+
 export function AddingPostForm() {
 
   const [post, setPost] = React.useState(null);
+  const [isCreated, setIsCreated] = React.useState(false);
 
   const [titleIn, setTitle] = useState('');
   const [textIn, setText] = useState('');
   const [urlIn, setUrl] = useState('');
+  const [receivers, setReceivers] = React.useState<string[]>([]);
 
-  React.useEffect(() => {
-    axios.get(variables.POST_URL).then((response) => {
-      setPost(response.data);
-    });
-  }, []);
+  let tag: Array<TagType> = [];
+
+  const handelSubmit = (e:FormEvent) => {
+    e.preventDefault();
+
+    createPost();
+    setIsCreated(true);
+  }
 
   function createPost(){
+    for(let i: number = 0; i < receivers.length; i++)
+    {
+      let str: string = receivers[i]; 
+      let newTag: TagType = {name: str};
+      tag.push(newTag);
+    };
+    console.log(tag);
     axios
-      .post(variables.POST_URL, {
-        text:"I do it! Force in me!",
-        date:"2004-05-23T14:25:10",
-        title:"Dart Vader",
-        numberOfLikes:0,
-        numberOfComments:0,
-        postPhotos:[{url:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Star_Wars_-_Darth_Vader.jpg/640px-Star_Wars_-_Darth_Vader.jpg"}]})
-      .then((response) => {
-        setPost(response.data);
-      });
+      .post(variables.CREATE_POST_URL, {
+        idUser: 4,
+        text: textIn,
+        date: new Date(),
+        title: titleIn,
+        numberOfLikes: 0,
+        numberOfComments: 0,
+        postPhotos: [{url: urlIn}],
+        postTags: tag,
+    });
   }
 
   function setNewUrl(str: string){
     setUrl(str);
   } 
 
-  const handleClick = () => {
-    console.info('You clicked the Chip.');
-  };
-
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
-  };
-
   return (
+    <>
+    {isCreated ? (<Navigate to="/profile" />) : (
     <section className={baseStyles.container}>
       <h2 className={baseStyles.visuallyHidden}>Форма добавления поста</h2>
-      <form className={styles.addingPostForm}>
+      <form className={styles.addingPostForm} onSubmit = {handelSubmit}>
         <div className={baseStyles.formTextInputsWrapper}>
           <div>
             <div className={`${ styles.addingPostInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -69,43 +81,44 @@ export function AddingPostForm() {
               <div className={baseStyles.formInputSection}>
                 <input className={`${styles.addingPostInput} ${baseStyles.formInput}`} id="heading" type="text" name="heading" placeholder="Введите заголовок" 
                 onChange={(event) => setTitle(event.target.value)}/>
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
               </div>
             </div>
             <div className={`${ styles.addingPostInputWrapper } ${ baseStyles.formInputWrapper }`}>
               <label className={`${styles.addingPostLabel} ${baseStyles.formLabel}`}>Теги</label>
               <div className={baseStyles.formInputSection}>
                 <div className={`${styles.addingPostTagDiv} ${baseStyles.formInput}`}>
-                  <Chip
-                    label="Clickable Deletable"
-                    onClick={handleClick}
-                    onDelete={handleDelete}
-                  />
-                  <Chip
-                    label="Clickable Deletable"
-                    variant="outlined"
-                    onClick={handleClick}
-                    onDelete={handleDelete}
+                <Autocomplete 
+                  multiple
+                  id="tags-filled"
+                  options={[]}
+                  defaultValue={[]}
+                  freeSolo
+                  onChange={(e, value: any[]) => setReceivers((state) => value)}
+                  renderTags={(
+                  value: any[],
+                  getTagProps: (arg0: { index: any }) => JSX.IntrinsicAttributes
+                  ) =>
+                  value.map((option: any, index: any) => {
+                    return (
+                      <Chip
+                      key={index}
+                      variant="outlined"
+                      label={option}
+                      {...getTagProps({ index })}
+                      />
+                    );
+                  })
+                  }
+                  renderInput={(params: any) => (
+                    <TextField className={`${styles.addingPostInput} ${baseStyles.formInput}`}
+                    {...params}
+                    placeholder="Введите слово и нажмите enter"
+                    />
+                  )}
                   />
                 </div>
                 {/* <input className={`${styles.addingPostInput} ${baseStyles.formInput}`} id="tags" type="text" name="heading" placeholder="Введите теги" /> */}
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
+                
               </div>
             </div>
             <div className={`${ styles.addingPostInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -113,27 +126,8 @@ export function AddingPostForm() {
               <div className={baseStyles.formInputSection}>
                 <textarea className={`${styles.addingPostTextarea} ${baseStyles.formInput}`} id="content" name="heading" placeholder="Придумайте контент" 
                 onChange={(event) => setText(event.target.value)}/>
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
               </div>
             </div>
-          </div>
-          <div className={baseStyles.formInvalidBlock}>
-            <b className={baseStyles.formInvalidSlogan}>
-              Пожалуйста, исправьте следующие ошибки:
-            </b>
-            <ul className={baseStyles.formInvalidList}>
-              <li className={baseStyles.formInvalidItem}>
-                Заголовок. Это поле должно быть заполнено.
-              </li>
-            </ul>
           </div>
         </div>
         <div className={`${ styles.addingPostInputFileContainer } ${ baseStyles.formInputContainer }`}>
@@ -164,12 +158,12 @@ export function AddingPostForm() {
             </button>
           </div>
         </div>
-        <button className={`${styles.addingPostSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`}
-        onClick={() => createPost()}>
+        <button className={`${styles.addingPostSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`} type = "submit">
           Опубликовать
         </button>
         <a className={styles.addingPostClose} href="#">Закрыть</a>
       </form>
-    </section>
+    </section>)}
+    </>
   );
 }

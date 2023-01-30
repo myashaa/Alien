@@ -9,20 +9,20 @@ interface AnotherProfileConstructorProps {
 }
 
 export const AnotherProfileConstructor = (props: AnotherProfileConstructorProps) => { 
-    const [post, setPost] = React.useState(null);
+  const [user, setUser] = React.useState(null);
   
-    React.useEffect(() => {
-      axios.get(variables.USER_URL + props.idUser).then((response) => {
-        setPost(response.data);
-      });
-    }, []);
-  
-    if (!post) return null;
+  React.useEffect(() => {
+    axios.get(variables.USER_URL + props.idUser).then((response) => {
+      setUser(response.data);
+    });
+  }, []);
 
-    return (
-        <>  
-          <AnotherProfile login = {post["login"]} numberOfPosts = {post["numberOfPosts"]} numberOfSubscribers = {post["numberOfSubscribers"]}/>
-        </>
-    )
+  if (!user) return null;
 
-  };
+  return (
+      <>  
+        <AnotherProfile login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]} photo = {user["userPhotos"]}/>
+      </>
+  )
+
+};

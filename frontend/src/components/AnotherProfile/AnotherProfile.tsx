@@ -7,14 +7,25 @@ import UserPhoto from "../../img/userpic-medium.jpg";
 <img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
 </div>
 
+type PhotoType = {
+  idPhoto: number,
+  url: string
+}
+
 interface AnotherProfileProps {
   login: string,
   numberOfPosts: number,
   numberOfSubscribers: number,
+  photo: Array<PhotoType>,
 }
 
 export const AnotherProfile = (props: AnotherProfileProps) => {  
-  
+  let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
+  if(props.photo.length != 0)
+  {
+    photo = props.photo[0].url;
+  }
+
   let subVis = true;
   let unsubVis = false;
   if(props.login == "diana")
@@ -40,7 +51,7 @@ export const AnotherProfile = (props: AnotherProfileProps) => {
         <div className={`${styles.profileUser} ${baseStyles.container}`}>
           <div className={`${styles.profileUserInfo} ${styles.userInfo}`}>
             <div className={`${styles.profileAvatar} ${styles.userAvatar}`}>
-              <img className={styles.userPicture} src={ UserPhoto } alt="Аватар пользователя"/>
+              <img className={styles.userPicture} src={photo} alt="Аватар пользователя"/>
             </div>
             <div>
               <span className={`${styles.profileName} ${styles.userName}`}>{props.login}</span>

@@ -1,14 +1,80 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import styles from "./EditingProfileForm.module.css";
 import baseStyles from "../../index.module.css";
 
 import IconAttach from "../../img/icon-attach.svg";
+import axios from "axios";
+import { variables } from "../../Variables";
+import { Navigate } from "react-router";
 
-export function EditingProfileForm() {
+type PhotoType = {
+  idPhoto: number,
+  url: string
+}
+
+interface EditingProfileFormProps {
+  id: number,
+  login: string,
+  mail: string,
+  password: string,
+  photo: Array<PhotoType>,
+  gender: number,
+}
+
+export function EditingProfileForm(props: EditingProfileFormProps) {
+
+  const [isCreated, setIsCreated] = React.useState(false);
+  
+  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState("");
+  const [urlIn, setUrl] = useState('');
+
+  function setNewUrl(str: string){
+    setUrl(str);
+  }
+
+  function editUser(){
+    let newLogin = login;
+    let newPassword = password;
+    let newUrl = urlIn;
+    if(login == "")
+    {
+      newLogin = props.login
+    }
+    if(password == "")
+    {
+      newPassword = props.password
+    }
+    if(urlIn == "")
+    {
+      newUrl = props.photo[0].url
+    }
+    axios
+      .post(variables.CREATE_USER, {
+        idUser: props.id,
+        login: newLogin,
+        password: newPassword,
+        userPhotos: [
+            {
+              url: newUrl
+            }
+        ],
+    });
+  }
+
+  const handelSubmit = (e:FormEvent) => {
+    e.preventDefault();
+
+    editUser();
+    setIsCreated(true);
+  }
+
   return (
+    <>
+    {isCreated ? (<Navigate to="/profile" />) : (
     <section className={baseStyles.container}>
       <h2 className={baseStyles.visuallyHidden}>Форма регистрации</h2>
-      <form className={styles.registrationForm} action="#" method="post">
+      <form className={styles.registrationForm} action="#" method="post"  onSubmit = {handelSubmit}>
         <div className={baseStyles.formTextInputsWrapper}>
           <div>
             <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -16,16 +82,8 @@ export function EditingProfileForm() {
                 Электронная почта <span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-email" type="email" name="email" placeholder="Укажите эл.почту" disabled />
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-email" type="email" name="email" 
+                defaultValue={props.mail} placeholder={props.mail} disabled />
               </div>
             </div>
             <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -33,42 +91,8 @@ export function EditingProfileForm() {
                 Логин <span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-login" type="text" name="login" placeholder="Укажите логин" />
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
-              <label className={`${styles.registrationLabel} ${baseStyles.formLabel}`}>
-              Ваш пол <span className={baseStyles.formInputRequired}>*</span>
-              </label>
-              <div className={baseStyles.formInputSection}>
-                <div>
-                  <input className={styles.registrationInputRadio} type="radio" id="alienChoice" name="contact" value="alien"/>
-                  <label htmlFor = "alienChoice" className={`${styles.registrationLableRadio}`}>Инопланетянин</label>
-
-                  <input className={styles.registrationInputRadio} type="radio" id="mChoice" name="contact" value="men"/>
-                  <label htmlFor = "mChoice" className={`${styles.registrationLableRadio}`}>Сэр</label>
-
-                  <input className={styles.registrationInputRadio} type="radio" id="wChoice" name="contact" value="women"/>
-                  <label htmlFor = "wChoice" className={`${styles.registrationLableRadio}`}>Мэм</label>
-                </div>  
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-login" type="text" name="login" 
+                defaultValue={props.login} placeholder={props.login} onChange={(event) => setLogin(event.target.value)} />
               </div>
             </div>
             <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -76,16 +100,8 @@ export function EditingProfileForm() {
                 Пароль<span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-password" type="password" name="password" placeholder="Придумайте пароль" />
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-password" type="password" name="password" 
+                placeholder="Придумайте пароль" defaultValue={props.password} onChange={(event) => setPassword(event.target.value)}/>
               </div>
             </div>
             <div className={`${ styles.registrationInputWrapper } ${ baseStyles.formInputWrapper }`}>
@@ -93,36 +109,35 @@ export function EditingProfileForm() {
                 Повтор пароля<span className={baseStyles.formInputRequired}>*</span>
               </label>
               <div className={baseStyles.formInputSection}>
-                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-password-repeat" type="password" name="password-repeat" placeholder="Повторите пароль" />
-                <button className={`${baseStyles.formErrorButton} ${baseStyles.button}`} type="button">!<span className={baseStyles.visuallyHidden}>Информация об ошибке</span></button>
-                <div className={baseStyles.formErrorText}>
-                  <h3 className={baseStyles.formErrorTitle}>
-                    Заголовок сообщения
-                  </h3>
-                  <p className={baseStyles.formErrorDesc}>
-                    Текст сообщения об ошибке, подробно объясняющий, что не так.
-                  </p>
-                </div>
+                <input className={`${styles.registrationInput} ${baseStyles.formInput}`} id="registration-password-repeat" type="password"
+                 name="password-repeat" placeholder="Повторите пароль"  defaultValue={props.password}/>
               </div>
             </div>
-          </div>
-          <div className={baseStyles.formInvalidBlock}>
-            <b className={baseStyles.formInvalidSlogan}>
-              Пожалуйста, исправьте следующие ошибки:
-            </b>
-            <ul className={baseStyles.formInvalidList}>
-              <li className={baseStyles.formInvalidItem}>
-                Электронная почта. Это поле должно быть заполнено.
-              </li>
-              <li className={baseStyles.formInvalidItem}>
-                Пароль. Это поле должно быть заполнено.
-              </li> 
-            </ul>
           </div>
         </div>
         <div className={`${ styles.registrationInputFileContainer } ${ baseStyles.formInputContainer }`}>
           <div className={styles.registrationInputFileWrapper}>
-            <button className={`${ baseStyles.formInputFileButton } ${ baseStyles.button }`} type="button">
+          <button className={`${ baseStyles.formInputFileButton } ${ baseStyles.button }`} type="button" 
+            onClick={() => {
+              const fileInputNode = document.createElement("input");
+              fileInputNode.type = "file";
+              fileInputNode.click();
+              fileInputNode.addEventListener("change", () => {
+              const file = fileInputNode.files?.[0] as File;
+              const reader = new FileReader();
+              
+              reader.onloadend = function () {
+              let src: string =  "https://via.placeholder.com/150";
+
+              if (file.type.includes("image")) {
+                src = String(reader.result);
+              };
+              setNewUrl(src);
+              console.log(urlIn);
+              };
+              reader.readAsDataURL(file);
+              })
+              }}>
               <span>Выбрать фото</span>
               <IconAttach className={baseStyles.formAttachIcon}width="10" height="20" />
             </button>
@@ -132,12 +147,8 @@ export function EditingProfileForm() {
           Сохранить
         </button>
         <a className={styles.addingPostClose} href="#">Закрыть</a>
-        <div className={`${ baseStyles.formInputContainer }`}>
-            <button className={`${ baseStyles.formInputFileButton } ${ baseStyles.DeleteButton } ${ baseStyles.button }`} type="button">
-              <span>Удалить профиль</span>
-            </button>
-        </div>
       </form>
-    </section>
+    </section>)}
+    </>
   );
 }

@@ -15,6 +15,8 @@ import {ProfileConstructor} from "../../components/Profile/ProfileConstructor";
 
 export const ProfilePage = () => {
 
+  let currentToken = localStorage.getItem('token');
+
   const [users, setusers] = useState([]);
 
   const [PostPanelVisible, setPostPanelVisible] = useState(true);

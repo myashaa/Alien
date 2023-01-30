@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 import { IRootState } from "../../store";
 
 export const Header = () => { 
-    const [post, setPost] = React.useState(null);
+    const [user, setUser] = React.useState(null);
   
     React.useEffect(() => {
       axios.get(variables.MY_USER_URL).then((response) => {
-        setPost(response.data);
+        setUser(response.data);
       });
     }, []);
 
@@ -20,17 +20,17 @@ export const Header = () => {
       (state: IRootState) => !!state.auth.authData.accessToken
     );
   
-    if (!post)
+    if (!user)
     {
       return (
         <>  
-          <HeaderConstructor login = {""} isLoginatedUser = {isLoggedIn} />
+          <HeaderConstructor login = {""} isLoginatedUser = {isLoggedIn} photo = {[]}/>
         </>
     )
     }
     return (
         <>  
-          <HeaderConstructor login = {post["login"]}  isLoginatedUser = {isLoggedIn}/>
+          <HeaderConstructor login = {user["login"]}  isLoginatedUser = {isLoggedIn} photo = {user["userPhotos"]}/>
         </>
     )
 

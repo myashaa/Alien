@@ -11,25 +11,37 @@ import IconDelete from "../../img/delete.svg";
 import {PhotoPost} from "../PhotoPost/PhotoPost";
 import axios from "axios";
 import {variables} from  "../../Variables";
+import { UserPhotoPost } from "../UserPhotoPost/UserPhotoPost";
 
 type PhotoType = {
     idPhoto: number,
     url: string
 }
 
-interface PostProps {
+type UserType = {
+  id: number,
   login: string,
+  userPhotos: Array<PhotoType>,
+}
+
+interface PostProps {
   text: string,
   title: string,
   imgs: Array<PhotoType>,
-  imgUser: string,
   numberOfLikes: number,
   numberOfComments: number,
   id: number,
+  user: UserType
 }
 
 export function Post(props: PostProps) {
   const [post, setPost] = React.useState(true);
+
+  let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
+  if(props.user.userPhotos.length != 0)
+  {
+    photo = props.user.userPhotos[0].url;
+  }
 
   function deletePost(id: number) {
     const str = String(id);
@@ -62,12 +74,11 @@ export function Post(props: PostProps) {
     <footer className={styles.postFooter}>
       <div className={styles.postAuthor}>
         <a className={styles.postAuthorLink} href="#" title="Автор">
-          <div className={styles.postAvatarWrapper}>
-            <img className={styles.postAuthorAvatar} src={UserPhoto}
-              alt="Аватар пользователя" />
-          </div>
+           {props.user.userPhotos.map((photo) => 
+            <UserPhotoPost key = {photo.idPhoto} url = {photo.url} />
+           )}
           <div className={styles.postInfo}>
-            <b className={ styles.postAuthorName}>{props.login}</b>
+            <b className={ styles.postAuthorName}>{props.user.login}</b>
           </div>
         </a>
       </div>
@@ -81,7 +92,7 @@ export function Post(props: PostProps) {
           </a>
           <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
             <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
-            <span>{props.numberOfLikes}</span>
+            <span>{props.numberOfComments}</span>
             <span className={baseStyles.visuallyHidden}>количество комментариев</span>
           </a>
           <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
