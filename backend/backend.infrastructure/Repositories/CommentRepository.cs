@@ -34,6 +34,34 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(c => c.Date);
         }
 
+        public IEnumerable<CommentStatistics> GetAllForMonth(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            return Entities
+                .Where(с => с.Post.IdUser == id)
+                .Where(с => с.Date > lowerBound)
+                .GroupBy(с => с.Date.Day)
+                .Select(с => new CommentStatistics { Date = с.Key, Count = с.Count() })
+                .ToList();
+        }
+
+        public IEnumerable<CommentStatistics> GetAllForYear(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            int numberOfMonths = -1 * today.Month + 1;
+            lowerBound = lowerBound.AddMonths(numberOfMonths);
+            return Entities
+                .Where(с => с.Post.IdUser == id)
+                .Where(с => с.Date > lowerBound)
+                .GroupBy(с => с.Date.Month)
+                .Select(с => new CommentStatistics { Date = с.Key, Count = с.Count() })
+                .ToList();
+        }
+
         public void AddNew(Comment comment)
         {
             Add(comment);

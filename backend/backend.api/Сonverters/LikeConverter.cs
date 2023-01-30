@@ -23,7 +23,7 @@ namespace Backend.Api.Сonverters
                 Date = like.Date
             };
         }
-        public LikeStatisticsDto ConvertToLDto(LikeStatistics like)
+        public LikeStatisticsDto ConvertToLikeStatisticsDto(LikeStatistics like)
         {
             return new LikeStatisticsDto
             {

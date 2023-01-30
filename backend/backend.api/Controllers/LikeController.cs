@@ -38,7 +38,7 @@ namespace backend.api.Controllers
         [Route("month/{id:int}")]
         public IActionResult GetLikesForMonth(int id)
         {
-            List<LikeStatisticsDto> likes = _likeService.GetLikesForMonth(id).ConvertAll(l => _likeConverter.ConvertToLDto(l));
+            List<LikeStatisticsDto> likes = _likeService.GetLikesForMonth(id).ConvertAll(l => _likeConverter.ConvertToLikeStatisticsDto(l));
             return Ok(likes);
         }
 
@@ -46,7 +46,7 @@ namespace backend.api.Controllers
         [Route("year/{id:int}")]
         public IActionResult GetLikesForYear(int id)
         {
-            List<LikeStatisticsDto> likes = _likeService.GetLikesForYear(id).ConvertAll(l => _likeConverter.ConvertToLDto(l));
+            List<LikeStatisticsDto> likes = _likeService.GetLikesForYear(id).ConvertAll(l => _likeConverter.ConvertToLikeStatisticsDto(l));
             return Ok(likes);
         }
 

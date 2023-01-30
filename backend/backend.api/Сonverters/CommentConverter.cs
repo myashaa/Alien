@@ -33,6 +33,14 @@ namespace Backend.Api.Сonverters
                 Date = comment.Date
             };
         }
+        public CommentStatisticsDto ConvertToCommentStatisticsDto(CommentStatistics comment)
+        {
+            return new CommentStatisticsDto
+            {
+                Date = comment.Date,
+                Count = comment.Count
+            };
+        }
         public Comment ConvertToComment(CommentDto commentDto)
         {
             return new Comment

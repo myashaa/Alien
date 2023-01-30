@@ -33,6 +33,23 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
+        //[Authorize]
+        [HttpGet]
+        [Route("month/{id:int}")]
+        public IActionResult GetCommentsForMonth(int id)
+        {
+            List<CommentStatisticsDto> comments = _commentService.GetCommentsForMonth(id).ConvertAll(c => _commentConverter.ConvertToCommentStatisticsDto(c));
+            return Ok(comments);
+        }
+
+        [HttpGet]
+        [Route("year/{id:int}")]
+        public IActionResult GetCommentsForYear(int id)
+        {
+            List<CommentStatisticsDto> comments = _commentService.GetCommentsForYear(id).ConvertAll(c => _commentConverter.ConvertToCommentStatisticsDto(c));
+            return Ok(comments);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("user/{id:int}")]
