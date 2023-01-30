@@ -17,17 +17,13 @@
 {
     "idUser": 11,
     "login": "chudo-prirody-new",
-    "mail": "test1@mail.ru",
     "password": "qwerty123",
     "userPhotos": [
         {
             "idPhoto": 21,
             "url": "https://chudo-prirody.ru/uploads/posts/2021-08/1628748036_138-p-smeshnie-foto-kotov-na-avu-140.jpg"
         }
-    ],
-    "gender": 1,
-    "numberOfSubscribers": 0,
-    "numberOfPosts": 3
+    ]
 }
 
 // AddNewPost
