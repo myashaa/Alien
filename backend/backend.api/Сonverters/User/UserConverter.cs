@@ -74,6 +74,14 @@ namespace Backend.Api.Сonverters
                 Subscriber = ConvertToUserInfoDto(subscription.Subscriber)
             };
         }
+        public SubscriptionStatisticsDto ConvertToSubscriptionStatisticsDto(SubscriptionStatistics subscription)
+        {
+            return new SubscriptionStatisticsDto
+            {
+                Date = subscription.Date,
+                Count = subscription.Count
+            };
+        }
         public Subscription ConvertToSubscription(SubscriptionDto subscriptionDto)
         {
             return new Subscription

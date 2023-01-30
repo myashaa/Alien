@@ -16,7 +16,7 @@ namespace Backend.Domain.UserM
 
     public class SubscriptionStatistics
     {
-        public byte Gender { get; set; }
+        public int Date { get; set; }
         public int Count { get; set; }
     }
 

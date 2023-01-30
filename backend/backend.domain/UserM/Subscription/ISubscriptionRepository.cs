@@ -5,8 +5,10 @@ namespace Backend.Domain.UserM
     public interface ISubscriptionRepository
     {
         Subscription CheckAvailability(int idUser, int idSubscriber);
-        public IEnumerable<Subscription> GetSubscriptionsByIdUser(int id);
-        public IEnumerable<Subscription> GetSubscribersByIdUser(int id);
+        IEnumerable<Subscription> GetSubscriptionsByIdUser(int id);
+        IEnumerable<Subscription> GetSubscribersByIdUser(int id);
+        IEnumerable<SubscriptionStatistics> GetSubscribersForMonth(int id);
+        IEnumerable<SubscriptionStatistics> GetSubscribersForYear(int id);
         IEnumerable<GenderStatistics> GetGendersByIdUser(int id);
         void AddNew(Subscription subscription);
         void DeleteCurrent(int idUser, int idSubscriber);

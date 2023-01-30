@@ -39,6 +39,34 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(s => s.Date);
         }
 
+        public IEnumerable<SubscriptionStatistics> GetSubscribersForMonth(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            return Entities
+                .Where(s => s.IdSubscriber == id)
+                .Where(s => s.Date > lowerBound)
+                .GroupBy(s => s.Date.Day)
+                .Select(s => new SubscriptionStatistics { Date = s.Key, Count = s.Count() })
+                .ToList();
+        }
+
+        public IEnumerable<SubscriptionStatistics> GetSubscribersForYear(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            int numberOfMonths = -1 * today.Month + 1;
+            lowerBound = lowerBound.AddMonths(numberOfMonths);
+            return Entities
+                .Where(s => s.IdSubscriber == id)
+                .Where(s => s.Date > lowerBound)
+                .GroupBy(s => s.Date.Month)
+                .Select(s => new SubscriptionStatistics { Date = s.Key, Count = s.Count() })
+                .ToList();
+        }
+
         public IEnumerable<GenderStatistics> GetGendersByIdUser(int id)
         {
             return Entities
@@ -46,16 +74,6 @@ namespace Backend.Infrastructure.Repositories
                 .GroupBy(g => g.User.Gender)
                 .Select(g => new GenderStatistics { Gender = g.Key, Count = g.Count() })
                 .ToList();
-            //подписки за день
-            //DateTime today = DateTime.Today;
-            //int numberOfDays = -1 * today.Day + 1;
-            //DateTime thirtyDaysAgo = today.AddDays(numberOfDays);
-            //return Entities
-            //    .Where(s => s.IdSubscriber == id)
-            //    .Where(s => s.Date > thirtyDaysAgo)
-            //    .GroupBy(l => l.Date.Day)
-            //    .Select(l => new L { Date = l.Key, Count = l.Count() })
-            //    .ToList();
         }
 
         public void AddNew(Subscription subscription)

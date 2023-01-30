@@ -5,8 +5,8 @@ namespace Backend.Api.Сonverters
 {
     public interface ILikeConverter
     {
-        public LikeUserDto ConvertToLikeUserDto(Like like);
-        public LikeStatisticsDto ConvertToLikeStatisticsDto(LikeStatistics like);
-        public Like ConvertToLike(LikeDto likeDto);
+        LikeUserDto ConvertToLikeUserDto(Like like);
+        LikeStatisticsDto ConvertToLikeStatisticsDto(LikeStatistics like);
+        Like ConvertToLike(LikeDto likeDto);
     }
 }
