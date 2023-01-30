@@ -24,6 +24,16 @@ namespace Backend.Infrastructure.Repositories
                 .OrderBy(c => c.Date);
         }
 
+        public IEnumerable<Comment> GetAllByIdUser(int id)
+        {
+            return Entities
+                .Include(c => c.User).ThenInclude(c => c.UserPhotos)
+                .Include(c => c.Post).ThenInclude(c => c.PostPhotos)
+                .Where(c => c.Post.IdUser == id)
+                .ToList()
+                .OrderBy(c => c.Date);
+        }
+
         public void AddNew(Comment comment)
         {
             Add(comment);

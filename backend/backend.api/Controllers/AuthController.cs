@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace Backend.Api.Controllers
         private readonly IOptions<AuthOptions> authOptions;
         private IUserService _userService;
         private IUserConverter _userConverter;
+        private string _idUser => User.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value;
 
         public AuthController(IOptions<AuthOptions> authOptions, IUserService userService, IUserConverter userConverter)
         {

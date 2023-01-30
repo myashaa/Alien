@@ -7,6 +7,7 @@ namespace Backend.Api.Сonverters
     {
         public CommentDto ConvertToCommentDto(Comment comment);
         public CommentPreviewDto ConvertToCommentPreviewDto(Comment comment);
+        public CommentUserDto ConvertToCommentUserDto(Comment comment);
         public Comment ConvertToComment(CommentDto commentDto);
         public Comment ConvertToComment(CommentPreviewDto commentDto);
     }

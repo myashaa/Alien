@@ -18,6 +18,12 @@ namespace Backend.Domain.PostM
             return comments.ToList();
         }
 
+        public List<Comment> GetCommentsByUser(int id)
+        {
+            var comments = _commentRepository.GetAllByIdUser(id);
+            return comments.ToList();
+        }
+
         public void AddComment(Comment comment)
         {
             _commentRepository.AddNew(comment);

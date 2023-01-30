@@ -2,6 +2,7 @@
 using Backend.Api.Сonverters;
 using Backend.Domain.Abstractions;
 using Backend.Domain.UserM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace backend.api.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
+        private ISubscriptionService _subscriptionService;
         private IUserConverter _userConverter;
         private IUnitOfWork _unitOfWork;
-        public UserController(IUserService userService, IUserConverter userConverter, IUnitOfWork unitOfWork)
+        public UserController(IUserService userService, ISubscriptionService subscriptionService, IUserConverter userConverter, IUnitOfWork unitOfWork)
         {
             _userService = userService;
+            _subscriptionService = subscriptionService;
             _userConverter = userConverter;
             _unitOfWork = unitOfWork;
         }
@@ -33,6 +36,7 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetUserById(int id)
@@ -45,11 +49,12 @@ namespace backend.api.Controllers
             return Ok(userDto);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{login}")]
         public IActionResult GetUsersByLogin(string login)
         {
-            List<UserInfoDto> users = _userService.GetUsersByLogin(login).ConvertAll(p => _userConverter.ConvertToUserInfoDto(p));
+            List<UserInfoDto> users = _userService.GetUsersByLogin(login).ConvertAll(u => _userConverter.ConvertToUserInfoDto(u));
             return Ok(users);
         }
 
@@ -63,6 +68,7 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult DeleteCurrentUser(int id)
@@ -72,6 +78,7 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPut]
         [Route("")]
         public IActionResult UpdateCurrentUser([FromBody] UserDto userDto)
@@ -82,5 +89,55 @@ namespace backend.api.Controllers
             return Ok();
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
+        public IActionResult CheckSubscriptionAvailability(int idUser, int idSubscriber)
+        {
+            Subscription subscription = _subscriptionService.CheckSubscriptionAvailability(idUser, idSubscriber);
+            if (subscription == null)
+                return NotFound(false);
+
+            return Ok(true);
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("subscriptions/{id:int}")]
+        public IActionResult GetSubscriptions(int id)
+        {
+            List<SubscriptionUserDto> users = _subscriptionService.GetSubscriptions(id).ConvertAll(s => _userConverter.ConvertToSubscriptionUserDto(s));
+            return Ok(users);
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("subscribers/{id:int}")]
+        public IActionResult GetSubscribers(int id)
+        {
+            List<SubscriptionUserDto> users = _subscriptionService.GetSubscribers(id).ConvertAll(s => _userConverter.ConvertToSubscriptionUserDto(s));
+            return Ok(users);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("subscription")]
+        public IActionResult Subscribe([FromBody] SubscriptionDto subscriptionDto)
+        {
+            Subscription subscription = _userConverter.ConvertToSubscription(subscriptionDto);
+            _subscriptionService.AddSubscription(subscription);
+            _unitOfWork.Commit();
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpDelete]
+        [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
+        public IActionResult Unsubscribe(int idUser, int idSubscriber)
+        {
+            _subscriptionService.DeleteSubscription(idUser, idSubscriber);
+            _unitOfWork.Commit();
+            return Ok();
+        }
     }
 }

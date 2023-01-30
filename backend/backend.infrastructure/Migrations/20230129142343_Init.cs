@@ -148,12 +148,14 @@ namespace Backend.Infrastructure.Migrations
                         name: "FK_Like_Post_IdPost",
                         column: x => x.IdPost,
                         principalTable: "Post",
-                        principalColumn: "IdPost");
+                        principalColumn: "IdPost",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Like_User_IdUser",
                         column: x => x.IdUser,
                         principalTable: "User",
-                        principalColumn: "IdUser");
+                        principalColumn: "IdUser",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

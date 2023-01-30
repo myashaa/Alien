@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Infrastructure.Migrations
 {
     [DbContext(typeof(BackendDbContext))]
-    [Migration("20230129124555_Init")]
+    [Migration("20230129142343_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -241,13 +241,13 @@ namespace Backend.Infrastructure.Migrations
                     b.HasOne("Backend.Domain.PostM.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("IdPost")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Backend.Domain.UserM.User", "User")
                         .WithMany("Likes")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Post");
