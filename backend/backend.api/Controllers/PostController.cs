@@ -51,6 +51,14 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [HttpGet]
+        [Route("popular/{id:int}")]
+        public IActionResult GetPopularPosts(int id)
+        {
+            List<PostPreviewDto> posts = _postService.GetPopularPosts(id).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
+            return Ok(posts);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("{id:int}")]

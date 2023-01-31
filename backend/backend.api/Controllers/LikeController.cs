@@ -33,6 +33,23 @@ namespace backend.api.Controllers
             return Ok(likes);
         }
 
+        //[Authorize]
+        [HttpGet]
+        [Route("month/{id:int}")]
+        public IActionResult GetLikesForMonth(int id)
+        {
+            List<LikeStatisticsDto> likes = _likeService.GetLikesForMonth(id).ConvertAll(l => _likeConverter.ConvertToLikeStatisticsDto(l));
+            return Ok(likes);
+        }
+
+        [HttpGet]
+        [Route("year/{id:int}")]
+        public IActionResult GetLikesForYear(int id)
+        {
+            List<LikeStatisticsDto> likes = _likeService.GetLikesForYear(id).ConvertAll(l => _likeConverter.ConvertToLikeStatisticsDto(l));
+            return Ok(likes);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("{IdUser:int}/{IdPost:int}")]

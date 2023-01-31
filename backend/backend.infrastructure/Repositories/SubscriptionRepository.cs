@@ -1,6 +1,7 @@
 ﻿using Backend.Domain.UserM;
 using Backend.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +26,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(s => s.User).ThenInclude(u => u.UserPhotos)
                 .Where(s => s.IdUser == id)
                 .ToList()
-                .OrderBy(s => s.Date);
+                .OrderByDescending(s => s.Date);
         }
 
         public IEnumerable<Subscription> GetSubscribersByIdUser(int id)
@@ -35,7 +36,44 @@ namespace Backend.Infrastructure.Repositories
                 .Include(s => s.Subscriber).ThenInclude(u => u.UserPhotos)
                 .Where(s => s.IdSubscriber == id)
                 .ToList()
-                .OrderBy(s => s.Date);
+                .OrderByDescending(s => s.Date);
+        }
+
+        public IEnumerable<SubscriptionStatistics> GetSubscribersForMonth(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            return Entities
+                .Where(s => s.IdSubscriber == id)
+                .Where(s => s.Date > lowerBound)
+                .GroupBy(s => s.Date.Day)
+                .Select(s => new SubscriptionStatistics { Date = s.Key, Count = s.Count() })
+                .ToList();
+        }
+
+        public IEnumerable<SubscriptionStatistics> GetSubscribersForYear(int id)
+        {
+            DateTime today = DateTime.Today;
+            int numberOfDays = -1 * today.Day + 1;
+            DateTime lowerBound = today.AddDays(numberOfDays);
+            int numberOfMonths = -1 * today.Month + 1;
+            lowerBound = lowerBound.AddMonths(numberOfMonths);
+            return Entities
+                .Where(s => s.IdSubscriber == id)
+                .Where(s => s.Date > lowerBound)
+                .GroupBy(s => s.Date.Month)
+                .Select(s => new SubscriptionStatistics { Date = s.Key, Count = s.Count() })
+                .ToList();
+        }
+
+        public IEnumerable<GenderStatistics> GetGendersByIdUser(int id)
+        {
+            return Entities
+                .Where(g => g.IdSubscriber == id)
+                .GroupBy(g => g.User.Gender)
+                .Select(g => new GenderStatistics { Gender = g.Key, Count = g.Count() })
+                .ToList();
         }
 
         public void AddNew(Subscription subscription)

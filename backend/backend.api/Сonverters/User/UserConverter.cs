@@ -54,15 +54,6 @@ namespace Backend.Api.Сonverters
                 NumberOfPosts = userDto.NumberOfPosts
             };
         }
-        public User ConvertToUser(UserNameDto userDto)
-        {
-            return new User
-            {
-                IdUser = userDto.IdUser,
-                Login = userDto.Login,
-                UserPhotos = userDto.UserPhotos.ConvertAll(u => ConvertToUserPhoto(u))
-            };
-        }
         public User ConvertToUser(UserInfoDto userDto)
         {
             return new User
@@ -75,21 +66,20 @@ namespace Backend.Api.Сonverters
             };
         }
 
-        public SubscriptionDto ConvertToSubscriptionDto(Subscription subscription)
-        {
-            return new SubscriptionDto
-            {
-                IdUser = subscription.IdUser,
-                IdSubscriber = subscription.IdSubscriber,
-                Date = subscription.Date
-            };
-        }
         public SubscriptionUserDto ConvertToSubscriptionUserDto(Subscription subscription)
         {
             return new SubscriptionUserDto
             {
                 User = ConvertToUserInfoDto(subscription.User),
                 Subscriber = ConvertToUserInfoDto(subscription.Subscriber)
+            };
+        }
+        public SubscriptionStatisticsDto ConvertToSubscriptionStatisticsDto(SubscriptionStatistics subscription)
+        {
+            return new SubscriptionStatisticsDto
+            {
+                Date = subscription.Date,
+                Count = subscription.Count
             };
         }
         public Subscription ConvertToSubscription(SubscriptionDto subscriptionDto)
@@ -101,12 +91,13 @@ namespace Backend.Api.Сonverters
                 Date = subscriptionDto.Date
             };
         }
-        public Subscription ConvertToSubscription(SubscriptionUserDto subscriptionDto)
+
+        public GenderStatisticsDto ConvertToGenderStatisticsDto(GenderStatistics gender)
         {
-            return new Subscription
+            return new GenderStatisticsDto
             {
-                User = ConvertToUser(subscriptionDto.User),
-                Subscriber = ConvertToUser(subscriptionDto.Subscriber)
+                Gender = gender.Gender,
+                Count = gender.Count
             };
         }
 

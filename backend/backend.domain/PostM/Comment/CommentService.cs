@@ -18,6 +18,18 @@ namespace Backend.Domain.PostM
             return comments.ToList();
         }
 
+        public List<CommentStatistics> GetCommentsForMonth(int id)
+        {
+            var comments = _commentRepository.GetAllForMonth(id);
+            return comments.ToList();
+        }
+
+        public List<CommentStatistics> GetCommentsForYear(int id)
+        {
+            var comments = _commentRepository.GetAllForYear(id);
+            return comments.ToList();
+        }
+
         public List<Comment> GetCommentsByUser(int id)
         {
             var comments = _commentRepository.GetAllByIdUser(id);

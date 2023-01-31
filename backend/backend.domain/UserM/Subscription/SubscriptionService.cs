@@ -30,6 +30,24 @@ namespace Backend.Domain.UserM
             return subscriptions.ToList();
         }
 
+        public List<SubscriptionStatistics> GetSubscribersForMonth(int id)
+        {
+            var subscriptions = _subscriptionRepository.GetSubscribersForMonth(id);
+            return subscriptions.ToList();
+        }
+
+        public List<SubscriptionStatistics> GetSubscribersForYear(int id)
+        {
+            var subscriptions = _subscriptionRepository.GetSubscribersForYear(id);
+            return subscriptions.ToList();
+        }
+
+        public List<GenderStatistics> GetGenders(int id)
+        {
+            var genders = _subscriptionRepository.GetGendersByIdUser(id);
+            return genders.ToList();
+        }
+
         public void AddSubscription(Subscription subscription)
         {
             _subscriptionRepository.AddNew(subscription);

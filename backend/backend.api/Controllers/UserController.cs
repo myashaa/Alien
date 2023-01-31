@@ -119,6 +119,32 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
+        //[Authorize]
+        [HttpGet]
+        [Route("month/{id:int}")]
+        public IActionResult GetSubscribersForMonth(int id)
+        {
+            List<SubscriptionStatisticsDto> users = _subscriptionService.GetSubscribersForMonth(id).ConvertAll(s => _userConverter.ConvertToSubscriptionStatisticsDto(s));
+            return Ok(users);
+        }
+
+        [HttpGet]
+        [Route("year/{id:int}")]
+        public IActionResult GetSubscribersForYear(int id)
+        {
+            List<SubscriptionStatisticsDto> users = _subscriptionService.GetSubscribersForYear(id).ConvertAll(s => _userConverter.ConvertToSubscriptionStatisticsDto(s));
+            return Ok(users);
+        }
+
+        //[Authorize]
+        [HttpGet]
+        [Route("genders/{id:int}")]
+        public IActionResult GetGenders(int id)
+        {
+            List<GenderStatisticsDto> genders = _subscriptionService.GetGenders(id).ConvertAll(g => _userConverter.ConvertToGenderStatisticsDto(g));
+            return Ok(genders);
+        }
+
         [Authorize]
         [HttpPost]
         [Route("subscription")]

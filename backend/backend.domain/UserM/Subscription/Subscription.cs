@@ -13,4 +13,16 @@ namespace Backend.Domain.UserM
         [ForeignKey("IdSubscriber")]
         public User Subscriber { get; set; }
     }
+
+    public class SubscriptionStatistics
+    {
+        public int Date { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class GenderStatistics
+    {
+        public byte Gender { get; set; }
+        public int Count { get; set; }
+    }
 }

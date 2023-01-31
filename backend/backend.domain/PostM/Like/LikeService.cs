@@ -18,6 +18,18 @@ namespace Backend.Domain.PostM
             return likes.ToList();
         }
 
+        public List<LikeStatistics> GetLikesForMonth(int id)
+        {
+            var likes = _likeRepository.GetAllForMonth(id);
+            return likes.ToList();
+        }
+
+        public List<LikeStatistics> GetLikesForYear(int id)
+        {
+            var likes = _likeRepository.GetAllForYear(id);
+            return likes.ToList();
+        }
+
         public Like CheckLikeAvailability(int idUser, int idPost)
         {
             var like = _likeRepository.CheckAvailability(idUser, idPost);

@@ -70,3 +70,9 @@
     "IdSubscriber": 1, 
     "date": "2004-05-23T14:25:10"
 }
+
+// Login
+{
+    "Mail": "test1@mail.ru",
+    "Password": "qwerty124"
+}
