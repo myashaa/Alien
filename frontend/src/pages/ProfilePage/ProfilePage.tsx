@@ -15,10 +15,11 @@ import {ProfileConstructor} from "../../components/Profile/ProfileConstructor";
 
 export const ProfilePage = () => {
 
-  let currentToken = localStorage.getItem('token');
-
-  const [users, setusers] = useState([]);
-
+  const [subs, setSubs] = useState([]);
+  const [subers, setSubers] = useState([]);
+  const [isBlogger, SetIsBlogger] = useState(false);
+  const [user, setUser] = React.useState(null);
+  
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
     const handleTogglePostPanel = () => {
         setPostPanelVisible(true);
@@ -61,17 +62,32 @@ export const ProfilePage = () => {
     };
 
     useEffect(() => {
-      axios.get(variables.USER_URL).then((response) => {
-        setusers((data) => {
+      axios.get(variables.SUB_USER + localStorage.getItem('idUser')).then((response) => {
+        setSubs((data) => {
           return response.data;
         });
       });
+      axios.get(variables.SUBERS_USER + localStorage.getItem('idUser')).then((response) => {
+        setSubers((data) => {
+          return response.data;
+        });
+      });
+      axios.get(variables.USER_URL + localStorage.getItem('idUser')).then((response) => {
+        setUser(response.data);
+      });
     }, []);
 
+  if (user == null){
+     return null;
+  }
+  if(user["numberOfSubscribers"] > 10)
+  {
+    SetIsBlogger(true);
+  }
   return (
     <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
       <Header />
-      <ProfileConstructor idUser={String(3)}/>
+      <Profile login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]} photo = {user["userPhotos"]}/>
 
       <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
@@ -103,11 +119,14 @@ export const ProfilePage = () => {
                       <span>Подписчики</span>
                     </a>
                   </li>
-                  <li className={ styles.sortingItem } onClick={handleToggleLikesPanel}>
-                    <NavLink to="/analitic" className={styles.sortingLink} title="Аналитика">
-                      <span>Аналитика</span>
-                    </NavLink>
-                  </li>
+                  {isBlogger ?
+                    <li className={ styles.sortingItem } onClick={handleToggleLikesPanel}>
+                       <NavLink to="/analitic" className={styles.sortingLink} title="Аналитика">
+                         <span>Аналитика</span>
+                       </NavLink>
+                    </li>
+                   : <></>}
+                  
                 </ul>
               </div>
             </div>
@@ -155,9 +174,10 @@ export const ProfilePage = () => {
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
               <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
                 <ul className={`${ styles.profileSubscriptionsList}`}> 
-                  {users.map((user) =>
-                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
+                  {subers.map((suber) =>
+                    <div key = {suber["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers idBlogger={user["idUser"]} idUser={suber["idUser"]} login = {suber["login"]} numberOfPosts = {suber["numberOfPosts"]} 
+                      numberOfSubscribers = {suber["numberOfSubscribers"]}/>
                     </div>)}
                 </ul>
               </section>
@@ -169,9 +189,10 @@ export const ProfilePage = () => {
         <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
         <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
             <ul className={`${ styles.profileSubscriptionsList}`}> 
-                {users.map((user) =>
-                    <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
+                {subs.map((sub) =>
+                    <div key = {sub["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
+                      <Subscribers idBlogger={user["idUser"]} idUser={sub["idUser"]} login = {sub["login"]} 
+                      numberOfPosts = {sub["numberOfPosts"]} numberOfSubscribers = {sub["numberOfSubscribers"]}/>
                 </div>)}
             </ul>
         </section>
