@@ -107,7 +107,36 @@ export const PostPageConstructor = (props: PostProps) => {
   
   const [isSubs, setIsSubs] = useState(false);
 
-  React.useEffect(() => {
+  const [like, setLike] = useState(null);
+
+    const handleToggleLikePanel = () => {
+        axios.delete(variables.DELETE_LIKE + localStorage.getItem("idUser") + "/" + props.post.idPost.toString()).then((response) => {
+          });
+        setIsLikes(false);
+    };
+    const handleToggleUnlikePanel = () => {
+        axios.post(variables.ADD_LIKE, {    
+            IdUser: Number(localStorage.getItem("idUser")),
+            IdPost: props.post.idPost, 
+            date: new Date()
+        }).then((response) => {
+            setLike((data) => {
+              return response.data;
+            });
+        });
+        setIsLikes(true);
+  };
+
+  
+    const [isLikes, setIsLikes] = useState(false);
+
+  useEffect(() => {
+    axios.get(variables.CHECK_LIKE + localStorage.getItem("idUser") + "/" + props.post.idPost?.toString()).then((response) => {
+      setIsLikes(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
     axios.get(variables.CHECK_SUB + localStorage.getItem('idUser') + "/" + props.post.user.idUser?.toString()).then((response) => {
       setIsSubs(response.data);
     });
@@ -144,12 +173,17 @@ export const PostPageConstructor = (props: PostProps) => {
                 </div>
                 <div className={styles.postIndicators}>
                   <div className={styles.postButtons}>
-                    <a className={`${styles.postIndicator} ${baseStyles.button}`} href="#" title="Лайк">
-                      <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />
-                      {/* <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/> */}
+                    {!isLikes ?
+                    <button className={`${styles.postIndicator} ${baseStyles.button}`} title="Лайк" onClick={handleToggleUnlikePanel}>
+                      <IconHeart className={styles.postIndicatorIcon} width="20" height="17" /> 
                       <span>{props.post.numberOfLikes}</span>
                       <span className={baseStyles.visuallyHidden}>количество лайков</span>
-                    </a>
+                    </button>:
+                    <button className={`${styles.postIndicator} ${baseStyles.button}`} title="Лайк" onClick={handleToggleLikePanel}>
+                      <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/>
+                      <span>{props.post.numberOfLikes}</span>
+                      <span className={baseStyles.visuallyHidden}>количество лайков</span>
+                    </button>}
                     <div className={`${styles.postIndicator} ${baseStyles.button}`}  title="Комментарии">
                       <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
                       <span>{props.post.numberOfComments}</span>

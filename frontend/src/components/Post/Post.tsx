@@ -46,8 +46,8 @@ export function Post(props: PostProps) {
     };
     const handleToggleUnlikePanel = () => {
         axios.post(variables.ADD_LIKE, {    
-            idUser: localStorage.getItem("idUser"),
-            idPost: props.id, 
+            IdUser: Number(localStorage.getItem("idUser")),
+            IdPost: props.id, 
             date: new Date()
         }).then((response) => {
             setLike((data) => {
@@ -56,14 +56,11 @@ export function Post(props: PostProps) {
         });
         setIsLikes(true);
   };
-  
-  console.log(localStorage.getItem("idUser"));
-  console.log(props.id);
-  console.log(new Date());
+
   
     const [isLikes, setIsLikes] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get(variables.CHECK_LIKE + localStorage.getItem("idUser") + "/" + props.id?.toString()).then((response) => {
       setIsLikes(response.data);
     });
@@ -138,7 +135,7 @@ export function Post(props: PostProps) {
             <span className={baseStyles.visuallyHidden}>количество лайков</span>
           </button>}
                 
-          <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
+          <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href={linkPost} title="Комментарии">
             <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
             <span>{props.numberOfComments}</span>
             <span className={baseStyles.visuallyHidden}>количество комментариев</span>

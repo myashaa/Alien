@@ -152,7 +152,6 @@
 }
 
 .postIndicatorIconLikeActive {
-  display: none;
   opacity: .6;
   fill: #f02323;
 }
