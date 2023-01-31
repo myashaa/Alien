@@ -12,12 +12,6 @@ namespace Backend.Domain.UserM
             _userRepository = userRepository;
         }
 
-        public List<User> GetUsers()
-        {
-            var users = _userRepository.GetAll();
-            return users.ToList();
-        }
-
         public User GetUser(int id)
         {
             var user = _userRepository.GetById(id);

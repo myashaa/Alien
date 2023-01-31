@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Backend.Domain.PostM;
 using System.ComponentModel.DataAnnotations;
 

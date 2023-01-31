@@ -5,9 +5,9 @@ namespace Backend.Api.Сonverters
 {
     public interface ICommentConverter
     {
-        public CommentPreviewDto ConvertToCommentPreviewDto(Comment comment);
-        public CommentUserDto ConvertToCommentUserDto(Comment comment);
-        public CommentStatisticsDto ConvertToCommentStatisticsDto(CommentStatistics comment);
-        public Comment ConvertToComment(CommentDto commentDto);
+        CommentPreviewDto ConvertToCommentPreviewDto(Comment comment);
+        CommentUserDto ConvertToCommentUserDto(Comment comment);
+        CommentStatisticsDto ConvertToCommentStatisticsDto(CommentStatistics comment);
+        Comment ConvertToComment(CommentDto commentDto);
     }
 }

@@ -13,13 +13,6 @@ namespace Backend.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<User> GetAll()
-        {
-            return Entities
-                .Include(u => u.UserPhotos)
-                .ToList();
-        }
-
         public User GetById(int id)
         {
             return Entities
