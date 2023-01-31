@@ -41,7 +41,7 @@ export function AddingPostForm() {
     setIsCreated(true);
   }
 
-  function createPost(){
+  async function createPost(){
     for(let i: number = 0; i < receivers.length; i++)
     {
       let str: string = receivers[i]; 
@@ -49,9 +49,9 @@ export function AddingPostForm() {
       tag.push(newTag);
     };
     console.log(tag);
-    axios
+    await axios
       .post(variables.CREATE_POST_URL, {
-        idUser: 4,
+        idUser: Number(localStorage.getItem('idUser')),
         text: textIn,
         date: new Date(),
         title: titleIn,

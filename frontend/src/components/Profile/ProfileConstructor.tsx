@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from "axios";
 import {Profile} from "../Profile/Profile";
 
 interface ProfileConstructorProps {
-   idUser?: string,
+   idUser: string | null,
 }
 
 export const ProfileConstructor = (props: ProfileConstructorProps) => { 

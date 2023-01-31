@@ -207,6 +207,13 @@
   align-items: flex-start;
 }
 
+.userPicture {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
 .postDetailsAvatar {
   width: 60px;
   height: 60px;
@@ -413,3 +420,4 @@
   letter-spacing: .8px;
   border-radius: 20px;
 }
+

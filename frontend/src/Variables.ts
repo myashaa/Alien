@@ -16,6 +16,21 @@ export const variables={
     DELETE_POST_URL:"https://localhost:44390/api/post/",
     POST_TITLE_URL:"https://localhost:44390/api/post/title/",
     POST_TAG_URL:"https://localhost:44390/api/post/tag/",
+    POST_USER:"https://localhost:44390/api/post/user/",
+    CURRENT_POST:"https://localhost:44390/api/post/",
+    COMMENTS_POST:"https://localhost:44390/api/comment/",
+    ADD_COMMENTS:"https://localhost:44390/api/comment",
+    SUB_USER:"https://localhost:44390/api/user/subscriptions/",
+    SUBERS_USER:"https://localhost:44390/api/user/subscribers/",
+    CHECK_SUB:"https://localhost:44390/api/user/subscription/",
+    ANALITIC_POST:"https://localhost:44390/api/post/popular/",
+    ANALITIC_LIKE_MONTH:"https://localhost:44390/api/like/month/",
+    ANALITIC_LIKE_YEAR:"https://localhost:44390/api/like/year/",
+    ANALITIC_COMMENT_MONTH:"https://localhost:44390/api/comment/month/",
+    ANALITIC_COMMENT_YEAR:"https://localhost:44390/api/comment/year/",
+    ANALITIC_GENDER:"https://localhost:44390/api/user/genders/",
+    ANALITIC_NEW_MONTH:"https://localhost:44390/api/user/month/",
+    ANALITIC_NEW_YEAR:"https://localhost:44390/api/user/year/",
 }
 /*
 https://localhost:44390/api/auth              - авторизация

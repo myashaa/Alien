@@ -13,7 +13,7 @@ type PhotoType = {
 }
 
 interface EditingProfileFormProps {
-  id: number,
+  idUser: number,
   login: string,
   mail: string,
   password: string,
@@ -24,7 +24,8 @@ interface EditingProfileFormProps {
 export function EditingProfileForm(props: EditingProfileFormProps) {
 
   const [isCreated, setIsCreated] = React.useState(false);
-  
+
+  const [user, setUser] = React.useState(null);  
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState("");
   const [urlIn, setUrl] = useState('');
@@ -37,6 +38,11 @@ export function EditingProfileForm(props: EditingProfileFormProps) {
     let newLogin = login;
     let newPassword = password;
     let newUrl = urlIn;
+    let idPhoto = 0;
+    if(props.photo.length != 0)
+    {
+      idPhoto = props.photo[0].idPhoto;
+    }
     if(login == "")
     {
       newLogin = props.login
@@ -50,16 +56,21 @@ export function EditingProfileForm(props: EditingProfileFormProps) {
       newUrl = props.photo[0].url
     }
     axios
-      .post(variables.CREATE_USER, {
-        idUser: props.id,
+      .put(variables.CREATE_USER, {
+        idUser: props.idUser,
         login: newLogin,
         password: newPassword,
         userPhotos: [
             {
-              url: newUrl
+                idPhoto: props.photo[0].idPhoto,
+                url: newUrl
             }
         ],
-    });
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
+    ;
   }
 
   const handelSubmit = (e:FormEvent) => {
