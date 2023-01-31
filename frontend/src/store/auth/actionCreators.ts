@@ -1,7 +1,7 @@
 import { Dispatch } from "@reduxjs/toolkit"
 import api from "../../api"
 import { ILoginRequest, ILoginResponse } from "../../api/auth/types"
-import { loginStart, loginSucess, loginFailure, logoutSuccess,loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer"
+import { loginStart, loginSucess, loginFailure, logoutSuccess, loadProfileStart, loadProfileFailure, loadProfileSucess } from "./authReducer"
 import { store } from ".."
 import axios, { AxiosPromise } from "axios"
 import { isTokenExpired } from "../../utils/jwt"
@@ -20,9 +20,9 @@ export const loginUser =
 
         localStorage.setItem('token', res.data.access_token);
         //change to id from token
-        //localStorage.setItem('idUser', res.data.id.toString());
-        localStorage.setItem('idUser', "1");
-        
+        localStorage.setItem('idUser', res.data.id.toString());
+        //localStorage.setItem('idUser', "1");
+
       } catch (e: any) {
         console.error(e)
 
@@ -32,7 +32,7 @@ export const loginUser =
 
 export const logoutUser =
   () =>
-  async (dispatch: Dispatch): Promise<void> => {
+    async (dispatch: Dispatch): Promise<void> => {
       try {
         await api.auth.logout()
 
@@ -40,9 +40,9 @@ export const logoutUser =
 
         //history.push('/')
       } catch (e) {
-          console.error(e)
+        console.error(e)
       }
-  }
+    }
 
 export const getProfile = () =>
   async (dispatch: Dispatch<any>): Promise<void> => {
@@ -63,28 +63,28 @@ export const getProfile = () =>
 let refreshTokenRequest: AxiosPromise<ILoginResponse> | null = null
 
 export const getAccessToken =
-    () =>
+  () =>
     async (dispatch: Dispatch<any>): Promise<string | null> => {
-        try {
-            const accessToken = store.getState().auth.authData.accessToken
+      try {
+        const accessToken = store.getState().auth.authData.accessToken
 
-            if (!accessToken || isTokenExpired(accessToken)) {
-              if (refreshTokenRequest === null) {
-                  refreshTokenRequest = api.auth.refreshToken()
-              }
+        if (!accessToken || isTokenExpired(accessToken)) {
+          if (refreshTokenRequest === null) {
+            refreshTokenRequest = api.auth.refreshToken()
+          }
 
-              const res = await refreshTokenRequest
-              refreshTokenRequest = null
+          const res = await refreshTokenRequest
+          refreshTokenRequest = null
 
-              dispatch(loginSucess(res.data.accessToken))
+          dispatch(loginSucess(res.data.accessToken))
 
-              return res.data.accessToken
-            }
-            
-            return accessToken
-        } catch (e) {
-            console.error(e)
-
-            return null
+          return res.data.accessToken
         }
+
+        return accessToken
+      } catch (e) {
+        console.error(e)
+
+        return null
+      }
     }

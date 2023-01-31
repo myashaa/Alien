@@ -85,7 +85,7 @@ export const ProfilePage = () => {
      return null;
   }
   let isBlogger = false;
-  if(user["numberOfSubscribers"] > 5)
+  if(user["numberOfSubscribers"] > 4)
   {
     isBlogger = true;
   }
