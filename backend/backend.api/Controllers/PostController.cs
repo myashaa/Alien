@@ -57,10 +57,10 @@ namespace backend.api.Controllers
         }
 
         [HttpGet]
-        [Route("feed/{id:int}")]
-        public IActionResult GetFeedPosts(int id)
+        [Route("feed/{sortingType}/{id:int}")]
+        public IActionResult GetFeedPosts(int id, string sortingType)
         {
-            List<PostPreviewDto> posts = _postService.GetFeedPosts(id).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
+            List<PostPreviewDto> posts = _postService.GetFeedPosts(id, sortingType).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
             return Ok(posts);
         }
 

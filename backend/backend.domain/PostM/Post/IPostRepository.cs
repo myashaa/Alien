@@ -8,7 +8,7 @@ namespace Backend.Domain.PostM
         IEnumerable<Post> GetNews(string sortingType);
         IEnumerable<Post> GetTop(string sortingType);
         IEnumerable<Post> GetPopular(int id);
-        IEnumerable<Post> GetFeed(int id);
+        IEnumerable<Post> GetFeed(int id, string sortingType);
         Post GetById(int id);
         IEnumerable<Post> GetAllByIdUser(int id);
         IEnumerable<Post> GetAllByTitle(string title);

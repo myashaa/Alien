@@ -113,7 +113,7 @@ namespace Backend.Infrastructure.Repositories
                 .Take(5);
         }
 
-        public IEnumerable<Post> GetFeed(int id)
+        public IEnumerable<Post> GetFeed(int id, string sortingType)
         {
             List<Subscription> subscribers = _subscriptionRepository.GetSubscribersByIdUser(id).ToList();
             List<int> idOfSubscribers = new List<int>();
@@ -124,11 +124,27 @@ namespace Backend.Infrastructure.Repositories
                     idOfSubscribers.Add(subscriber.IdUser);
                 }
             }
-            return Entities
+
+            IEnumerable<Post> entities = Entities
                 .Include(p => p.PostPhotos)
                 .Include(p => p.User).ThenInclude(u => u.UserPhotos)
                 .Where(p => idOfSubscribers.Contains(p.User.IdUser))
                 .ToList();
+            switch (sortingType)
+            {
+                case SortingConstans.date:
+                    return entities
+                        .OrderByDescending(p => p.Date);
+                case SortingConstans.like:
+                    return entities
+                        .OrderByDescending(p => p.NumberOfLikes);
+                case SortingConstans.comment:
+                    return entities
+                        .OrderByDescending(p => p.NumberOfComments);
+                default:
+                    break;
+            }
+            return null;
         }
 
         public Post GetById(int id)
