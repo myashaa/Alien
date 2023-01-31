@@ -32,5 +32,13 @@
 
 .pageTitle {
   width: fit-content;
-  margin: 50px auto 0;
+  margin: 120px auto 0;
+}
+
+.pageLink {
+  display: table;
+  margin: 25px auto;
+  font-size: 18px;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -54,14 +54,20 @@ export const Subscribers = (props: SubscribersProps) => {
     console.log(isSubs);
   let num: number = props.user.idUser;
   let str = num?.toString() || '';
-  let link: string = "/profile/" + str;
+    let link: string = "/profile/" + str;
+    
+  let userPhoto = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
+  if(props.user.userPhotos != null && props.user.userPhotos.length != 0)
+  {
+    userPhoto = props.user.userPhotos[0].url;
+  }
 
   return (
     <>
     <div className={`${styles.postMiniUserInfo} ${styles.userInfo}`}>
         <div className={`${styles.postMiniAvatar} ${styles.userAvatar}`}>
             <a className={styles.userAvatarLink} href={link}>
-                <img className={styles.userPicture} src={UserPhoto} alt="Аватар пользователя"/>
+                <img className={styles.userPicture} src={userPhoto} alt="Аватар пользователя"/>
             </a>
         </div>
         <div className={`${styles.postMiniNameWrapper}`}>

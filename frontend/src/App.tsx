@@ -23,7 +23,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
+    element: <MainPage />  ,
   },
   {
     path: "/login",
@@ -31,31 +31,31 @@ const router = createBrowserRouter([
   },
   {
     path: "/adding-post",
-    element: <AddingPostPage />,
+    element: localStorage.getItem('token')!= null ? <AddingPostPage />: <ErrorPage />,
   },
   {
     path: "/feed",
-    element: <FeedPage />,
+    element: localStorage.getItem('token')!= null ? <FeedPage /> : <ErrorPage />,
   },
   {
     path: "/messages",
-    element: <MessagesPage />,
+    element: localStorage.getItem('token')!= null ? <MessagesPage /> : <ErrorPage />,
   },
   {
     path: "/my-feed",
-    element: <MyFeedPage />,
+    element: localStorage.getItem('token')!= null ? <MyFeedPage /> : <ErrorPage />,
   },
   {
     path: "/post/:postId",
-    element: <PostPage />,
+    element: localStorage.getItem('token')!= null ? <PostPage /> : <ErrorPage />,
   },
   {
     path: "/profile",
-    element: <ProfilePage />,
+    element: localStorage.getItem('token')!= null ? <ProfilePage /> : <ErrorPage />,
   },
   {
     path: "/profile/:profileId",
-    element: <AnotherProfilePage />,
+    element: localStorage.getItem('token')!= null ? <AnotherProfilePage /> : <ErrorPage />,
   },
   {
     path: "/registration",
@@ -63,15 +63,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <SearchPage />,
+    element: localStorage.getItem('token')!= null ? <SearchPage /> : <ErrorPage />,
   },
   {
     path: "/analitic",
-    element: <AnaliticPage />,
+    element: localStorage.getItem('token')!= null ? <AnaliticPage /> : <ErrorPage />,
   },
   {
     path: "/editing-profile",
-    element: <EditingProfilePage />,
+    element: localStorage.getItem('token')!= null ? <EditingProfilePage /> : <ErrorPage />,
   },
   {
     path: "*",

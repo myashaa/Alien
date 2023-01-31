@@ -5,7 +5,8 @@ import LogoAlien from "../../img/logo-alien.svg";
 import IconSearch from "../../img/icon-search.svg"; 
 import HeaderLinkArrow from "../../img/icon-link-arrow.svg";
 import UserPhoto from "../../img/userpic-medium.jpg";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
+import { store } from "../../store";
 
 type PhotoType = {
   idPhoto: number,
@@ -21,14 +22,22 @@ interface HeaderProps {
 export function HeaderConstructor(props: HeaderProps) {
 
   const [isUser, setUser] = useState(props.isLoginatedUser);
+  const [isLogout, setLogout] = useState(false);
 
   let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
-  if(props.photo.length != 0)
+  if(props.photo != null && props.photo.length != 0)
   {
     photo = props.photo[0].url;
   }
+
+  function logout() {
+    localStorage.clear();
+    setLogout(true);
+  }
   
   return (
+     <>
+    {isLogout ? <Navigate to="/" /> : 
     <header className={styles.header}>
       <div className={`${ styles.headerWrapper } ${ baseStyles.container }`}>
         <div className={styles.headerLogoWrapper}>
@@ -96,11 +105,11 @@ export function HeaderConstructor(props: HeaderProps) {
                         </a>
                       </li>*/}
                       <li className={styles.headerProfileNavItem}>
-                        <a className={styles.headerProfileNavLink} href="#">
+                          <button className={styles.headerProfileNavLink} onClick={logout}>
                           <span className={styles.headerProfileNavText}>
                             Выход
                           </span>
-                        </a>
+                        </button>
                       </li>
                     </ul>
                   </div>
@@ -125,6 +134,6 @@ export function HeaderConstructor(props: HeaderProps) {
           </nav>
         </div>
       </div>
-    </header>
+    </header>}</>
   );
 }

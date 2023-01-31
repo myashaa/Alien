@@ -8,12 +8,13 @@ import { Header } from '../../components/Header/Header';
 export const ErrorPage = () => {
   return (
     <div className={`${baseStyles.page} ${styles.pageError}`}>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.mainWrapper}>
         <div className={baseStyles.container}>
           <h1 className={`${baseStyles.pageTitle} ${styles.pageTitle}`}>
             Ой, кажется, эта планета еще не исследована ;(
           </h1>
+          <a className={styles.pageLink} href="/">Вернуться на главную</a>
         </div>
         <div className={`${ styles.container } ${ baseStyles.container }`}>
         </div>  

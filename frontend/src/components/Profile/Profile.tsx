@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import styles from "./Profile.module.css";
 import baseStyles from "../../index.module.css";
 import UserPhoto from "../../img/userpic-medium.jpg";
+import { Navigate } from "react-router";
 
 type PhotoType = {
   idPhoto: number,
@@ -21,8 +22,17 @@ export const Profile = (props: ProfileProps) => {
   {
     photo = props.photo[0].url;
   }
+
+  const [isLogout, setLogout] = useState(false);
   
+  function logout() {
+    localStorage.clear();
+    setLogout(true);
+  }
+
   return (
+     <>
+    {isLogout ? <Navigate to="/" /> :
     <div className={`${styles.profile}`}>
       <div>
         <div className={`${styles.profileUser} ${baseStyles.container}`}>
@@ -48,10 +58,10 @@ export const Profile = (props: ProfileProps) => {
 
           <div className={`${styles.profileUserButtons} ${styles.userRatingText}`}>
             <a className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonMain}`} href="/editing-profile">Редактировать</a>
-            <button className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} type="button">Выйти</button>
+            <button className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} type="button" onClick={logout}>Выйти</button>
           </div>
         </div>
       </div>
-    </div>
+    </div>}</>
   );
 };
