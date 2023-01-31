@@ -39,6 +39,8 @@ export const variables = {
     MY_FEED_LIKE: "https://localhost:44390/api/post/feed/like/",
     MY_FEED_COMMENT: "https://localhost:44390/api/post/feed/comment/",
     MY_FEED_DATE: "https://localhost:44390/api/post/feed/date/",
+    ALLERT_COMMENT: "https://localhost:44390/api/comment/user/",
+    ALLERT_LIKE: "https://localhost:44390/api/like/",
 }
 /*
 https://localhost:44390/api/auth              - авторизация

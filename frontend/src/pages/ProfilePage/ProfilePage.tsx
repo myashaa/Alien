@@ -18,6 +18,8 @@ export const ProfilePage = () => {
   const [subers, setSubers] = useState([]);
   const [user, setUser] = React.useState(null);
   const [posts, setPosts] = useState([]);
+  const [likes, setLike] = useState([]);
+  const [comments, setComment] = useState([]);
   
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
     const handleTogglePostPanel = () => {
@@ -79,6 +81,16 @@ export const ProfilePage = () => {
           return response.data;
         });
       });
+      axios.get(variables.ALLERT_LIKE + localStorage.getItem('idUser')).then((response) => {
+        setLike((data) => {
+          return response.data;
+        });
+      });
+      axios.get(variables.ALLERT_COMMENT + localStorage.getItem('idUser')).then((response) => {
+        setComment((data) => {
+          return response.data;
+        });
+      });      
     }, []);
 
   if (user == null){
@@ -152,10 +164,12 @@ export const ProfilePage = () => {
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
                 <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
-                  <ul className={`${ styles.profileLikesList}`}>
-                      <li className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
-                        <LikesAlert/>
+                  <ul className={`${styles.profileLikesList}`}>
+                   {likes.map((like) =>
+                       <li key = {like["idUser"]} className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
+                       <LikesAlert user={like["user"]} date={like["date"]} postPhotos={like["postPhotos"]} idPost={like["idPost"]} />
                       </li>
+                    )}  
                   </ul>
                 </section>
               </div> 
@@ -166,11 +180,12 @@ export const ProfilePage = () => {
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
                 <section className={`${ styles.profileSubscriptions} ${styles.tabsContent } ${styles.tabsContentActive }`}>
-                  <ul className={`${ styles.profileLikesList}`}>
-                      <li className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
-                        <CommentsAlert/>
-                      </li>
-                  </ul>
+                  <ul className={`${ styles.profileLikesList}`}> 
+                  {comments.map((comment) =>
+                    <li key = {comment["idUser"]} className={`${ styles.postMini} ${styles.post } ${styles.postLikesAlert } ${baseStyles.user }`}>
+                      <CommentsAlert user={comment["user"]} date={comment["date"]} text={comment["text"]} idPost={comment["idPost"]} postPhotos={comment["postPhotos"]} />
+                      </li>)}
+                </ul>
                 </section>
               </div> 
             </> 
