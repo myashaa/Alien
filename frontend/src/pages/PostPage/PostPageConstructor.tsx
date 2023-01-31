@@ -61,6 +61,8 @@ export const PostPageConstructor = (props: PostProps) => {
   let strPost = numPost?.toString() || '';
   let linkPost: string = "/post/" + strPost;
 
+  const areYouAutor = (Number(localStorage.getItem("idUser")) == props.post.user.idUser);
+
   function addComment() {
     axios
       .post(variables.ADD_COMMENTS, 
@@ -227,26 +229,29 @@ export const PostPageConstructor = (props: PostProps) => {
                     </a>
                     {/* <time className="post-details__time user__time" datetime="2014-03-20">5 лет на сайте</time> */}
                   </div>
-                </div>
-                {!isSubs ? (
-                <>
-                 <div className={styles.postDetailsUserButtons}>
-                    <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonMain}`} onClick={handleToggleUnsubPanel}>
-                        Подписаться
-                    </button>
-                 </div>
-                </> 
-                ) : (null)}
+                    </div>
+                    {!areYouAutor ?
+                    <>
+                    {!isSubs ? (
+                    <>
+                    <div className={styles.postDetailsUserButtons}>
+                        <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonMain}`} onClick={handleToggleUnsubPanel}>
+                           Подписаться
+                        </button>
+                    </div>
+                    </> 
+                     ) : (null)}
 
-               {isSubs ? (
-               <>
-                  <div className={styles.postDetailsUserButtons}>
-                    <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonQuartz}`} onClick={handleToggleSubPanel}>
-                        Отписаться
-                    </button>
-                  </div>
-                </> 
-                    ) : (null)}
+                    {isSubs ? (
+                    <>
+                    <div className={styles.postDetailsUserButtons}>
+                       <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonQuartz}`} onClick={handleToggleSubPanel}>
+                          Отписаться
+                       </button>
+                    </div>
+                    </> 
+                    ) : (null)}</>
+                : <></> }
               </div>
             </div>
           </section>

@@ -86,16 +86,16 @@ namespace Backend.Infrastructure.Repositories
             {
                 case SortingConstans.date:
                     return entities
-                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
-                        .ThenByDescending(p => p.Date);
+                        .OrderByDescending(p => p.Date)
+                        .ThenByDescending(p => p.NumberOfLikes + p.NumberOfComments);
                 case SortingConstans.like:
                     return entities
-                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
-                        .ThenByDescending(p => p.NumberOfLikes);
+                        .OrderByDescending(p => p.NumberOfLikes)
+                        .ThenByDescending(p => p.NumberOfLikes + p.NumberOfComments);
                 case SortingConstans.comment:
                     return entities
-                        .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
-                        .ThenByDescending(p => p.NumberOfComments);
+                        .OrderByDescending(p => p.NumberOfComments)
+                        .ThenByDescending(p => p.NumberOfLikes + p.NumberOfComments);
                 default:
                     break;
             }
