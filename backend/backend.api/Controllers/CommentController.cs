@@ -24,7 +24,6 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetAllComments(int id)
@@ -33,7 +32,6 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
-        //[Authorize]
         [HttpGet]
         [Route("month/{id:int}")]
         public IActionResult GetCommentsForMonth(int id)
@@ -50,7 +48,6 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("user/{id:int}")]
         public IActionResult GetCommentsByIdUser(int id)
@@ -59,7 +56,6 @@ namespace backend.api.Controllers
             return Ok(comments);
         }
 
-        [Authorize]
         [HttpPost]
         [Route("")]
         public IActionResult AddNewComment([FromBody] CommentDto commentDto)

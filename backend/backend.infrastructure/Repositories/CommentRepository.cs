@@ -21,7 +21,7 @@ namespace Backend.Infrastructure.Repositories
                 .Include(c => c.User).ThenInclude(c => c.UserPhotos)
                 .Where(c => c.IdPost == id)
                 .ToList()
-                .OrderByDescending(c => c.Date);
+                .OrderBy(c => c.Date);
         }
 
         public IEnumerable<Comment> GetAllByIdUser(int id)

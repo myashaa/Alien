@@ -36,7 +36,6 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetUserById(int id)
@@ -49,7 +48,6 @@ namespace backend.api.Controllers
             return Ok(userDto);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{login}")]
         public IActionResult GetUsersByLogin(string login)
@@ -68,7 +66,6 @@ namespace backend.api.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpDelete]
         [Route("{id:int}")]
         public IActionResult DeleteCurrentUser(int id)
@@ -78,7 +75,6 @@ namespace backend.api.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpPut]
         [Route("")]
         public IActionResult UpdateCurrentUser([FromBody] UserDto userDto)
@@ -89,7 +85,6 @@ namespace backend.api.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpGet]
         [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
         public IActionResult CheckSubscriptionAvailability(int idUser, int idSubscriber)
@@ -101,7 +96,6 @@ namespace backend.api.Controllers
             return Ok(true);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("subscriptions/{id:int}")]
         public IActionResult GetSubscriptions(int id)
@@ -110,7 +104,6 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("subscribers/{id:int}")]
         public IActionResult GetSubscribers(int id)
@@ -119,7 +112,6 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
-        //[Authorize]
         [HttpGet]
         [Route("month/{id:int}")]
         public IActionResult GetSubscribersForMonth(int id)
@@ -136,7 +128,6 @@ namespace backend.api.Controllers
             return Ok(users);
         }
 
-        //[Authorize]
         [HttpGet]
         [Route("genders/{id:int}")]
         public IActionResult GetGenders(int id)
@@ -145,7 +136,6 @@ namespace backend.api.Controllers
             return Ok(genders);
         }
 
-        [Authorize]
         [HttpPost]
         [Route("subscription")]
         public IActionResult Subscribe([FromBody] SubscriptionDto subscriptionDto)
@@ -156,7 +146,6 @@ namespace backend.api.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpDelete]
         [Route("subscription/{IdUser:int}/{IdSubscriber:int}")]
         public IActionResult Unsubscribe(int idUser, int idSubscriber)

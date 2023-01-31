@@ -24,7 +24,6 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetLikesByIdUser(int id)
@@ -33,7 +32,6 @@ namespace backend.api.Controllers
             return Ok(likes);
         }
 
-        //[Authorize]
         [HttpGet]
         [Route("month/{id:int}")]
         public IActionResult GetLikesForMonth(int id)
@@ -50,7 +48,6 @@ namespace backend.api.Controllers
             return Ok(likes);
         }
 
-        [Authorize]
         [HttpGet]
         [Route("{IdUser:int}/{IdPost:int}")]
         public IActionResult CheckLikeAvailability(int idUser, int idPost)
@@ -62,7 +59,6 @@ namespace backend.api.Controllers
             return Ok(true);
         }
 
-        [Authorize]
         [HttpPost]
         [Route("")]
         public IActionResult AddNewlike([FromBody] LikeDto likeDto)
@@ -73,7 +69,6 @@ namespace backend.api.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpDelete]
         [Route("{idUser:int}/{idPost:int}")]
         public IActionResult DeleteCurrentLike(int idUser, int idPost)
