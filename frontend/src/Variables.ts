@@ -23,6 +23,8 @@ export const variables={
     SUB_USER:"https://localhost:44390/api/user/subscriptions/",
     SUBERS_USER:"https://localhost:44390/api/user/subscribers/",
     CHECK_SUB:"https://localhost:44390/api/user/subscription/",
+    ANALITIC_POST:"https://localhost:44390/api/post/popular/",
+    ANALITIC_LIKE_MONTH:"https://localhost:44390/api/like/month/",
 }
 /*
 https://localhost:44390/api/auth              - авторизация

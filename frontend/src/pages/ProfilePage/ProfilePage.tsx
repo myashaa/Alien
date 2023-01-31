@@ -19,6 +19,7 @@ export const ProfilePage = () => {
   const [subers, setSubers] = useState([]);
   const [isBlogger, SetIsBlogger] = useState(false);
   const [user, setUser] = React.useState(null);
+  const [posts, setPosts] = useState([]);
   
   const [PostPanelVisible, setPostPanelVisible] = useState(true);
     const handleTogglePostPanel = () => {
@@ -75,6 +76,11 @@ export const ProfilePage = () => {
       axios.get(variables.USER_URL + localStorage.getItem('idUser')).then((response) => {
         setUser(response.data);
       });
+      axios.get(variables.POST_USER + localStorage.getItem('idUser')).then((response) => {
+        setPosts((data) => {
+          return response.data;
+        });
+      });
     }, []);
 
   if (user == null){
@@ -119,13 +125,13 @@ export const ProfilePage = () => {
                       <span>Подписчики</span>
                     </a>
                   </li>
-                  {isBlogger ?
+                 
                     <li className={ styles.sortingItem } onClick={handleToggleLikesPanel}>
                        <NavLink to="/analitic" className={styles.sortingLink} title="Аналитика">
                          <span>Аналитика</span>
                        </NavLink>
                     </li>
-                   : <></>}
+                   
                   
                 </ul>
               </div>
@@ -136,7 +142,10 @@ export const ProfilePage = () => {
         {PostPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                {/*<Post />*/}
+                {posts.map((post) => 
+                  <Post key = {post["idPost"]} numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                  imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
+                )}
               </div> 
             </> 
         ) : (null)} 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./AnaliticPage.module.css";
 import baseStyles from "../../index.module.css";
 import { Line } from "react-chartjs-2";
@@ -13,19 +13,22 @@ import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
 import { BackArrow } from "../../components/BackArrow/BackArrow";
 import { ProfileConstructor } from "../../components/Profile/ProfileConstructor";
+import axios from "axios";
+import { variables } from "../../Variables";
 
-export type LikeMonthType =
-{
-    date: string,
-    count: number,
+export type LikeMonthType = {
+  count: number,
+  date: number,
 }
 
 interface AnaliticProps
 {
-  likeMonth: Array<LikeMonthType>,
+  likeMonth: Array<number>,
 }
 
 export const AnaliticPageConstructor = (props: AnaliticProps) => {
+
+  const [posts, setPosts] = useState([]);
 
   const [actionPanelVisible, setActionPanelVisible] = useState(true);
     const handleToggleActionPanel = () => {
@@ -73,7 +76,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
     "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
     datasets: [
       {
-        data: [10, 13, 3, 20, 18, 5, 12, 12, 1],
+        data: [3, 4, 5],
         label: "Коментарии",
         borderColor: "#F9CE07",
         backgroundColor: "rgba(249, 206, 7, 0.5)",
@@ -81,7 +84,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
         lineTension: 0.5
       },
       {
-        data: [20, 50, 20, 25, 40, 45, 13, 24, 1, 23, 23],
+        data: props.likeMonth,
         label: "Лайки",
         borderColor: "#052E70",
         backgroundColor: "rgba(5, 46, 113, 0.1)",
@@ -139,11 +142,19 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
       }
     ]
   };
+
+  useEffect(() => {
+    axios.get(variables.ANALITIC_POST + localStorage.getItem('idUser')).then((response) => {
+      setPosts((data) => {
+        return response.data;
+      });
+    });
+  }, []);
     
   return (
       <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
         <Header />
-        <ProfileConstructor idUser={String(3)}/>
+        <ProfileConstructor idUser={localStorage.getItem('idUser')}/>
       
         <div className={styles.mainWrapper}>
           <div className={baseStyles.container}>
@@ -177,24 +188,6 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
             </div>
           </div>
         </div>
-
-        {/* <div className={`${ styles.profileTabs } ${ baseStyles.filters }`}>
-          <b className={`${ styles.profileTabsCaption } ${ baseStyles.filtersCaption }`}>Аналитика:</b>
-          <ul className={`${ styles.profileTabsList } ${ baseStyles.filtersList }`}>
-            <li onClick={handleToggleActionPanel} className={`${ styles.profileTabsItem } ${ baseStyles.filtersItem }`}>
-              {actionPanelVisible ? (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton } ${ baseStyles.filtersButtonActive }`} >Активность</button>) : 
-              (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton }`} >Активность</button>)} 
-            </li>
-            <li onClick={handleTogglePeoplePanel} className={`${ styles.profileTabsItem } ${ baseStyles.filtersItem }`}>
-              {peoplePanelVisible ? (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton } ${ baseStyles.filtersButtonActive }`} >Люди</button>) : 
-              (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton }`} >Люди</button>)}
-            </li>
-            <li onClick={handleTogglePostPanel} className={`${ styles.profileTabsItem } ${ baseStyles.filtersItem }`}>
-              {postPanelVisible ? (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton } ${ baseStyles.filtersButtonActive }`} >Посты</button>) : 
-              (<button className={`${ styles.profileTabsLink } ${ baseStyles.filtersButton }`} >Посты</button>)}
-            </li>
-          </ul>
-        </div> */}
 
         {actionPanelVisible ? (
             <>
@@ -259,7 +252,10 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
         {postPanelVisible ? (
             <>
               <div className={`${ styles.analiticPosts } ${ baseStyles.container }`}>
-                {/*<Post />*/}
+                {posts.map((post) => 
+                  <Post key = {post["idPost"]} numberOfLikes = {post["numberOfLikes"]} numberOfComments = {post["numberOfComments"]} title = {post["title"]} 
+                  imgs = {post["postPhotos"]} text= {post["text"]} id = {post["idPost"]} user = {post["user"]}/>
+                )}
               </div>  
             </> 
         ) : (null)} 

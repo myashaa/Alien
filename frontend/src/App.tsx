@@ -19,7 +19,6 @@ import { AnaliticPage } from './pages/AnaliticPage/AnaliticPage';
 import { EditingProfilePage } from './pages/EditingProfilePage/EditingProfilePage';
 import { AnotherProfilePage } from './pages/AnotherProfilePage copy/AnotherProfilePage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
-import { history } from './utils/history';
 
 const router = createBrowserRouter([
   {

@@ -17,7 +17,7 @@ interface ProfileProps {
 
 export const Profile = (props: ProfileProps) => {  
   let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
-  if(props.photo.length != 0)
+  if(props.photo != null && props.photo.length != 0)
   {
     photo = props.photo[0].url;
   }

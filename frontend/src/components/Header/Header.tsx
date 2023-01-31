@@ -17,7 +17,7 @@ export const Header = () => {
     }, []);
 
     const isLoggedIn = useSelector(
-      (state: IRootState) => !!state.auth.authData.accessToken
+      () => !!localStorage.getItem('token')
     );
   
     if (!user)

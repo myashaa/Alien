@@ -1,30 +1,41 @@
-import React from "react";
-import styles from "./AnaliticPage.module.css";
-import baseStyles from "../../index.module.css";
-import { Line } from "react-chartjs-2";
-import { Pie } from "react-chartjs-2";
-import { Bar } from "react-chartjs-2";
+import React, { useEffect } from "react";
 import {useState } from 'react';
 import 'chart.js/auto'; // ADD THIS
 
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from '../../components/Header/Header';
-import { Profile } from '../../components/Profile/Profile';
-import { Post } from '../../components/Post/Post';
-import { BackArrow } from "../../components/BackArrow/BackArrow";
-import { ProfileConstructor } from "../../components/Profile/ProfileConstructor";
 import { AnaliticPageConstructor, LikeMonthType } from "./AnaliticPageConstructor";
+import { useActionData } from "react-router";
+import axios from "axios";
+import { variables } from "../../Variables";
 
 export const AnaliticPage = () => {
-  const [user, setUser] = React.useState(null);
 
-  if (!user) return null;
+  const [likeMonth, setLikeMonth] = useState(Array<LikeMonthType>);
+  
+  useEffect(() => {
+    axios.get(variables.ANALITIC_LIKE_MONTH + localStorage.getItem('idUser')).then((response) => {
+      setLikeMonth((data) => {
+        return response.data;
+      });
+    });
+  }, []);
 
-  let likeMonth: Array<LikeMonthType>;
-  likeMonth = [];
+  let likeMonthData: Array<number> = [];
+  for(let i = 1; i < 32; i++)
+  {
+    let hasDate: number|undefined = likeMonth.find(like => like.date == i)?.count
+    if(hasDate == null)
+    {
+      likeMonthData.push(0);
+    }
+    else
+    {
+      likeMonthData.push(hasDate)
+    }
+  }
+
   return (
       <>  
-        <AnaliticPageConstructor likeMonth={likeMonth}/>
+        <AnaliticPageConstructor likeMonth={likeMonthData}/>
       </>
   )
 };
