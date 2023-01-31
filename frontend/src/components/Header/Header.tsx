@@ -11,7 +11,7 @@ export const Header = () => {
     const [user, setUser] = React.useState(null);
   
     React.useEffect(() => {
-      axios.get(variables.MY_USER_URL).then((response) => {
+      axios.get(variables.USER_URL + localStorage.getItem("idUser")).then((response) => {
         setUser(response.data);
       });
     }, []);

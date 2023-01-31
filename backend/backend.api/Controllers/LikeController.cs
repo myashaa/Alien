@@ -54,7 +54,7 @@ namespace backend.api.Controllers
         {
             Like like = _likeService.CheckLikeAvailability(idUser, idPost);
             if (like == null)
-                return NotFound(false);
+                return Ok(false);
 
             return Ok(true);
         }

@@ -115,14 +115,11 @@ namespace Backend.Infrastructure.Repositories
 
         public IEnumerable<Post> GetFeed(int id, string sortingType)
         {
-            List<Subscription> subscribers = _subscriptionRepository.GetSubscribersByIdUser(id).ToList();
+            List<Subscription> subscribers = _subscriptionRepository.GetSubscriptionsByIdUser(id).ToList();
             List<int> idOfSubscribers = new List<int>();
             foreach (Subscription subscriber in subscribers)
             {
-                if (subscriber.IdSubscriber == id)
-                {
-                    idOfSubscribers.Add(subscriber.IdUser);
-                }
+                idOfSubscribers.Add(subscriber.IdSubscriber);
             }
 
             IEnumerable<Post> entities = Entities

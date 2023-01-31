@@ -35,7 +35,39 @@ interface PostProps {
 }
 
 export function Post(props: PostProps) {
-  const [post, setPost] = React.useState(true);
+    const [post, setPost] = React.useState(true);
+
+    const [like, setLike] = useState(null);
+
+    const handleToggleLikePanel = () => {
+        axios.delete(variables.DELETE_LIKE + localStorage.getItem("idUser") + "/" + props.id.toString()).then((response) => {
+          });
+        setIsLikes(false);
+    };
+    const handleToggleUnlikePanel = () => {
+        axios.post(variables.ADD_LIKE, {    
+            idUser: localStorage.getItem("idUser"),
+            idPost: props.id, 
+            date: new Date()
+        }).then((response) => {
+            setLike((data) => {
+              return response.data;
+            });
+        });
+        setIsLikes(true);
+  };
+  
+  console.log(localStorage.getItem("idUser"));
+  console.log(props.id);
+  console.log(new Date());
+  
+    const [isLikes, setIsLikes] = useState(false);
+
+  React.useEffect(() => {
+    axios.get(variables.CHECK_LIKE + localStorage.getItem("idUser") + "/" + props.id?.toString()).then((response) => {
+      setIsLikes(response.data);
+    });
+  }, []);
 
   let photo = "https://cdn-icons-png.flaticon.com/512/71/71298.png";
   if(props.user.userPhotos.length != 0)
@@ -60,6 +92,8 @@ export function Post(props: PostProps) {
   let numPost: number = props.id;
   let strPost = numPost?.toString() || '';
   let linkPost: string = "/post/" + strPost;
+
+  const areYouAutor = (Number(localStorage.getItem("idUser")) == props.user.idUser);
 
   return (
     <>
@@ -91,22 +125,30 @@ export function Post(props: PostProps) {
         </a>
       </div>
       <div className={styles.postIndicators}>
-        <div className={styles.postButtons}>
-          <a className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} href="#" title="Лайк">
-            <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />
-            {/* <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/> */}
+              <div className={styles.postButtons}>
+          {isLikes ?
+          <button className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} onClick={handleToggleLikePanel} title="Лайк">
+            <IconHeartActive className={`${ styles.postIndicatorIcon } ${ styles.postIndicatorIconLikeActive }`} width="20" height="17"/>   
             <span>{props.numberOfLikes}</span>
             <span className={baseStyles.visuallyHidden}>количество лайков</span>
-          </a>
+          </button> :
+          <button className={`${styles.postIndicator} ${styles.postIndicatorLikes} ${baseStyles.button}`} onClick={handleToggleUnlikePanel} title="Лайк">
+            <IconHeart className={styles.postIndicatorIcon} width="20" height="17" />  
+            <span>{props.numberOfLikes}</span>
+            <span className={baseStyles.visuallyHidden}>количество лайков</span>
+          </button>}
+                
           <a className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} href="#" title="Комментарии">
             <IconComment className={ styles.postIndicatorIcon } width="19" height="17" />
             <span>{props.numberOfComments}</span>
             <span className={baseStyles.visuallyHidden}>количество комментариев</span>
-          </a>
-          <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
-            <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
-            <span className={baseStyles.visuallyHidden}>удаление поста </span>
-          </button>
+                </a>
+          {areYouAutor ? 
+            <button className={`${styles.postIndicator} ${styles.postIndicatorComments} ${baseStyles.button}`} onClick={() => deletePost(props.id)} title="Удаление">
+              <IconDelete className={ styles.postIndicatorIcon } width="19" height="17" />
+              <span className={baseStyles.visuallyHidden}>удаление поста </span>
+            </button>
+          : <></> }
         </div>
       </div>
     </footer>
