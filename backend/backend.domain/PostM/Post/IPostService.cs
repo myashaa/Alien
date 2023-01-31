@@ -8,7 +8,7 @@ namespace Backend.Domain.PostM
         List<Post> GetNewsPosts(string sortingType);
         List<Post> GetTopPosts(string sortingType);
         List<Post> GetPopularPosts(int id);
-        List<Post> GetFeedPosts(int id);
+        List<Post> GetFeedPosts(int id, string sortingType);
         Post GetPost(int id);
         List<Post> GetPostsByUser(int id);
         List<Post> GetPostsByTitle(string title);

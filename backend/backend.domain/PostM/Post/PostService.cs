@@ -36,9 +36,9 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
-        public List<Post> GetFeedPosts(int id)
+        public List<Post> GetFeedPosts(int id, string sortingType)
         {
-            var posts = _postRepository.GetFeed(id);
+            var posts = _postRepository.GetFeed(id, sortingType);
             return posts.ToList();
         }
 
