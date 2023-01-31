@@ -21,7 +21,7 @@ export const AnotherProfileConstructor = (props: AnotherProfileConstructorProps)
 
   return (
       <>  
-        <AnotherProfile login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]} photo = {user["userPhotos"]}/>
+      <AnotherProfile idUser={user["idUser"]} login = {user["login"]} numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]} photo = {user["userPhotos"]}/>
       </>
   )
 

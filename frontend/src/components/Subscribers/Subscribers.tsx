@@ -22,27 +22,14 @@ interface SubscribersProps {
 }
 
 export const Subscribers = (props: SubscribersProps) => { 
-
-    const [isSubs, setIsSubs] = useState(false);
+    
     const [sub, setSub] = useState(null);
 
-    let subVis = true;
-    let unsubVis = false;
-    if(isSubs)
-    {
-        subVis = false;
-        unsubVis = true;
-    }
-
-    const [subPanelVisible, setsubPanelVisible] = useState(subVis);
     const handleToggleSubPanel = () => {
         axios.delete(variables.DELETE_SUB + props.bloggerId.toString() + "/" + props.user.idUser.toString()).then((response) => {
           });
-        setunsubPanelVisible(false);
-        setsubPanelVisible(true);
-
+        setIsSubs(false);
     };
-    const [unsubPanelVisible, setunsubPanelVisible] = useState(unsubVis);
     const handleToggleUnsubPanel = () => {
         axios.post(variables.ADD_SUB, {    
             idUser: props.bloggerId,
@@ -52,20 +39,19 @@ export const Subscribers = (props: SubscribersProps) => {
             setSub((data) => {
               return response.data;
             });
-          });
-        setunsubPanelVisible(true);
-        setsubPanelVisible(false);
-    };
-
-  
-    useEffect(() => {
-      axios.get(variables.CHECK_SUB + props.bloggerId?.toString() + "/" + props.user.idUser?.toString()).then((response) => {
-        setIsSubs((data) => {
-          return response.data;
         });
-      });
-    }, []);
+        setIsSubs(true);
+    };
+  
+  const [isSubs, setIsSubs] = useState(false);
 
+  React.useEffect(() => {
+    axios.get(variables.CHECK_SUB + props.bloggerId?.toString() + "/" + props.user.idUser?.toString()).then((response) => {
+      setIsSubs(response.data);
+    });
+  }, []);
+
+    console.log(isSubs);
   let num: number = props.user.idUser;
   let str = num?.toString() || '';
   let link: string = "/profile/" + str;
@@ -95,7 +81,7 @@ export const Subscribers = (props: SubscribersProps) => {
             </p>
         </div>
 
-        {subPanelVisible ? (
+        {!isSubs ? (
             <>
                 <div className={styles.postMiniUserButtons}>
                     <button className={`${styles.postMiniUserButton} ${styles.userButton} ${baseStyles.button} ${baseStyles.buttonMain}`} onClick={handleToggleUnsubPanel}>
@@ -105,7 +91,7 @@ export const Subscribers = (props: SubscribersProps) => {
             </> 
         ) : (null)}
 
-        {unsubPanelVisible ? (
+        {isSubs ? (
             <>
                 <div className={styles.postMiniUserButtons}>
                     <button className={`${styles.postMiniUserButton} ${styles.userButton} ${baseStyles.button} ${baseStyles.buttonQuartz}`} onClick={handleToggleSubPanel}>

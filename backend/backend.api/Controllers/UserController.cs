@@ -91,7 +91,7 @@ namespace backend.api.Controllers
         {
             Subscription subscription = _subscriptionService.CheckSubscriptionAvailability(idUser, idSubscriber);
             if (subscription == null)
-                return NotFound(false);
+                return Ok(false);
 
             return Ok(true);
         }

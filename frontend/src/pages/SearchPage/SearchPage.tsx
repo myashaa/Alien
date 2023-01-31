@@ -163,8 +163,7 @@ export const SearchPage = () => {
               <ul className={`${ styles.profileSubscriptionsList}`}> 
                 {users.map((user) =>
                   <div key = {user["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                    <Subscribers idBlogger={Number(localStorage.getItem('idUser'))} idUser = {user["idUser"]} login = {user["login"]} 
-                    numberOfPosts = {user["numberOfPosts"]} numberOfSubscribers = {user["numberOfSubscribers"]}/>
+                    <Subscribers bloggerId={Number(localStorage.getItem("idUser"))} user={user} />
                   </div>)}
               </ul>
             </section>

@@ -85,7 +85,7 @@ export const ProfilePage = () => {
      return null;
   }
   let isBlogger = false;
-  if(user["numberOfSubscribers"] > 10)
+  if(user["numberOfSubscribers"] > 5)
   {
     isBlogger = true;
   }
@@ -197,7 +197,7 @@ export const ProfilePage = () => {
             <ul className={`${ styles.profileSubscriptionsList}`}> 
                 {subs.map((sub) =>
                     <div key = {sub["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers bloggerId={user["idUser"]} user={sub["user"]}/>
+                      <Subscribers bloggerId={user["idUser"]} user={sub["subscriber"]}/>
                 </div>)}
             </ul>
         </section>

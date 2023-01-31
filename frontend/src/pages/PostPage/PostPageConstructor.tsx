@@ -80,7 +80,7 @@ export const PostPageConstructor = (props: PostProps) => {
 
     addComment();
 
-    setComment(true);
+    //setComment(true);
   }
 
   const [comments, setComments] = useState([]);
