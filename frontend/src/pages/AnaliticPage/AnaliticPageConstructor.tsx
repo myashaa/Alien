@@ -21,9 +21,20 @@ export type LikeMonthType = {
   date: number,
 }
 
+export type GenderType = {
+  count: number,
+  gender: number,
+}
+
 interface AnaliticProps
 {
   likeMonth: Array<number>,
+  likeYear: Array<number>,
+  commentMonth: Array<number>,
+  commentYear: Array<number>,
+  userMonth: Array<number>,
+  userYear: Array<number>,
+  gender: Array<number>
 }
 
 export const AnaliticPageConstructor = (props: AnaliticProps) => {
@@ -54,7 +65,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
     labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
     datasets: [
       {
-        data: [100, 136, 300, 200, 180],
+        data: props.commentYear,
         label: "Коментарии",
         borderColor: "#F9CE07",
         backgroundColor: "rgba(249, 206, 7, 0.5)",
@@ -62,7 +73,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
         lineTension: 0.5
       },
       {
-        data: [200, 500, 2000, 2500, 4000],
+        data: props.likeYear,
         label: "Лайки",
         borderColor: "#052E70",
         backgroundColor: "rgba(5, 46, 113, 0.1)",
@@ -76,7 +87,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
     "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
     datasets: [
       {
-        data: [3, 4, 5],
+        data: props.commentMonth,
         label: "Коментарии",
         borderColor: "#F9CE07",
         backgroundColor: "rgba(249, 206, 7, 0.5)",
@@ -98,7 +109,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
     "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"],
     datasets: [
       {
-        data: [10, 13, 3, 20, 18, 50, 12, 12, 4, 6, 0, 8, 9],
+        data: props.commentMonth,
         label: "Новые людишки",
         borderColor: "#F9CE07",
         backgroundColor: "rgba(249, 206, 7, 0.5)",
@@ -111,7 +122,7 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
     labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
     datasets: [
       {
-        data: [200, 500, 2000, 2500, 400, 544, 344, 122, 111, 340],
+        data: props.userYear,
         label: "Новые людишки",
         borderColor: "#052E70",
         backgroundColor: "rgba(5, 46, 113, 0.1)",
@@ -123,24 +134,11 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
   const pieChartData = {
     labels: ["Мужчины", "Женщины", "Инопланетяне"],
     datasets: [{
-        data: [200, 230, 70],
+        data: props.gender,
         label: "Половая принадлежность",
         backgroundColor: ["#052E70", "#F9CE07", "#24454C"],
         hoverBackgroundColor: ["rgba(5, 46, 113, 0.5)", "rgba(249, 206, 7, 0.5)", "#6C8C8B"]
     }]
-  };
-  const barChartData = {
-    labels: ["01-02", "02-03", "03-04", "04-05", "05-06", "06-07", "07-08", "08-09", "09-10", "10-11", "11-12", "12-13", "13-14", "14-15", "15-16", 
-    "16-17", "17-18", "18-19", "19-20", "20-21", "21-22", "22-23", "23-00", "00-01"],
-    datasets: [
-      {
-        data: [200, 300, 7, 8, 6, 7, 6, 90, 156, 345, 456, 524, 555, 555, 443, 266, 122, 123, 35, 677, 613, 543, 345, 654],
-        label: "Людишек активно",
-        borderColor: "#F9CE07",
-        backgroundColor: "rgba(249, 206, 7, 0.5)",
-        fill: true
-      }
-    ]
   };
 
   useEffect(() => {
@@ -235,15 +233,6 @@ export const AnaliticPageConstructor = (props: AnaliticProps) => {
                   <h1 className={ styles.graficHeader}>Прибавилось людишек за месяц</h1>
                   <div className={ styles.graficBox }>
                     <Line data={lineChartDataNewMonth}/>
-                  </div>
-                </article>
-              </div>
-
-              <div className={`${ styles.feedPosts } ${ baseStyles.container }`}>
-                <article className={ styles.post }>
-                  <h1 className={ styles.graficHeader}>В какое время людишки активны</h1>
-                  <div className={ styles.graficBox }>
-                    <Bar data={barChartData}/>
                   </div>
                 </article>
               </div>

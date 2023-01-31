@@ -110,6 +110,9 @@ export const PostPageConstructor = (props: PostProps) => {
                 <div className={styles.postPhotoImageWrapper}>
                   <img src={photoPost} alt="Фото от пользователя" width="760" height="507" />
                 </div>
+                <div>
+                  <p>{props.post.text}</p>
+                </div>
                 <div className={styles.postIndicators}>
                   <div className={styles.postButtons}>
                     <a className={`${styles.postIndicator} ${baseStyles.button}`} href="#" title="Лайк">

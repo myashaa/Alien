@@ -11,13 +11,11 @@ import { LikesAlert } from '../../components/LikesAlert/LikesAlert';
 import { CommentsAlert } from '../../components/CommentsAlert/CommentsAlert';
 import {variables} from  "../../Variables";
 import axios from "axios";
-import {ProfileConstructor} from "../../components/Profile/ProfileConstructor";
 
 export const ProfilePage = () => {
 
   const [subs, setSubs] = useState([]);
   const [subers, setSubers] = useState([]);
-  const [isBlogger, SetIsBlogger] = useState(false);
   const [user, setUser] = React.useState(null);
   const [posts, setPosts] = useState([]);
   
@@ -86,9 +84,10 @@ export const ProfilePage = () => {
   if (user == null){
      return null;
   }
+  let isBlogger = false;
   if(user["numberOfSubscribers"] > 10)
   {
-    SetIsBlogger(true);
+    isBlogger = true;
   }
   return (
     <div className={`${baseStyles.page} ${styles.pageAnalitic}`}>
@@ -125,12 +124,14 @@ export const ProfilePage = () => {
                       <span>Подписчики</span>
                     </a>
                   </li>
-                 
+                  {isBlogger ? 
                     <li className={ styles.sortingItem } onClick={handleToggleLikesPanel}>
-                       <NavLink to="/analitic" className={styles.sortingLink} title="Аналитика">
-                         <span>Аналитика</span>
-                       </NavLink>
+                     <NavLink to="/analitic" className={styles.sortingLink} title="Аналитика">
+                       <span>Аналитика</span>
+                     </NavLink>
                     </li>
+                  : <></>}
+                    
                    
                   
                 </ul>
