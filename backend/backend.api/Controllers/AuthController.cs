@@ -46,7 +46,8 @@ namespace Backend.Api.Controllers
             var token = GenerateJWT(user);
             return Ok( new 
             {
-                access_token = token
+                access_token = token,
+                id = user.IdUser
             });
         }
 

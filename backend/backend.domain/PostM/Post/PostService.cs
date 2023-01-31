@@ -36,6 +36,12 @@ namespace Backend.Domain.PostM
             return posts.ToList();
         }
 
+        public List<Post> GetFeedPosts(int id)
+        {
+            var posts = _postRepository.GetFeed(id);
+            return posts.ToList();
+        }
+
         public Post GetPost(int id)
         {
             var post = _postRepository.GetById(id);
