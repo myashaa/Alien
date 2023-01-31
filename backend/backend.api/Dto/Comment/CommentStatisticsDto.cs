@@ -1,8 +1,4 @@
-﻿using Backend.Domain.PostM;
-using Backend.Domain.UserM;
-using System;
-
-namespace Backend.Api.Dto
+﻿namespace Backend.Api.Dto
 {
     public class CommentStatisticsDto
     {

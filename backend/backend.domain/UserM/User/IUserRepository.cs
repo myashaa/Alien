@@ -4,7 +4,6 @@ namespace Backend.Domain.UserM
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAll();
         User GetById(int id);
         User GetByMailAndPassword(string mail, string password);
         IEnumerable<User> GetAllByLogin(string login);

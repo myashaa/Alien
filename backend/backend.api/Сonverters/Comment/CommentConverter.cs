@@ -1,6 +1,5 @@
 ﻿using Backend.Api.Dto;
 using Backend.Domain.PostM;
-using System.Collections.Generic;
 
 namespace Backend.Api.Сonverters
 {
@@ -29,6 +28,7 @@ namespace Backend.Api.Сonverters
             return new CommentUserDto
             {
                 User = _userConverter.ConvertToUserNameDto(comment.User),
+                IdPost = comment.Post.IdPost,
                 PostPhotos = comment.Post.PostPhotos.ConvertAll(p => _postConverter.ConvertToPostPhotoDto(p)),
                 Date = comment.Date
             };

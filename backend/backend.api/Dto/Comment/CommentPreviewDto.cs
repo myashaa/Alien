@@ -1,6 +1,4 @@
-﻿using Backend.Domain.PostM;
-using Backend.Domain.UserM;
-using System;
+﻿using System;
 
 namespace Backend.Api.Dto
 {

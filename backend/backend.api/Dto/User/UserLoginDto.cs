@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Backend.Api.Dto
+﻿namespace Backend.Api.Dto
 {
     public class UserLoginDto
     {

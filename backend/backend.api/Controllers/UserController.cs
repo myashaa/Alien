@@ -27,15 +27,6 @@ namespace backend.api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        //тестовы метод GetAllUsers. удалить потом и все что в нем используются
-        [HttpGet]
-        [Route("")]
-        public IActionResult GetAllUsers()
-        {
-            List<UserDto> users = _userService.GetUsers().ConvertAll(u => _userConverter.ConvertToUserDto(u));
-            return Ok(users);
-        }
-
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult GetUserById(int id)

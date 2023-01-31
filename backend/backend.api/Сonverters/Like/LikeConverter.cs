@@ -1,6 +1,5 @@
 ﻿using Backend.Api.Dto;
 using Backend.Domain.PostM;
-using System.Collections.Generic;
 
 namespace Backend.Api.Сonverters
 {
@@ -19,6 +18,7 @@ namespace Backend.Api.Сonverters
             return new LikeUserDto
             {
                 User = _userConverter.ConvertToUserNameDto(like.User),
+                IdPost = like.Post.IdPost,
                 PostPhotos = like.Post.PostPhotos.ConvertAll(p => _postConverter.ConvertToPostPhotoDto(p)),
                 Date = like.Date
             };

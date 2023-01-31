@@ -3,7 +3,6 @@ using Backend.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using Backend.Infrastructure.Constans;
 using System;
 
 namespace Backend.Infrastructure.Repositories
