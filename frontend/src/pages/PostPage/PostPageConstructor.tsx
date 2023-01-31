@@ -84,6 +84,34 @@ export const PostPageConstructor = (props: PostProps) => {
   }
 
   const [comments, setComments] = useState([]);
+
+  const [sub, setSub] = useState(null);
+
+    const handleToggleSubPanel = () => {
+        axios.delete(variables.DELETE_SUB + localStorage.getItem('idUser') + "/" + props.post.user.idUser.toString()).then((response) => {
+          });
+        setIsSubs(false);
+    };
+    const handleToggleUnsubPanel = () => {
+        axios.post(variables.ADD_SUB, {    
+            idUser: Number(localStorage.getItem('idUser')),
+            IdSubscriber: props.post.user.idUser, 
+            date: new Date()
+        }).then((response) => {
+            setSub((data) => {
+              return response.data;
+            });
+        });
+        setIsSubs(true);
+    };
+  
+  const [isSubs, setIsSubs] = useState(false);
+
+  React.useEffect(() => {
+    axios.get(variables.CHECK_SUB + localStorage.getItem('idUser') + "/" + props.post.user.idUser?.toString()).then((response) => {
+      setIsSubs(response.data);
+    });
+  }, []);
   
     useEffect(() => {
       axios.get(variables.COMMENTS_POST + props.post.idPost.toString()).then((response) => {
@@ -166,10 +194,25 @@ export const PostPageConstructor = (props: PostProps) => {
                     {/* <time className="post-details__time user__time" datetime="2014-03-20">5 лет на сайте</time> */}
                   </div>
                 </div>
-                <div className={styles.postDetailsUserButtons}>
-                  <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonMain}`} type="button">Подписаться</button>
-                  {/* <a className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonYellow}`} href="#">Сообщение</a> */}
-                </div>
+                {!isSubs ? (
+                <>
+                 <div className={styles.postDetailsUserButtons}>
+                    <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonMain}`} onClick={handleToggleUnsubPanel}>
+                        Подписаться
+                    </button>
+                 </div>
+                </> 
+                ) : (null)}
+
+               {isSubs ? (
+               <>
+                  <div className={styles.postDetailsUserButtons}>
+                    <button className={`${styles.postDetailsUserButton} ${baseStyles.button} ${baseStyles.buttonQuartz}`} onClick={handleToggleSubPanel}>
+                        Отписаться
+                    </button>
+                  </div>
+                </> 
+                    ) : (null)}
               </div>
             </div>
           </section>

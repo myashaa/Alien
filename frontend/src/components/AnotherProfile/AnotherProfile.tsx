@@ -29,46 +29,31 @@ export const AnotherProfile = (props: AnotherProfileProps) => {
     photo = props.photo[0].url;
   }
 
-  const [isSubs, setIsSubs] = useState(false);
-  const [sub, setSub] = useState(null);
+ const [sub, setSub] = useState(null);
 
-  let subVis = true;
-  let unsubVis = false;
-  if(isSubs)
-  {
-      subVis = false;
-      unsubVis = true;
-  }
-
-  const [subPanelVisible, setsubPanelVisible] = useState(subVis);
-  const handleToggleSubPanel = () => {
-      axios.delete(variables.DELETE_SUB + localStorage.getItem('idUser') + "/" + props.idUser.toString()).then((response) => {
-        });
-      setunsubPanelVisible(false);
-      setsubPanelVisible(true);
-
-  };
-  const [unsubPanelVisible, setunsubPanelVisible] = useState(unsubVis);
-  const handleToggleUnsubPanel = () => {
-      axios.post(variables.ADD_SUB, {    
-          idUser: localStorage.getItem('idUser'),
-          IdSubscriber: props.idUser, 
-          date: new Date()
-      }).then((response) => {
-          setSub((data) => {
-            return response.data;
+    const handleToggleSubPanel = () => {
+        axios.delete(variables.DELETE_SUB + localStorage.getItem('idUser') + "/" + props.idUser.toString()).then((response) => {
           });
+        setIsSubs(false);
+    };
+    const handleToggleUnsubPanel = () => {
+        axios.post(variables.ADD_SUB, {    
+            idUser: Number(localStorage.getItem('idUser')),
+            IdSubscriber: props.idUser, 
+            date: new Date()
+        }).then((response) => {
+            setSub((data) => {
+              return response.data;
+            });
         });
-      setunsubPanelVisible(true);
-      setsubPanelVisible(false);
-  };
+        setIsSubs(true);
+    };
+  
+  const [isSubs, setIsSubs] = useState(false);
 
-
-  useEffect(() => {
+  React.useEffect(() => {
     axios.get(variables.CHECK_SUB + localStorage.getItem('idUser') + "/" + props.idUser?.toString()).then((response) => {
-      setIsSubs((data) => {
-        return response.data;
-      });
+      setIsSubs(response.data);
     });
   }, []);
 
@@ -97,7 +82,7 @@ export const AnotherProfile = (props: AnotherProfileProps) => {
             </p>
           </div>
 
-          {subPanelVisible ? (
+          {!isSubs ? (
             <>
                 <div className={`${styles.profileUserButtons} ${styles.userRatingText}`}>
                     <button className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonMain}`} onClick={handleToggleUnsubPanel}>
@@ -107,7 +92,7 @@ export const AnotherProfile = (props: AnotherProfileProps) => {
             </> 
         ) : (null)}
 
-        {unsubPanelVisible ? (
+        {isSubs ? (
             <>
                 <div className={`${styles.profileUserButtons} ${styles.userRatingText}`}>
                     <button className={`${styles.userButton} ${baseStyles.button} ${baseStyles.buttonQuartz}`} onClick={handleToggleSubPanel}>
