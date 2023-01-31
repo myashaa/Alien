@@ -5,14 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Backend.Infrastructure.Constans;
 using System;
+using Backend.Domain.UserM;
 
 namespace Backend.Infrastructure.Repositories
 {
     public class PostRepository : Repository<Post>, IPostRepository
     {
-        public PostRepository(BackendDbContext dbContext)
+        private ISubscriptionRepository _subscriptionRepository;
+        public PostRepository(BackendDbContext dbContext, ISubscriptionRepository subscriptionRepository)
             : base(dbContext)
         {
+            _subscriptionRepository = subscriptionRepository;
         }
 
         public IEnumerable<Post> GetAll(string sortingType)
@@ -106,6 +109,24 @@ namespace Backend.Infrastructure.Repositories
                 .ToList()
                 .OrderByDescending(p => p.NumberOfLikes + p.NumberOfComments)
                 .Take(5);
+        }
+
+        public IEnumerable<Post> GetFeed(int id)
+        {
+            List<Subscription> subscribers = _subscriptionRepository.GetSubscribersByIdUser(id).ToList();
+            List<int> idOfSubscribers = new List<int>();
+            foreach (Subscription subscriber in subscribers)
+            {
+                if (subscriber.IdSubscriber == id)
+                {
+                    idOfSubscribers.Add(subscriber.IdUser);
+                }
+            }
+            return Entities
+                .Include(p => p.PostPhotos)
+                .Include(p => p.User).ThenInclude(u => u.UserPhotos)
+                .Where(p => idOfSubscribers.Contains(p.User.IdUser))
+                .ToList();
         }
 
         public Post GetById(int id)

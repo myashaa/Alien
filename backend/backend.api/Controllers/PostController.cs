@@ -59,6 +59,14 @@ namespace backend.api.Controllers
             return Ok(posts);
         }
 
+        [HttpGet]
+        [Route("feed/{id:int}")]
+        public IActionResult GetFeedPosts(int id)
+        {
+            List<PostPreviewDto> posts = _postService.GetFeedPosts(id).ConvertAll(p => _postConverter.ConvertToPostPreviewDto(p));
+            return Ok(posts);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("{id:int}")]
