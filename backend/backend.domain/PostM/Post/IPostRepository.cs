@@ -15,5 +15,7 @@ namespace Backend.Domain.PostM
         IEnumerable<Post> GetAllByTag(string tag);
         void AddNew(Post post);
         void DeleteCurrent(int id);
+        void ChangeNumberOfLikes(int id, int number);
+        void ChangeNumberOfComments(int id, int number);
     }
 }

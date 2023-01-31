@@ -11,5 +11,7 @@ namespace Backend.Domain.UserM
         void AddNew(User user);
         void DeleteCurrent(int id);
         void UpdateCurrent(User user);
+        void ChangeNumberOfPosts(int id, int number);
+        void ChangeNumberOfSubscribers(int id, int number);
     }
 }

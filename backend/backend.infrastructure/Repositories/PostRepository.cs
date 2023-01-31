@@ -12,10 +12,12 @@ namespace Backend.Infrastructure.Repositories
     public class PostRepository : Repository<Post>, IPostRepository
     {
         private ISubscriptionRepository _subscriptionRepository;
-        public PostRepository(BackendDbContext dbContext, ISubscriptionRepository subscriptionRepository)
+        private IUserRepository _userRepository;
+        public PostRepository(BackendDbContext dbContext, ISubscriptionRepository subscriptionRepository, IUserRepository userRepository)
             : base(dbContext)
         {
             _subscriptionRepository = subscriptionRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Post> GetAll(string sortingType)
@@ -174,12 +176,26 @@ namespace Backend.Infrastructure.Repositories
         public void AddNew(Post post)
         {
             Add(post);
+            _userRepository.ChangeNumberOfPosts(post.IdUser, 1);
         }
 
         public void DeleteCurrent(int id)
         {
             var post = GetById(id);
             Delete(post);
+            _userRepository.ChangeNumberOfPosts(post.IdUser, -1);
+        }
+
+        public void ChangeNumberOfLikes(int id, int number)
+        {
+            var userFromDatabase = GetById(id);
+            userFromDatabase.NumberOfLikes = userFromDatabase.NumberOfLikes + number;
+        }
+
+        public void ChangeNumberOfComments(int id, int number)
+        {
+            var userFromDatabase = GetById(id);
+            userFromDatabase.NumberOfComments = userFromDatabase.NumberOfComments + number;
         }
     }
 }

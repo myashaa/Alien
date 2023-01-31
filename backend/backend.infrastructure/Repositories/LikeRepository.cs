@@ -10,9 +10,11 @@ namespace Backend.Infrastructure.Repositories
 {
     public class LikeRepository : Repository<Like>, ILikeRepository
     {
-        public LikeRepository(BackendDbContext dbContext)
+        private IPostRepository _postRepository;
+        public LikeRepository(BackendDbContext dbContext, IPostRepository postRepository)
             : base(dbContext)
         {
+            _postRepository = postRepository;
         }
 
         public IEnumerable<Like> GetAllByIdUser(int id)
@@ -61,12 +63,14 @@ namespace Backend.Infrastructure.Repositories
         public void AddNew(Like like)
         {
             Add(like);
+            _postRepository.ChangeNumberOfLikes(like.IdPost, 1);
         }
 
         public void DeleteCurrent(int idUser, int idPost)
         {
             var like = GetById(idUser, idPost);
             Delete(like);
+            _postRepository.ChangeNumberOfLikes(like.IdPost, -1);
         }
 
         private Like GetById(int idUser, int idPost)

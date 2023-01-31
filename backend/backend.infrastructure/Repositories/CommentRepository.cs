@@ -10,9 +10,11 @@ namespace Backend.Infrastructure.Repositories
 {
     public class CommentRepository : Repository<Comment>, ICommentRepository
     {
-        public CommentRepository(BackendDbContext dbContext)
+        private IPostRepository _postRepository;
+        public CommentRepository(BackendDbContext dbContext, IPostRepository postRepository)
             : base(dbContext)
         {
+            _postRepository = postRepository;
         }
 
         public IEnumerable<Comment> GetAll(int id)
@@ -65,6 +67,7 @@ namespace Backend.Infrastructure.Repositories
         public void AddNew(Comment comment)
         {
             Add(comment);
+            _postRepository.ChangeNumberOfComments(comment.IdPost, 1);
         }
     }
 }

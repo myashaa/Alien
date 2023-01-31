@@ -9,9 +9,11 @@ namespace Backend.Infrastructure.Repositories
 {
     public class SubscriptionRepository : Repository<Subscription>, ISubscriptionRepository
     {
-        public SubscriptionRepository(BackendDbContext dbContext)
+        private IUserRepository _userRepository;
+        public SubscriptionRepository(BackendDbContext dbContext, IUserRepository userRepository)
             : base(dbContext)
         {
+            _userRepository = userRepository;
         }
 
         public Subscription CheckAvailability(int idUser, int idSubscriber)
@@ -79,12 +81,14 @@ namespace Backend.Infrastructure.Repositories
         public void AddNew(Subscription subscription)
         {
             Add(subscription);
+            _userRepository.ChangeNumberOfSubscribers(subscription.IdSubscriber, 1);
         }
 
         public void DeleteCurrent(int idUser, int idSubscriber)
         {
             var subscription = GetById(idUser, idSubscriber);
             Delete(subscription);
+            _userRepository.ChangeNumberOfSubscribers(subscription.IdSubscriber, -1);
         }
 
         private Subscription GetById(int idUser, int idSubscriber)

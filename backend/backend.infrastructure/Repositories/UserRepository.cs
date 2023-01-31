@@ -55,10 +55,22 @@ namespace Backend.Infrastructure.Repositories
 
         public void UpdateCurrent(User user)
         {
-            var recipeFromDatabase = GetById(user.IdUser);
-            recipeFromDatabase.Login = user.Login;
-            recipeFromDatabase.Password = user.Password;
-            recipeFromDatabase.UserPhotos = user.UserPhotos;
+            var userFromDatabase = GetById(user.IdUser);
+            userFromDatabase.Login = user.Login;
+            userFromDatabase.Password = user.Password;
+            userFromDatabase.UserPhotos = user.UserPhotos;
+        }
+
+        public void ChangeNumberOfPosts(int id, int number)
+        {
+            var userFromDatabase = GetById(id);
+            userFromDatabase.NumberOfPosts = userFromDatabase.NumberOfPosts + number;
+        }
+
+        public void ChangeNumberOfSubscribers(int id, int number)
+        {
+            var userFromDatabase = GetById(id);
+            userFromDatabase.NumberOfSubscribers = userFromDatabase.NumberOfSubscribers + number;
         }
     }
 }
