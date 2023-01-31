@@ -16,6 +16,7 @@ interface SubscribersProps {
 export const Subscribers = (props: SubscribersProps) => { 
 
     const [isSubs, setIsSubs] = useState(false);
+    const [sub, setSub] = useState(null);
 
     let subVis = true;
     let unsubVis = false;
@@ -27,11 +28,23 @@ export const Subscribers = (props: SubscribersProps) => {
 
     const [subPanelVisible, setsubPanelVisible] = useState(subVis);
     const handleToggleSubPanel = () => {
+        axios.delete(variables.DELETE_SUB + props.idBlogger.toString + "/" + props.idUser.toString()).then((response) => {
+          });
         setunsubPanelVisible(false);
         setsubPanelVisible(true);
+
     };
     const [unsubPanelVisible, setunsubPanelVisible] = useState(unsubVis);
     const handleToggleUnsubPanel = () => {
+        axios.post(variables.ADD_SUB, {    
+            idUser: props.idBlogger,
+            IdSubscriber: props.idUser, 
+            date: new Date()
+        }).then((response) => {
+            setSub((data) => {
+              return response.data;
+            });
+          });
         setunsubPanelVisible(true);
         setsubPanelVisible(false);
     };

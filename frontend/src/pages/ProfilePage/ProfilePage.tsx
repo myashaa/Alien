@@ -131,9 +131,6 @@ export const ProfilePage = () => {
                      </NavLink>
                     </li>
                   : <></>}
-                    
-                   
-                  
                 </ul>
               </div>
             </div>
