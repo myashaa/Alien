@@ -14,17 +14,11 @@ export const loginUser =
       try {
         dispatch(loginStart())
 
-        //const res = await api.auth.login(data)
-
         const res = await axios.post("https://localhost:44390/api/auth/login", data);
 
-        console.log(res.data);
-
-
         store.dispatch(loginSucess(res.data));
-        //dispatch(getProfile())
 
-        localStorage.setItem('token', res.data.accessToken);
+        localStorage.setItem('token', res.data.access_token);
         
       } catch (e: any) {
         console.error(e)

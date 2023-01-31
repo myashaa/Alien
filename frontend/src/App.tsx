@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     element: <MyFeedPage />,
   },
   {
-    path: "/post",
+    path: "/post/:postId",
     element: <PostPage />,
   },
   {

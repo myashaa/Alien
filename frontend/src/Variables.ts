@@ -16,6 +16,10 @@ export const variables={
     DELETE_POST_URL:"https://localhost:44390/api/post/",
     POST_TITLE_URL:"https://localhost:44390/api/post/title/",
     POST_TAG_URL:"https://localhost:44390/api/post/tag/",
+    POST_USER:"https://localhost:44390/api/post/user/",
+    CURRENT_POST:"https://localhost:44390/api/post/",
+    COMMENTS_POST:"https://localhost:44390/api/comment/",
+    ADD_COMMENTS:"https://localhost:44390/api/comment",
 }
 /*
 https://localhost:44390/api/auth              - авторизация

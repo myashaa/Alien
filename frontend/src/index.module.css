@@ -580,14 +580,6 @@ img {
   position: relative;
 }
 
-.formInputSectionError .formInput {
-  border-color: #f02323;
-}
-
-.formInputSectionError .formInputIcon {
-  fill: #f02323;
-}
-
 .formInputSectionError .formErrorButton {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -599,18 +591,6 @@ img {
   display: block;
   margin-top: 7px;
   font-size: 16px;
-}
-
-.formInputSectionError .formInput:hover+.formInputIcon {
-  fill: #f02323;
-}
-
-.formInputSectionError .formInput:focus+.formInputIcon {
-  fill: #f02323;
-}
-
-.formInputRequired {
-  color: #f02323;
 }
 
 .formTextInputsWrapper {

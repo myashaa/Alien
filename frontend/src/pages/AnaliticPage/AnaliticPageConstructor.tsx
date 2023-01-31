@@ -14,7 +14,7 @@ import { Post } from '../../components/Post/Post';
 import { BackArrow } from "../../components/BackArrow/BackArrow";
 import { ProfileConstructor } from "../../components/Profile/ProfileConstructor";
 
-type AnaliticType =
+export type LikeMonthType =
 {
     date: string,
     count: number,
@@ -22,10 +22,10 @@ type AnaliticType =
 
 interface AnaliticProps
 {
-  likeMonth: Array<AnaliticType>,
+  likeMonth: Array<LikeMonthType>,
 }
 
-export const AnaliticPageConstructor = () => {
+export const AnaliticPageConstructor = (props: AnaliticProps) => {
 
   const [actionPanelVisible, setActionPanelVisible] = useState(true);
     const handleToggleActionPanel = () => {

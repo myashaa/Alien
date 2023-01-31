@@ -13,9 +13,20 @@ import { Profile } from '../../components/Profile/Profile';
 import { Post } from '../../components/Post/Post';
 import { BackArrow } from "../../components/BackArrow/BackArrow";
 import { ProfileConstructor } from "../../components/Profile/ProfileConstructor";
+import { AnaliticPageConstructor, LikeMonthType } from "./AnaliticPageConstructor";
 
 export const AnaliticPage = () => {
+  const [user, setUser] = React.useState(null);
 
+  if (!user) return null;
+
+  let likeMonth: Array<LikeMonthType>;
+  likeMonth = [];
+  return (
+      <>  
+        <AnaliticPageConstructor likeMonth={likeMonth}/>
+      </>
+  )
 };
 
   

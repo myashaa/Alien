@@ -17,12 +17,7 @@ export function LoginationFormWithRegistrationButton() {
     e.preventDefault();
 
     store.dispatch(loginUser({mail, password}));
-
   }
-
-  const isLoggedIn = useSelector(
-    (state: IRootState) => !!state.auth.authData.accessToken
-  );
 
   return (
     <section className={styles.authorization}>

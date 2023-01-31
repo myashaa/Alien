@@ -13,15 +13,10 @@ import {AnotherProfileConstructor} from "../../components/AnotherProfile/Another
 
 export const AnotherProfilePage: React.FC = (): JSX.Element => {
   const params = useParams();
-  const id = 2;
-  let idAnotherUser = String(id);
-  console.log(typeof(params.profileId));
-
   const [posts, setPosts] = useState([]);
   
-
     useEffect(() => {
-      axios.get(variables.POST_DATE).then((response) => {
+      axios.get(variables.POST_USER + params.profileId).then((response) => {
         setPosts((data) => {
           return response.data;
         });

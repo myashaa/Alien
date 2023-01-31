@@ -53,18 +53,20 @@ export function Post(props: PostProps) {
       setPost(false)
   }
 
-  
   let num: number = props.user.idUser;
-  console.log(num);
   let str = num?.toString() || '';
   let link: string = "/profile/" + str;
+
+  let numPost: number = props.id;
+  let strPost = numPost?.toString() || '';
+  let linkPost: string = "/post/" + strPost;
 
   return (
     <>
     {post ?
     <article className={ styles.post }>
     <header className={styles.postHeader}>
-      <h2><a href="#">{props.title}</a></h2>
+      <h2><a href={linkPost}>{props.title}</a></h2>
     </header>
     <div className={styles.postMain}>
         {props.imgs.map((photo) => 
@@ -74,7 +76,7 @@ export function Post(props: PostProps) {
         {props.text}
       </p>
       <div className={styles.postTextMoreLinkWrapper}>
-          <a className={styles.postTextMoreLink} href="/post">Подробнее</a>
+          <a className={styles.postTextMoreLink} href={linkPost}>Подробнее</a>
       </div>
     </div>
     <footer className={styles.postFooter}>
