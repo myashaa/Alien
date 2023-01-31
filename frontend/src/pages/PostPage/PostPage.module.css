@@ -152,7 +152,6 @@
 }
 
 .postIndicatorIconLikeActive {
-  display: none;
   opacity: .6;
   fill: #f02323;
 }
@@ -174,17 +173,28 @@
   line-height: 1.375;
 }
 
-.postTags a {
+.postTags span {
   color: #8798ad;
+  cursor: pointer;
 }
 
-.postTags a:focus,
-.postTags a:hover {
+.postTags span:focus,
+.postTags span:hover {
   color: #2e384d;
 }
 
-.postTags a:active {
+.postTags span:active {
   color: rgba(46, 56, 77, .2);
+}
+
+.postText {
+  padding: 44px 41px 4px 44px;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.postText p {
+  margin: 0;
 }
 
 .postDetailsUser {
@@ -205,6 +215,14 @@
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
+}
+
+.userPicture {
+  width: auto;
+  min-width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .postDetailsAvatar {

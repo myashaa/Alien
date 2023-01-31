@@ -1,0 +1,44 @@
+@import "/src/colors.css";
+
+.pageError {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f4f6fc;
+}
+
+.mainWrapper {
+  padding: 60px 0;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  min-height: 40vh;
+  background-image: url("../../img/no-feed-bg.svg");
+  border-radius: 50%;
+  background-size: 102px 115px;
+  background-repeat: no-repeat;
+  background-position: center 150px;
+}
+
+.pageTitle {
+  width: fit-content;
+  margin: 120px auto 0;
+}
+
+.pageLink {
+  display: table;
+  margin: 25px auto;
+  font-size: 18px;
+  text-decoration: underline;
+  cursor: pointer;
+}

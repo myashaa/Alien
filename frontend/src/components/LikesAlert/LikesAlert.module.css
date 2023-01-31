@@ -44,6 +44,10 @@
 .userPicture {
     display: block;
     border-radius: 50%;
+    height: 60px;
+    width: auto;
+    min-width: 60px;
+    object-fit: cover;
 }
 
 .userName {
@@ -271,4 +275,8 @@
     display: block;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    height: 107px;
+    width: auto;
+    min-width: 107px;
+    object-fit: cover;
 }

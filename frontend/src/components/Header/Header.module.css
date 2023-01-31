@@ -280,7 +280,10 @@
 }
 
 .headerProfileAvatar {
-  display: block;
+  width: auto;
+  min-width: 40px;
+  height: 40px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -364,6 +367,11 @@
   -ms-flex-align: center;
   align-items: center;
   color: #8798ad;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .headerProfileNavLink:focus,
@@ -446,4 +454,8 @@
   background-color: rgba(34, 67, 199, .6);
   border: 2px solid rgba(34, 67, 199, .6);
   background-clip: padding-box;
+}
+
+.buttonSearchWidth {
+  height: 40px;
 }
