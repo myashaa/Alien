@@ -61,8 +61,8 @@ export const PostPageConstructor = (props: PostProps) => {
   let strPost = numPost?.toString() || '';
   let linkPost: string = "/post/" + strPost;
 
-  async function addComment() {
-    await axios
+  function addComment() {
+    axios
       .post(variables.ADD_COMMENTS, 
         {
            idUser: idUser,
@@ -73,13 +73,14 @@ export const PostPageConstructor = (props: PostProps) => {
       .then(() => {
         alert("Комментарий добавлен!");
       });
-    setComment(true)
   }
 
   const handelSubmit = (e:FormEvent) => {
     e.preventDefault();
 
     addComment();
+
+    setComment(true);
   }
 
   const [comments, setComments] = useState([]);
