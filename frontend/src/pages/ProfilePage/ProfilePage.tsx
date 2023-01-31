@@ -131,9 +131,6 @@ export const ProfilePage = () => {
                      </NavLink>
                     </li>
                   : <></>}
-                    
-                   
-                  
                 </ul>
               </div>
             </div>
@@ -186,8 +183,7 @@ export const ProfilePage = () => {
                 <ul className={`${ styles.profileSubscriptionsList}`}> 
                   {subers.map((suber) =>
                     <div key = {suber["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers idBlogger={user["idUser"]} idUser={suber["idUser"]} login = {suber["login"]} numberOfPosts = {suber["numberOfPosts"]} 
-                      numberOfSubscribers = {suber["numberOfSubscribers"]}/>
+                      <Subscribers bloggerId={user["idUser"]} user={suber["user"]}/>
                     </div>)}
                 </ul>
               </section>
@@ -201,8 +197,7 @@ export const ProfilePage = () => {
             <ul className={`${ styles.profileSubscriptionsList}`}> 
                 {subs.map((sub) =>
                     <div key = {sub["idUser"]} className={`${ styles.postMini} ${styles.post } ${baseStyles.user }`}>
-                      <Subscribers idBlogger={user["idUser"]} idUser={sub["idUser"]} login = {sub["login"]} 
-                      numberOfPosts = {sub["numberOfPosts"]} numberOfSubscribers = {sub["numberOfSubscribers"]}/>
+                      <Subscribers bloggerId={user["idUser"]} user={sub["user"]}/>
                 </div>)}
             </ul>
         </section>

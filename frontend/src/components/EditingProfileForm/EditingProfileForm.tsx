@@ -157,7 +157,7 @@ export function EditingProfileForm(props: EditingProfileFormProps) {
         <button className={`${styles.registrationSubmit} ${baseStyles.button} ${baseStyles.buttonMain}`} type="submit">
           Сохранить
         </button>
-        <a className={styles.addingPostClose} href="#">Закрыть</a>
+        <a className={styles.addingPostClose} href="/profile">Закрыть</a>
       </form>
     </section>)}
     </>

@@ -20,6 +20,8 @@ export const variables={
     CURRENT_POST:"https://localhost:44390/api/post/",
     COMMENTS_POST:"https://localhost:44390/api/comment/",
     ADD_COMMENTS:"https://localhost:44390/api/comment",
+    ADD_SUB:"https://localhost:44390/api/user/subscription",
+    DELETE_SUB:"https://localhost:44390/api/user/subscription/",
     SUB_USER:"https://localhost:44390/api/user/subscriptions/",
     SUBERS_USER:"https://localhost:44390/api/user/subscribers/",
     CHECK_SUB:"https://localhost:44390/api/user/subscription/",
